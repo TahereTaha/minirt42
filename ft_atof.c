@@ -4,13 +4,13 @@
 #include <ctype.h>
 #include <float.h>
 
-float check_overflow_atof(float result)
+float check_overflow_float(float n)
 {
-	if (result > FLT_MAX)
+	if (n > FLT_MAX)
 		return (FLT_MAX);
-	if (result < -FLT_MAX)
+	if (n < -FLT_MAX)
 		return (-FLT_MAX);
-	return (result);
+	return (n);
 }
 
 void	ft_process_int(char *str, int *i, float *result)
