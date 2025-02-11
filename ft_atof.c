@@ -7,11 +7,9 @@
 float check_overflow_atof(float result)
 {
 	if (result > FLT_MAX)
-        	return (FLT_MAX);
-    	if (result < -FLT_MAX)
-        	return (-FLT_MAX);
-    	if (result != 0.0f && result < FLT_MIN && result > -FLT_MIN)
-        	return (0.0f);
+		return (FLT_MAX);
+	if (result < -FLT_MAX)
+		return (-FLT_MAX);
 	return (result);
 }
 
@@ -59,7 +57,7 @@ float ft_atof(char *str)
 	}
 	ft_process_int(str, &i, &result);
 	ft_process_frac(str, &i, &result, &divisor);
-	result = result * sign / divisor;
+	result = (result * sign) / divisor;
 	return (check_overflow_atof(result));
 }
 
