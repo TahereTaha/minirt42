@@ -14,7 +14,7 @@ todo list:
 		- [ ] manage objects laking in the cene
 		- [ ] parse ambient ligth
 	- [ ] parse 													::	rgiambon
-		- [ ] parse camara
+		- [ ] parse camera  ->  [in progress]
 		- [ ] parse ligth
 		- [ ] parse sphere
 		- [ ] parse plane
