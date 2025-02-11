@@ -59,12 +59,20 @@ void	parse_origin(char *input, t_camera *cam)
 
 }
 
-void	parse_camera(char **tokens, t_camera *cam)
+void	parse_camera(char **tokens)
 {
+	t_camera	*cam;
+
+	cam = malloc(sizeof(t_camera));
+	if (!cam)
+		/*malloc error exit*/
 	/*if (args are not 4)
 		exit with error message ;*/
 	parse_origin(tokens[1], cam);
 	parse_direction(tokens[2], cam);
+	parse_fov(tokens[3], cam);
+	
+	/*assign cam to main minirt struct*/
 
 
 }
