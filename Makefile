@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/10 16:39:47 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/11 14:58:26 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,18 +53,31 @@ CFLAGSMLX	=	-ldl -lglfw -pthread -lm
 RM		=	rm -rf
 CC		=	cc
 
-NAME	=	test
+NAME	=	miniRT
 
 #	program core.
 
 OBJ		:=	main.o			\
 
+#	here gose all the files
+
+#	gnl
+OBJ_GNL	:=	gnl.o			\
+			gnl_utils.o		\
+
+OBJ		+=	$(OBJ_GNL)
+
+
+
 OBJ		:=	$(addprefix $(BIN_DIR), $(OBJ))
 
 DEP		:=	$(OBJ:.o=.d)
 
+#	path to all places where there is 
+
 VPATH	=	$(ROOT_DIR):
-VPATH	+=	$(SRC_DIR)
+VPATH	+=	$(SRC_DIR):
+VPATH	+=	$(SRC_DIR)utils/gnl:
 
 all	:	libs $(BIN_DIR) $(NAME)
 
