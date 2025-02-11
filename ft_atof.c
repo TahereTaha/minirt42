@@ -1,9 +1,50 @@
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <float.h>
+
+float atof_guard_check(float result)
+{
+	if (result > FLT_MAX)
+        	return (FLT_MAX);
+    	if (result < -FLT_MAX)
+        	return (-FLT_MAX);
+    	if (result != 0.0f && result < FLT_MIN && result > -FLT_MIN)
+        	return (0.0f);
+	return (result);
+}
+
+void	ft_process_int(char *str, int *i, float *result)
+{
+	while (isdigit(str[*i])) /*change to ft_isdigit later*/ 
+	{
+		*result = *result * 10.0f + (str[*i] - '0');
+		(*i)++;
+	}
+}
+
+void	ft_process_frac(char *str, int *i, float *result, float *divisor)
+{
+	if (str[*i] == '.')
+	{
+		(*i)++;
+		while (isdigit(str[*i])) /*change to ft_isdigit later*/
+		{
+			*result = *result * 10.0f + (str[*i] - '0');
+			*divisor *= 10.0f;
+			(*i)++;
+		}
+	}
+}
+
 float ft_atof(char *str)
 {
 	int i;
 	float result;
 	int sign;
 	float divisor;
+
 	i = 0;
 	sign = 1;
 	result = 0.0f;
@@ -16,20 +57,16 @@ float ft_atof(char *str)
 		sign = -1;
 		i++;
 	}
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		result = result * 10.0f + (str[i] - 48);
-		i++;
-	}	
-	if (str[i] == '.')
-	{
-		i++;
-		while (str[i] && ft_isdigit(str[i]))
-		{
-			result = result * 10.0f + (str[i] - 48);
-			divisor *= 10.0f;
-			i++;
-		}
-	}
-	return (result * sign / divisor);
+	ft_process_int(str, &i, &result);
+	ft_process_frac(str, &i, &result, &divisor);
+	result = result * sign / divisor;
+	return (atof_guard_check(result));
+}
+
+int main(void)
+{
+	printf("%f\n", atof("123.456"));
+	printf("%f\n", ft_atof("123.456"));
+
+	return 0;
 }
