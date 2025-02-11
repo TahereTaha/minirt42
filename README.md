@@ -4,7 +4,7 @@ todo list:
 	- [x] having a functional libft.
 	- [x] adding atoi float to libft.								::	rgiambon
 	- [ ] adding get next line.										::	tatahere
-	- [ ] add oberflow guards to atoi and strtod.					::	
+	- [x] add oberflow guards to atoi and strtod.					::	
 	- [ ] ading vector and vector2 () to libft.						:: 
 	- [ ] adding simple error managment.
 - [ ] parsing.
