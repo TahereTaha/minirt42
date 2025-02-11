@@ -58,7 +58,7 @@ float ft_atof(char *str)
 	ft_process_int(str, &i, &result);
 	ft_process_frac(str, &i, &result, &divisor);
 	result = (result * sign) / divisor;
-	return (check_overflow_atof(result));
+	return (check_overflow_float(result));
 }
 
 int main(void)
