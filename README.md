@@ -2,7 +2,7 @@ todo list:
 - [ ] do research on raythraycing.
 - [ ] preparation.
 	- [x] having a functional libft.
-	- [ ] adding atoi float to libft.								::	rgiambon
+	- [x] adding atoi float to libft.								::	rgiambon
 	- [ ] adding get next line.										::	tatahere
 	- [ ] add oberflow guards to atoi and strtod.					::	
 	- [ ] ading vector and vector2 () to libft.						:: 
