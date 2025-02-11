@@ -1,10 +1,10 @@
-int	check_overflow_atoi(long result)
+int	check_overflow_int(long n)
 {
-	if (result > INT_MAX)
+	if (n > INT_MAX)
 		return (INT_MAX);
-	if (result < INT_MIN)
+	if (n < INT_MIN)
 		return (INT_MIN)
-	return ((int)result);
+	return ((int)n);
 
 }
 
@@ -31,5 +31,5 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	result = result * sign;
-	return (check_overflow_atoi(result));
+	return (check_overflow_int(result));
 }
