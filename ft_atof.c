@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <float.h>
 
-float atof_guard_check(float result)
+float check_overflow_atof(float result)
 {
 	if (result > FLT_MAX)
         	return (FLT_MAX);
@@ -60,7 +60,7 @@ float ft_atof(char *str)
 	ft_process_int(str, &i, &result);
 	ft_process_frac(str, &i, &result, &divisor);
 	result = result * sign / divisor;
-	return (atof_guard_check(result));
+	return (check_overflow_atof(result));
 }
 
 int main(void)
