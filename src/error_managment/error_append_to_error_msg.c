@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 14:44:18 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/12 15:23:45 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:55:12 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include "libft.h"
 #include "error_managment.h"
 
-void	error_apend_to_error_msg(t_error *error, char *str, int freeable)
+void	error_append_to_error_msg(t_error *error, char *str, int freeable)
 {
 	char	*new_msg;
 
 	if (!error->msg)
 	{
-		error->is_msg_freable = freable;
-		error->msg = msg;
+		error->is_msg_freeable = freeable;
+		error->msg = str;
 		return ;
 	}
 	new_msg = ft_strjoin(error->msg, str);
