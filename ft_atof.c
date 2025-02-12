@@ -4,13 +4,9 @@
 #include <ctype.h>
 #include <float.h>
 
-float check_overflow_float(float n)
+void check_overflow_float(char *str)
 {
-	if (n > FLT_MAX)
-		return (FLT_MAX);
-	if (n < -FLT_MAX)
-		return (-FLT_MAX);
-	return (n);
+	
 }
 
 void	ft_process_int(char *str, int *i, float *result)
@@ -58,7 +54,7 @@ float ft_atof(char *str)
 	ft_process_int(str, &i, &result);
 	ft_process_frac(str, &i, &result, &divisor);
 	result = (result * sign) / divisor;
-	return (check_overflow_float(result));
+	return (result);
 }
 
 int main(void)
