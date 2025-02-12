@@ -4,11 +4,6 @@
 #include <ctype.h>
 #include <float.h>
 
-void check_overflow_float(char *str)
-{
-	
-}
-
 void	ft_process_int(char *str, int *i, float *result)
 {
 	while (isdigit(str[*i])) /*change to ft_isdigit later*/ 
