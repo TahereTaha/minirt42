@@ -1,18 +1,9 @@
-int	check_overflow_int(long n)
-{
-	if (n > INT_MAX)
-		return (INT_MAX);
-	if (n < INT_MIN)
-		return (INT_MIN)
-	return ((int)n);
-
-}
-
-int	ft_atoi(const char *str)
+void	check_overflow_int(char *str)
 {
 	int	i;
-	long	result;
+	int	result;
 	int	sign;
+	int digit;
 
 	i = 0;
 	sign = 1;
@@ -27,9 +18,10 @@ int	ft_atoi(const char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
+		digit = str[i] - '0';
+		if (result > (INT_MAX - digit) / 10)
+			/*error message and exit*/
 		result = result * 10 + (str[i] - 48);
 		i++;
 	}
-	result = result * sign;
-	return (check_overflow_int(result));
 }
