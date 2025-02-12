@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/11 14:58:26 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/12 11:03:28 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,21 @@ OBJ_GNL	:=	gnl.o			\
 
 OBJ		+=	$(OBJ_GNL)
 
+#	vector math
+OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
+					vec_is_null.o				\
+					vec_get_magnitude.o			\
+					vec_addition.o				\
+					vec_substraction.o			\
+					vec_scaling.o				\
+					vec_normalization.o			\
+					vec_linear_combination.o	\
 
+#					vec2_get_angle.o		\
+					vec3_get_angle.o		\
+					vec2_create.o			\
+
+OBJ		+=	$(OBJ_VECTOR_MATH)
 
 OBJ		:=	$(addprefix $(BIN_DIR), $(OBJ))
 
@@ -78,6 +92,7 @@ DEP		:=	$(OBJ:.o=.d)
 VPATH	=	$(ROOT_DIR):
 VPATH	+=	$(SRC_DIR):
 VPATH	+=	$(SRC_DIR)utils/gnl:
+VPATH	+=	$(SRC_DIR)utils/vector_math:
 
 all	:	libs $(BIN_DIR) $(NAME)
 
