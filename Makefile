@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/12 15:37:16 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/12 15:53:46 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,12 @@ OBJ		+=	$(OBJ_GNL)
 
 #	error managment
 
-OBJ_ERROR_MANAGMENT	:=	error_clear.o			\
+OBJ_ERROR_MANAGMENT	:=	error_clear.o				\
+						error_change_msg.o			\
+						error_get_sys_error.o		\
+						error_is_sys_error.o		\
+						error_append_to_error_msg.o	\
+						error_manage_error.o		\
 
 OBJ		+=	$(OBJ_ERROR_MANAGMENT)
 

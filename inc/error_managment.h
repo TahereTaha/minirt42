@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_mangment.h                                   :+:      :+:    :+:   */
+/*   error_managment.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:06:05 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/12 15:25:13 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:53:54 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	error_get_sys_error(t_error *error);
 
 int		error_is_sys_error(t_error *error);
 
-void	error_apend_to_error_msg(t_error *error, char *str, int freeable);
+void	error_append_to_error_msg(t_error *error, char *str, int freeable);
 
 void	error_manage_error(t_error *error);
 
