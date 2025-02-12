@@ -1,3 +1,19 @@
+int ft_isint(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (isspace(str[i]))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!isdigit(str[i]))
+		return 0;
+	while (isdigit(str[i]))
+		i++;
+	return (str[i] == '\0');
+}
+
 bool	is_intoverflow(char *str)
 {
 	int	i;
