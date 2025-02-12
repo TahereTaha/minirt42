@@ -15,8 +15,8 @@ todo list:
 		- [ ] parse ambient ligth
 	- [ ] parse 													::	rgiambon
 		- [ ] parse camera  ->  [in progress]
-		- [ ] parse ligth
-		- [ ] parse sphere
+		- [ ] parse ligth   ->  [in progress]
+		- [ ] parse sphere  ->  [in progress]
 		- [ ] parse plane
 		- [ ] parse cylinder.
 - [ ] ray tracing.
