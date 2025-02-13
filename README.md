@@ -1,1 +1,29 @@
-
+todo list:
+- [ ] do research on raythraycing.
+- [ ] preparation.
+	- [x] having a functional libft.
+	- [x] adding atoi float to libft.								::	rgiambon
+	- [x] adding get next line.										::	tatahere
+	- [x] add oberflow guards to atoi and atof.						::
+	- [ ] ading vector and vector2.									:: 
+	- [ ] adding simple error managment.
+- [ ] parsing.
+	- [ ] the glue													::	tatahere
+		- [ ] read a file that has the correct termination
+		- [ ] read line by line the 
+		- [ ] manage objects laking in the cene
+		- [ ] parse ambient ligth
+	- [ ] parse 													::	rgiambon
+		- [ ] parse camera  ->  [in progress]
+		- [ ] parse ligth   ->  [in progress]
+		- [ ] parse sphere  ->  [in progress]
+		- [ ] parse plane
+		- [ ] parse cylinder.
+- [ ] ray tracing.
+	- [ ] make window. (a simple scuare 2000 by 2000)
+	- [ ] make the renderer.
+	- [ ] cast ray for pixel.
+	- [ ] sphere													::	rgiambon
+	- [ ] plane														::	
+	- [ ] cilinder													::	
+- [ ] even more (bonus).
