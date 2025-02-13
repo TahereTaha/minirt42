@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:28:41 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/13 11:45:10 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:44:08 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include "ft_list.h"
 # include "vector_math.h"
 # include "error_managment.h"
+
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_color;
 
 typedef struct s_ambient_light
 {
@@ -69,7 +76,7 @@ typedef struct s_cylinder
 {
 	t_vec3	position;
 	t_vec3	orientation;
-	t_vec3	color;
+	t_color	color;
 	double	diameter;
 	double	height;
 }	t_cylinder;
