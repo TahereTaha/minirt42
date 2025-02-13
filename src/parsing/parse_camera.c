@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_camera.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
+/*   Updated: 2025/02/13 12:36:19 by rgiambon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 void	free_array(char **array)
 {
 	int	i;
@@ -8,7 +20,17 @@ void	free_array(char **array)
 	free(array);
 }
 
-bool	direction_error(t_coordinates *direction)
+int	ft_arraylen(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
+}
+
+bool	direction_error(t_vec3 *direction)
 {
 	if (direction->x > 1 || direction->x < -1)
 		return (true);
@@ -26,7 +48,8 @@ void	parse_direction(char *input, t_camera *cam)
 	coordinates = ft_split(input, ",");
 	if (!coordinates)
 		/*exit malloc error*/
-	/*add some error check*/
+	if (check_error_format(coordinates))
+		/*exit formatt error*/
 	cam->direction->x = ft_atof(coordinates[0]);
 	cam->direction->y = ft_atof(coordinates[1]);
 	cam->direction->z = ft_atof(coordinates[2]);
@@ -35,22 +58,32 @@ void	parse_direction(char *input, t_camera *cam)
 	free_array(coordinates);	
 
 }
+
+bool	format_error(char **coordinates)
+{
+	int	i;
+
+	i = 0;
+	if (ft_arraylen(coordinates) != 3)
+		return (1);
+	while (coordinates[i])
+	{
+		if (!ft_isfloat(coordinates[i]) || /*float overflow*/)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	parse_origin(char *input, t_camera *cam)
 {
 	char	**coordinates;
 	
-	/*check for format mistakes
-		example:
-			commas, ecc..*/
 	coordinates = ft_split(input, ",");
 	if (!coordinates)
 		/*exit with error malloc*/
-
-	/*check for errors in the floats: 
-		- more than one point
-		- and then? */
-	if (!n[0] || !n[1] || !n[2] || n[3])
-		/*exit with wrong args num message*/
+	if (check_error_format(coordinates))
+		/*exit with erro format*/
 	cam->origin->x = ft_atof(coordinates[0]);
 	cam->origin->y = ft_atof(coordinates[1]);
 	cam->origin->z = ft_atof(coordinates[2]);
@@ -59,7 +92,7 @@ void	parse_origin(char *input, t_camera *cam)
 
 }
 
-void	parse_camera(char **tokens)
+void	parse_camera(char **tokens, t_scene *scene)
 {
 	t_camera	*cam;
 
@@ -72,7 +105,7 @@ void	parse_camera(char **tokens)
 	parse_direction(tokens[2], cam);
 	parse_fov(tokens[3], cam);
 	
-	/*assign cam to main minirt struct*/
+	scene->camera = cam;
 
 
 }
