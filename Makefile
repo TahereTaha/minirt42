@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/12 11:03:28 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/12 15:53:46 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,17 @@ OBJ_GNL	:=	gnl.o			\
 
 OBJ		+=	$(OBJ_GNL)
 
+#	error managment
+
+OBJ_ERROR_MANAGMENT	:=	error_clear.o				\
+						error_change_msg.o			\
+						error_get_sys_error.o		\
+						error_is_sys_error.o		\
+						error_append_to_error_msg.o	\
+						error_manage_error.o		\
+
+OBJ		+=	$(OBJ_ERROR_MANAGMENT)
+
 #	vector math
 OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 					vec_is_null.o				\
@@ -91,6 +102,7 @@ DEP		:=	$(OBJ:.o=.d)
 
 VPATH	=	$(ROOT_DIR):
 VPATH	+=	$(SRC_DIR):
+VPATH	+=	$(SRC_DIR)/error_managment:
 VPATH	+=	$(SRC_DIR)utils/gnl:
 VPATH	+=	$(SRC_DIR)utils/vector_math:
 

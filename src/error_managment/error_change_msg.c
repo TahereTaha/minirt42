@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   error_change_msg.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 17:50:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/13 10:50:24 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/12 15:11:57 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/12 15:51:29 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include <stdlib.h>
+#include "error_managment.h"
 
-void	parse_file(t_error *error, t_cene *cene, int ac, char **av);
-
-#endif
+void	error_change_msg(t_error *error, char *new_msg, int freeable)
+{
+	if (error->is_msg_freeable)
+		free(error->msg);
+	error->is_msg_freeable = freeable;
+	error->msg = new_msg;
+}

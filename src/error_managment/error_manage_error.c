@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   error_manage_error.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 17:50:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/13 10:50:24 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/12 15:25:45 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/12 17:31:42 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include <stdlib.h>
+#include "libft.h"
+#include "error_managment.h"
 
-void	parse_file(t_error *error, t_cene *cene, int ac, char **av);
-
-#endif
+void	error_manage_error(t_error *error)
+{
+	if (error->errnum)
+		ft_putstr_fd(error->msg, 2);
+	else
+		ft_putstr_fd(error->msg, 1);
+	if (error->is_msg_freeable)
+		free(error->msg);
+	exit(error->exit_status);
+}

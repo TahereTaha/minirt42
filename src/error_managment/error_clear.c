@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   error_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 17:50:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/13 10:50:24 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/12 12:17:14 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/12 15:38:26 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "error_managment.h"
 
-void	parse_file(t_error *error, t_cene *cene, int ac, char **av);
-
-#endif
+void	error_clear(t_error *error)
+{
+	error->errnum = 0;
+	error->exit_status = 0;
+	error->msg = "no error exiting successful\n";
+	error->is_msg_freeable = 0;
+}
