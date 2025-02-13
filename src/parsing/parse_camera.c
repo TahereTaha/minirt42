@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 13:10:36 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:12:25 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,6 @@ t_camera	parse_camera(char **tokens, t_scene *scene)
 
 	if (ft_arraylen(tokens) != 4)
 		/*error too few args*/
-	cam = malloc(sizeof(t_camera));
-	if (!cam)
-		/*malloc error exit*/
 	parse_view_point(tokens[1], &cam);
 	parse_orientation(tokens[2], &cam);
 	parse_fov_rad(tokens[3], &cam);
