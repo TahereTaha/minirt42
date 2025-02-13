@@ -6,9 +6,11 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 12:36:19 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:10:36 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../inc/minirt.h"
 
 void	free_array(char **array)
 {
@@ -30,7 +32,7 @@ int	ft_arraylen(char **array)
 	return (i);
 }
 
-bool	direction_error(t_vec3 *direction)
+bool	orientation_error(t_vec3 *orientation)
 {
 	if (direction->x > 1 || direction->x < -1)
 		return (true);
@@ -41,7 +43,7 @@ bool	direction_error(t_vec3 *direction)
 	return (false);
 }
 
-void	parse_direction(char *input, t_camera *cam)
+void	parse_orientation(char *input, t_camera *cam)
 {
 	char	**coordinates;
 
@@ -50,10 +52,10 @@ void	parse_direction(char *input, t_camera *cam)
 		/*exit malloc error*/
 	if (check_error_format(coordinates))
 		/*exit formatt error*/
-	cam->direction->x = ft_atof(coordinates[0]);
-	cam->direction->y = ft_atof(coordinates[1]);
-	cam->direction->z = ft_atof(coordinates[2]);
-	if (direction_error(cam->direction))
+	cam->orientation->x = ft_atof(coordinates[0]);
+	cam->orientation->y = ft_atof(coordinates[1]);
+	cam->orientation->z = ft_atof(coordinates[2]);
+	if (orientation_error(cam->orientation))
 		/*exit direction error*/
 	free_array(coordinates);	
 
@@ -75,7 +77,7 @@ bool	format_error(char **coordinates)
 	return (0);
 }
 
-void	parse_origin(char *input, t_camera *cam)
+void	parse_view_point(char *input, t_camera *cam)
 {
 	char	**coordinates;
 	
@@ -84,28 +86,26 @@ void	parse_origin(char *input, t_camera *cam)
 		/*exit with error malloc*/
 	if (check_error_format(coordinates))
 		/*exit with erro format*/
-	cam->origin->x = ft_atof(coordinates[0]);
-	cam->origin->y = ft_atof(coordinates[1]);
-	cam->origin->z = ft_atof(coordinates[2]);
+	cam->view_point->x = ft_atof(coordinates[0]);
+	cam->view_point->y = ft_atof(coordinates[1]);
+	cam->view_point->z = ft_atof(coordinates[2]);
 
 	free_array(coordinates);
 
 }
 
-void	parse_camera(char **tokens, t_scene *scene)
+t_camera	parse_camera(char **tokens, t_scene *scene)
 {
-	t_camera	*cam;
+	t_camera	cam;
 
+	if (ft_arraylen(tokens) != 4)
+		/*error too few args*/
 	cam = malloc(sizeof(t_camera));
 	if (!cam)
 		/*malloc error exit*/
-	/*if (args are not 4)
-		exit with error message ;*/
-	parse_origin(tokens[1], cam);
-	parse_direction(tokens[2], cam);
-	parse_fov(tokens[3], cam);
+	parse_view_point(tokens[1], &cam);
+	parse_orientation(tokens[2], &cam);
+	parse_fov_rad(tokens[3], &cam);
 	
-	scene->camera = cam;
-
-
+	return (cam);
 }
