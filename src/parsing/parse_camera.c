@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 13:12:25 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:13:57 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,14 @@ int	ft_arraylen(char **array)
 	return (i);
 }
 
-bool	orientation_error(t_vec3 *orientation)
+void	parse_fov_rad(char *input, t_camera *cam)
 {
-	if (direction->x > 1 || direction->x < -1)
-		return (true);
-	if (direction->y > 1 || direction->y < -1)
-		return (true);
-	if (direction->z > 1 || direction->z < -1)
-		return (true);
-	return (false);
+	if (!ft_isint(input) || ft_isintoverflow(input))
+		/*error*/
+	if (ft_atoi(input) < 0 || ft_atoi(input) > 180)
+		/*error*/
+	cam->fov_rad = ft_atoi(input);
+
 }
 
 void	parse_orientation(char *input, t_camera *cam)
@@ -59,22 +58,6 @@ void	parse_orientation(char *input, t_camera *cam)
 		/*exit direction error*/
 	free_array(coordinates);	
 
-}
-
-bool	format_error(char **coordinates)
-{
-	int	i;
-
-	i = 0;
-	if (ft_arraylen(coordinates) != 3)
-		return (1);
-	while (coordinates[i])
-	{
-		if (!ft_isfloat(coordinates[i]) || /*float overflow*/)
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 void	parse_view_point(char *input, t_camera *cam)

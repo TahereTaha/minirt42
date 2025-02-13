@@ -6,28 +6,13 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:12 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 13:15:24 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:06:10 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../../inc/minirt.h"
+#include "../../inc/parsing.h"
 
-bool	colors_error(char **color)
-{
-	int	i;
-
-	i = 0;
-	if (ft_arraylen(color) != 3)
-		return (1);
-	while (color[i])
-	{
-		/*check if int ?*/
-		if (ft_atoi(color[i]) < 0 || ft_atoi(color[i]) > 255)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-void	parse_color(char *token, t_sphere *sphere)
+void	parse_color_sphere(char *token, t_sphere *sphere)
 {
 	char	**color;
 
@@ -43,7 +28,7 @@ void	parse_color(char *token, t_sphere *sphere)
 	free_array(colors);
 }
 
-void	parse_diameter(char *token, t_sphere *sphere)
+void	parse_diameter_sphere(char *token, t_sphere *sphere)
 {
 	/*error check*/
 
@@ -55,7 +40,7 @@ void	parse_diameter(char *token, t_sphere *sphere)
 			sphere->diameter = ft_atoi(token);
 }
 
-void	parse_position(char *token, t_sphere *sphere)
+void	parse_position_sphere(char *token, t_sphere *sphere)
 {
 	char **coordinates;
 
@@ -78,9 +63,9 @@ t_sphere	*parse_sphere(char **tokens, t_scene *scene)
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
 		/*malloc error*/
-	parse_position(tokens[0], sphere);
-	parse_diameter(tokens[1]);
-	parse_color(tokens[2]);
+	parse_position_sphere(tokens[0], sphere);
+	parse_diameter_sphere(tokens[1]);
+	parse_color_sphere(tokens[2]);
 
 	return (sphere);
 }

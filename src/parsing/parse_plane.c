@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:44:53 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 13:44:55 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:17:11 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parse_color_plane(char *input, t_light *plane)
 }
 
 
-void	parse_orientation_plane(char *input, t_camera *cam)
+void	parse_orientation_plane(char *input, t_plane *plane)
 {
 	char	**coordinates;
 
@@ -65,7 +65,7 @@ void	parse_position_plane(char *input, t_plane *plane)
 }
 
 
-t_plane	*pares_plane(char **tokens, t_scene *scene)
+t_plane	*parse_plane(char **tokens, t_scene *scene)
 {
 	t_plane	plane;
 
