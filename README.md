@@ -3,9 +3,9 @@ todo list:
 - [ ] preparation.
 	- [x] having a functional libft.
 	- [x] adding atoi float to libft.								::	rgiambon
-	- [ ] adding get next line.										::	tatahere
-	- [x] add oberflow guards to atoi and atof.					::	
-	- [ ] ading vector and vector2 () to libft.						:: 
+	- [x] adding get next line.										::	tatahere
+	- [x] add oberflow guards to atoi and atof.						::
+	- [ ] ading vector and vector2.									:: 
 	- [ ] adding simple error managment.
 - [ ] parsing.
 	- [ ] the glue													::	tatahere
@@ -15,8 +15,8 @@ todo list:
 		- [ ] parse ambient ligth
 	- [ ] parse 													::	rgiambon
 		- [ ] parse camera  ->  [in progress]
-		- [ ] parse ligth
-		- [ ] parse sphere
+		- [ ] parse ligth   ->  [in progress]
+		- [ ] parse sphere  ->  [in progress]
 		- [ ] parse plane
 		- [ ] parse cylinder.
 - [ ] ray tracing.
