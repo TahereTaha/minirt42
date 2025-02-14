@@ -6,14 +6,18 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:50:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/13 14:19:23 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:27:04 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-void	parse_file(t_error *error, t_cene *cene, int ac, char **av);
+# include "minirt.h"
+
+void	parse_file(t_error *error, t_scene *scene, int ac, char **av);
+
+
 
 
 /*parse camera*/

@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/14 16:50:20 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/14 18:25:14 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ CINC		+=	-I$(LIBMLX_HDR_DIR)
 CINC		+=	-I$(LIBFT_HDR_DIR)
 CFLAGS		+=	$(CINC)
 
-CDEBUG		:=	-g -fsanitize=address
+CDEBUG		:=	-g #-fsanitize=address
 CFLAGS		+=	$(CDEBUG)
 
 CFLAGSMLX	=	-ldl -lglfw -pthread -lm
@@ -57,7 +57,9 @@ NAME	=	miniRT
 
 #	program core.
 
-OBJ		:=	main.o			\
+OBJ		:=	main.o				\
+			scene_create.o		\
+			scene_destroy.o		\
 
 #	here gose all the files
 

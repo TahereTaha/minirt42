@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:28:41 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/13 13:56:46 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:21:48 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,15 @@ typedef struct s_cylinder
 	double	height;
 }	t_cylinder;
 
-typedef	struct s_cene
+typedef	struct s_scene
 {
-	t_ambient_ligth	ambient_ligth;
-	t_camera		camera;
-	t_ligth			ligth;
-	t_list			*object;
-	int				is_abient_ligth_set;
-	int				is_camera_set;
-	int				is_ligth_set;
+	t_ambient_light	*ambient_light;
+	t_camera		*camera;
+	t_light			*light;
+	t_list			*objects;
 }	t_scene;
 
-t_cene	*cene_create(void);
-void	cene_clear(t_cene *cene);
-void	cene_delete(t_cene *cene);
+t_scene	*scene_create(void);
+void	scene_destroy(t_scene *cene);
 
 #endif

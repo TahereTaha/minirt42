@@ -6,11 +6,11 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 14:13:57 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:21:50 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minirt.h"
+#include "minirt.h"
 
 void	free_array(char **array)
 {
