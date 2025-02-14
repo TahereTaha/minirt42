@@ -1,43 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:37:20 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/14 18:47:11 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/14 18:48:58 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/14 19:25:50 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include <errno.h>
-#include "minirt.h"
+#include "custom_errors.h"
 #include "error_managment.h"
+#include "parsing.h"
 
-t_scene	*make_scene(t_error *error)
+void	read_file(int fd)
 {
-	t_scene	*scene;
+	char			*line;
+	t_object_kind	kind;
 
-	scene = scene_create();
-	if (!scene)
+	line = get_next_line(fd);
+	while (line)
 	{
-		error_set(error, errno);
-		error_msg_append(error, "miniRT: ", 0);
-		error_manage(error);
+
+		line = get_next_line(fd);
 	}
-	return (scene);
 }
 
-int	main(int ac, char **av)
+void	parse_file(t_error *error, t_scene *scene, int ac, char **av)
 {
-	t_error	*error;
-	t_scene	*scene;
+	int	fd;
 
-	error = error_create();
-	error_clear(error);
-	scene = make_scene(error);
-	parse_file(error, scene, ac, av);
-	scene_destroy(scene);
-	error_destroy(error);
-	return (0);
+	check_argument(error, ac, av);
+	if (error->errnum)
+		return ;
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+	{
+		error_set(error, errno);
+		error_msg_append(error, "parsin: ", 0);
+		return ;
+	}
+	
 }

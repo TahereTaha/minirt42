@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:28:41 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/14 18:21:48 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/14 19:23:15 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,13 @@ typedef struct s_light
 
 typedef enum e_object_kind
 {
+	AMBIENT_LIGHT,
+	CAMERA,
+	LIGHT,
 	SPHERE,
 	PLANE,
-	CYLINDER
+	CYLINDER,
+	NOTHING
 }	t_object_kind;
 
 //	this is just a structure that holds the object it it.
@@ -83,9 +87,12 @@ typedef struct s_cylinder
 
 typedef	struct s_scene
 {
-	t_ambient_light	*ambient_light;
-	t_camera		*camera;
-	t_light			*light;
+	t_ambient_light	ambient_light;
+	int				is_abmient_light_set;
+	t_camera		camera;
+	int				is_camera_set;
+	t_light			light;
+	int				is_light_set;
 	t_list			*objects;
 }	t_scene;
 
