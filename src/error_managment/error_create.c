@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_manage_error.c                               :+:      :+:    :+:   */
+/*   error_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 15:25:45 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/12 17:31:42 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/14 16:00:46 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/14 16:07:19 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
+#include <errno.h>
 #include "libft.h"
 #include "error_managment.h"
 
-void	error_manage_error(t_error *error)
+t_error	*error_create(void)
 {
-	if (error->errnum)
-		ft_putstr_fd(error->msg, 2);
-	else
-		ft_putstr_fd(error->msg, 1);
-	if (error->is_msg_freeable)
-		free(error->msg);
-	exit(error->exit_status);
+	t_error	*new_error_ctx;
+
+	new_error_ctx = ft_calloc(sizeof(t_error), 1);
+	if (new_error_ctx)
+		return (new_error_ctx);
+	ft_putstr_fd(strerror(errno), 2);
+	ft_putstr_fd("\n", 2);
+	exit(1);
+	return (NULL);
 }

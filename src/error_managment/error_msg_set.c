@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_msg_set.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:37:20 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/14 16:51:00 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/12 15:11:57 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/14 16:23:05 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <errno.h>
-#include <fcntl.h>
-#include "libft.h"
-#include "vector_math.h"
+#include <stdlib.h>
 #include "error_managment.h"
-#include "custom_errors.h"
+#include "error_managment_local.h"
 
-int	main(void)
+void	error_msg_set(t_error *error, char *new_msg, int freeable)
 {
-	t_error	*error;
-
-	error = error_create();
-	error_clear(error);
-	error_destroy(error);
-	return (0);
+	error_msg_destroy(error);
+	error->is_msg_freeable = freeable;
+	error->msg = new_msg;
 }

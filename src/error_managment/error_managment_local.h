@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_managment_local.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/10 16:37:20 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/14 16:51:00 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/12 12:06:05 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/14 16:20:54 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <errno.h>
-#include <fcntl.h>
-#include "libft.h"
-#include "vector_math.h"
+#ifndef ERROR_MANAGMENT_LOCAL_H
+# define ERROR_MANAGMENT_LOCAL_H
+
 #include "error_managment.h"
-#include "custom_errors.h"
 
-int	main(void)
-{
-	t_error	*error;
+void	error_msg_destroy(t_error *error);
 
-	error = error_create();
-	error_clear(error);
-	error_destroy(error);
-	return (0);
-}
+void	error_msg_set(t_error *error, char *new_msg, int freeable);
+
+#endif

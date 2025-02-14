@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/12 15:53:46 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/14 16:50:20 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,24 +61,43 @@ OBJ		:=	main.o			\
 
 #	here gose all the files
 
-#	gnl
+#==============================================================================
+#								GNL
+#==============================================================================
+
 OBJ_GNL	:=	gnl.o			\
 			gnl_utils.o		\
 
 OBJ		+=	$(OBJ_GNL)
 
-#	error managment
+#==============================================================================
+#								custom errors
+#==============================================================================
 
-OBJ_ERROR_MANAGMENT	:=	error_clear.o				\
-						error_change_msg.o			\
-						error_get_sys_error.o		\
-						error_is_sys_error.o		\
-						error_append_to_error_msg.o	\
-						error_manage_error.o		\
+OBJ_CUSTOM_ERRORS	:=	ft_strerror.o				\
 
+OBJ		+=	$(OBJ_CUSTOM_ERRORS)
+
+#==============================================================================
+#								error managment
+#==============================================================================
+
+OBJ_ERROR_MANAGMENT	:=	error_create.o				\
+						error_msg_destroy.o			\
+						error_destroy.o				\
+						error_msg_set.o				\
+						error_clear.o				\
+						error_set.o					\
+						error_is_sys.o				\
+						error_msg_append.o			\
+						error_manage.o				\
+						
 OBJ		+=	$(OBJ_ERROR_MANAGMENT)
 
-#	vector math
+#==============================================================================
+#								vector math
+#==============================================================================
+
 OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 					vec_is_null.o				\
 					vec_get_magnitude.o			\
@@ -94,6 +113,10 @@ OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 
 OBJ		+=	$(OBJ_VECTOR_MATH)
 
+
+
+
+
 OBJ		:=	$(addprefix $(BIN_DIR), $(OBJ))
 
 DEP		:=	$(OBJ:.o=.d)
@@ -102,7 +125,8 @@ DEP		:=	$(OBJ:.o=.d)
 
 VPATH	=	$(ROOT_DIR):
 VPATH	+=	$(SRC_DIR):
-VPATH	+=	$(SRC_DIR)/error_managment:
+VPATH	+=	$(SRC_DIR)custom_errors:
+VPATH	+=	$(SRC_DIR)error_managment:
 VPATH	+=	$(SRC_DIR)utils/gnl:
 VPATH	+=	$(SRC_DIR)utils/vector_math:
 
