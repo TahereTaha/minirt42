@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/14 18:28:00 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/17 16:29:13 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ NAME	=	miniRT
 OBJ		:=	main.o				\
 			scene_create.o		\
 			scene_destroy.o		\
+			get_object_kind.o	\
 
 #	here gose all the files
 
@@ -92,9 +93,19 @@ OBJ_ERROR_MANAGMENT	:=	error_create.o				\
 						error_set.o					\
 						error_is_sys.o				\
 						error_msg_append.o			\
+						error_msg_append_line.o		\
 						error_manage.o				\
 						
 OBJ		+=	$(OBJ_ERROR_MANAGMENT)
+
+#==============================================================================
+#								parsing
+#==============================================================================
+
+OBJ_PARSING			:=	parse_file.o				\
+						check_argument.o			\
+						
+OBJ		+=	$(OBJ_PARSING)
 
 #==============================================================================
 #								vector math
@@ -129,6 +140,7 @@ VPATH	=	$(ROOT_DIR):
 VPATH	+=	$(SRC_DIR):
 VPATH	+=	$(SRC_DIR)custom_errors:
 VPATH	+=	$(SRC_DIR)error_managment:
+VPATH	+=	$(SRC_DIR)parsing:
 VPATH	+=	$(SRC_DIR)utils/gnl:
 VPATH	+=	$(SRC_DIR)utils/vector_math:
 

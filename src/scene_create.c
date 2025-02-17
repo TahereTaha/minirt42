@@ -6,12 +6,12 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:10:47 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/14 18:14:25 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:17:18 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "minirt.h"
+#include "scene.h"
 
 t_scene	*scene_create(void)
 {

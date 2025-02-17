@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:06:05 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/14 19:27:13 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/16 16:46:10 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ typedef enum e_error_kind
 	NOT_A_NUMBER = FIRST_CUSTOM_ERROR,
 	WRONG_ARGUMENT_COUNT,
 	WRONG_FILE_TERMINATION,
-	DUPLICATED_OBJECT
+	DUPLICATED_OBJECT,
+	WRONG_OBJECT_IDENTIFIER,
 }	t_error_kind;
 
 const static char	*error_msg[] = {\
@@ -36,7 +37,9 @@ const static char	*error_msg[] = {\
 	please provide one argument being the file.",	\
 	"the file has the wrong termination. \
 	please provide a .rt file.", 					\
-	"you can't declane more than onec this object."	\
+	"you can't declane more than onec this object.",\
+	"the object idenifier dosen't mach any.\
+   	maybe it is mispelled, try to check again."		\
 };
 
 char	*ft_strerror(int errnum);

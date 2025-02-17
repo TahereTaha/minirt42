@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:50:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/11 14:56:47 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/16 17:10:56 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*read_line(int fd, char *str)
+char	*gnl_read_line(int fd, char *str)
 {
 	char	*temp_str;
 	ssize_t	n_bytes;
@@ -68,7 +68,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (0);
 	if (!str[fd] || !(str[fd][0]) || !gnl_strchr(str[fd], '\n'))
-		str[fd] = read_line(fd, str[fd]);
+		str[fd] = gnl_read_line(fd, str[fd]);
 	temp_str = str[fd];
 	if (!gnl_strchr(str[fd], '\n'))
 		return (str[fd] = NULL, temp_str);
