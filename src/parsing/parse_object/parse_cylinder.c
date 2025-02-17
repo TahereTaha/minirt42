@@ -13,95 +13,134 @@
 #include "../../inc/minirt.h"
 #include "../../inc/parsing.h"
 
-void	parse_height_cylinder(char *input, t_cylinder *cylinder)
+void	parse_height_cylinder(char *token, t_cylinder *cylinder)
 {
-	/*error check*/
+	/*error check... what to check for???*/
 
-	if (ft_isfloat(input))
+	if (ft_isfloat(token))
 	{
-		if (!is_floatoverflow(input))
+		if (!is_floatoverflow(token))
 			cylinder->height = ft_atof(input);
 		else
-			/*overflow error*/
+		{
+			printf("ERROR: overflow\n");
+			exit ();
+		}
 	}
-	else if (ft_isint(input))
+	else if (ft_isint(token))
 	{
-		if (!is_intoverflow(input))
-			cylinder->height = ft_atoi(input);
+		if (!is_intoverflow(token))
+			cylinder->height = ft_atoi(token);
 		else
-			/*overflow error*/
+		{
+			printf("ERROR: overflow\n");
+			exit ();
+		}
 	}
 	else
-		/*format error*/
+	{
+		printf("ERROR: format\n");
+		exit ();
+	}
 }
 
-void	parse_diameter_cylinder(char *input, t_cylinder *cylinder)
+void	parse_diameter_cylinder(char *token, t_cylinder *cylinder)
 {
-	/*error check*/
+	/*error check... what to check for???*/
 
-	if (ft_isfloat(input))
+	if (ft_isfloat(token))
 	{
-		if (!is_floatoverflow(input))
-			cylinder->diameter = ft_atof(input);
+		if (!is_floatoverflow(token))
+			cylinder->diameter = ft_atof(token);
 		else
-			/*overflow error*/
+		{
+			printf("ERROR: overflow\n");
+			exit ();
+		}
 	}
-	else if (ft_isint(input))
+	else if (ft_isint(token))
 	{
-		if (!is_intoverflow(input))
-			cylinder->diameter = ft_atoi(input);
+		if (!is_intoverflow(token))
+			cylinder->diameter = ft_atoi(token);
 		else
-			/*overflow error*/
+		{
+			printf("ERROR: overflow\n");
+			exit ();
+		}
 	}
 	else
-		/*format error*/
+	{
+		printf("ERROR: format\n");
+		exit ();
+	}
 }
 
-void	parse_color_cylinder(char *input, t_cylinder cylinder)
+void	parse_color_cylinder(char *token, t_cylinder *cylinder)
 {
 	char	**color;
 
-	color = ft_split(token, ",")
+	color = ft_split(token, ',')
 	if (!color)
-		/*malloc error*/
+	{
+		printf("ERROR: malloc\n");
+		exit ();
+	}
 	if (colors_error(color))
-		/*format error*/
-	cylinder->color->r = ft_atoi(color[0]); 
-	cylinder->color->g = ft_atoi(color[1]);
-	cylinder->color->b = ft_atoi(color[2]);
+	{
+		printf("ERROR: color\n");
+		exit ();
+	}
+	cylinder->color.r = ft_atoi(color[0]); 
+	cylinder->color.g = ft_atoi(color[1]);
+	cylinder->color.b = ft_atoi(color[2]);
 
 	free_array(color);
 }
 
-void	parse_orientation_cylinder(char *input, t_cylinder cylinder)
+void	parse_orientation_cylinder(char *token, t_cylinder *cylinder)
 {
 	char	**coordinates;
 
-	coordinates = ft_split(input, ",");
+	coordinates = ft_split(token, ',');
 	if (!coordinates)
-		/*exit malloc error*/
-	if (check_error_format(coordinates))
-		/*exit formatt error*/
-	cylinder->orientation->x = ft_atof(coordinates[0]);
-	cylinder->orientation->y = ft_atof(coordinates[1]);
-	cylinder->orientation->z = ft_atof(coordinates[2]);
+	{
+		printf("ERROR: malloc\n");
+		exit ();
+	}
+	if (format_error(coordinates))
+	{
+		printf("ERROR: format\n");
+		exit ();
+	}
+	cylinder->orientation.x = ft_atof(coordinates[0]);
+	cylinder->orientation.y = ft_atof(coordinates[1]);
+	cylinder->orientation.z = ft_atof(coordinates[2]);
 	if (orientation_error(cylinder->orientation))
-		/*exit direction error*/
+	{
+		printf("ERROR: range\n");
+		exit ();
+	}
 	free_array(coordinates);	
+}
 
-
-void	parse_position_cylinder(char *input, t_cylinder *cylinder)
+void	parse_position_cylinder(char *token, t_cylinder *cylinder)
 {
 	char **coordinates;
 
-	coordinates = ft_split(token, ",");
+	coordinates = ft_split(token, ',');
 	if (!coordinates)
-		/*error malloc*/
+	{
+		printf("ERROR: malloc\n");
+		exit ();
+	}
 	if (format_error(coordinates))
-		/*error format*/
-	cylinder->position->x = ft_atof(tokens[0]);
-	cylinder->position->y = ft_atof(tokens[1]);
-	cylinder->position->z = ft_atof(tokens[2]);
+	{
+		printf("ERROR: format\n");
+		exit ();
+	}
+	cylinder->position.x = ft_atof(tokens[0]);
+	cylinder->position.y = ft_atof(tokens[1]);
+	cylinder->position.z = ft_atof(tokens[2]);
 
 	free_array(coordinates);
 }
@@ -111,15 +150,23 @@ t_cylinder	*parse_cylinder(char **tokens, t_scene *scene)
 	t_cylinder	*cylinder;
 
 	if (arraylen(tokens) != 6)
-		/*error*/
+	{
+		printf("ERROR: wrong args\n");
+		exit ();
+	}
 	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)
-		/*malloc error*/
+	{
+		printf("ERROR: malloc\n");
+		exit ();
+	}
 	parse_position_cylinder(tokens[1], cylinder);
 	parse_orientation_cylinder(tokens[2], cylinder);
-	parse_color_cylinder(tokens[3], cylinder);
-	parse_diameter_cylinder(tokens[4], cylinder);
-	parse_height_cylinder(tokens[5], cylinder);
+	parse_diameter_cylinder(tokens[3], cylinder);
+	parse_height_cylinder(tokens[4], cylinder);
+	parse_color_cylinder(tokens[5], cylinder);
+
+	(void)scene;
 
 	return (cylinder);
 }

@@ -11,14 +11,19 @@
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "parsing.h"
 
+//add this two functions to utils of some kind
 void	free_array(char **array)
 {
 	int	i;
 
-	i = -1;
-	while (array[++i])
+	i = 0;
+	while (array[i])
+	{
 		free(arry[i]);
+		i++;
+	}
 	free(array);
 }
 
@@ -32,46 +37,69 @@ int	ft_arraylen(char **array)
 	return (i);
 }
 
-void	parse_fov_rad(char *input, t_camera *cam)
+
+//can it also be a float???
+void	parse_fov_rad(char *token, t_camera *cam)
 {
-	if (!ft_isint(input) || ft_isintoverflow(input))
-		/*error*/
-	if (ft_atoi(input) < 0 || ft_atoi(input) > 180)
-		/*error*/
-	cam->fov_rad = ft_atoi(input);
+	if (!ft_isint(token) || ft_isintoverflow(token))
+	{
+		printf("ERROR: format/overflow\n");
+		exit ();
+	}
+	if (ft_atoi(token) < 0 || ft_atoi(token) > 180)
+	{
+		printf("ERROR: range\n");
+		exit ();
+	}
+	cam->fov_rad = ft_atoi(token);
 
 }
 
-void	parse_orientation(char *input, t_camera *cam)
+void	parse_orientation(char *token, t_camera *cam)
 {
 	char	**coordinates;
 
-	coordinates = ft_split(input, ",");
+	coordinates = ft_split(token, ',');
 	if (!coordinates)
-		/*exit malloc error*/
-	if (check_error_format(coordinates))
-		/*exit formatt error*/
-	cam->orientation->x = ft_atof(coordinates[0]);
-	cam->orientation->y = ft_atof(coordinates[1]);
-	cam->orientation->z = ft_atof(coordinates[2]);
+	{
+		printf("ERROR: malloc\n");
+		exit ();
+	}
+	if (format_error(coordinates))
+	{
+		printf("ERROR: format\n");
+		exit ();
+	}
+	cam->orientation.x = ft_atof(coordinates[0]);
+	cam->orientation.y = ft_atof(coordinates[1]);
+	cam->orientation.z = ft_atof(coordinates[2]);
 	if (orientation_error(cam->orientation))
-		/*exit direction error*/
+	{
+		printf("ERROR: range\n");
+		exit ();
+	}
 	free_array(coordinates);	
 
 }
 
-void	parse_view_point(char *input, t_camera *cam)
+void	parse_view_point(char *token, t_camera *cam)
 {
 	char	**coordinates;
 	
-	coordinates = ft_split(input, ",");
+	coordinates = ft_split(token, ',');
 	if (!coordinates)
-		/*exit with error malloc*/
-	if (check_error_format(coordinates))
-		/*exit with erro format*/
-	cam->view_point->x = ft_atof(coordinates[0]);
-	cam->view_point->y = ft_atof(coordinates[1]);
-	cam->view_point->z = ft_atof(coordinates[2]);
+	{
+		printf("ERROR: malloc\n");
+		exit ();
+	}
+	if (format_error(coordinates))
+	{
+		printf("ERROR: format\n");
+		exit ();
+	}
+	cam->view_point.x = ft_atof(coordinates[0]);
+	cam->view_point.y = ft_atof(coordinates[1]);
+	cam->view_point.z = ft_atof(coordinates[2]);
 
 	free_array(coordinates);
 
@@ -82,10 +110,15 @@ t_camera	parse_camera(char **tokens, t_scene *scene)
 	t_camera	cam;
 
 	if (ft_arraylen(tokens) != 4)
-		/*error too few args*/
+	{
+		printf("ERROR: wrong args\n");
+		exit();
+	}
 	parse_view_point(tokens[1], &cam);
 	parse_orientation(tokens[2], &cam);
 	parse_fov_rad(tokens[3], &cam);
+	
+	(void)scene;
 	
 	return (cam);
 }
