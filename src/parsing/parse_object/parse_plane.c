@@ -11,72 +11,88 @@
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
+#include "../../inc/scene.h"
+#include "../../inc/parsing.h"
+#include "../../inc/error_managment.h"
+#include "../../inc/custom_errors.h"
 
-void	parse_color_plane(char *token, t_plane *plane)
+void	parse_color_plane(t_error *error, char *token, t_plane *plane)
 {
 	char	**color;
 
-	color = ft_split(token, ',')
+	color = ft_split(token, ',');
 	if (!color)
 	{
-		printf("ERROR: malloc\n");
-		exit ();
+		error_set(error, ENOMEM);
+		error_msg_append(error, "Failed to allocate memory for plane color", 0);
+		error_manage(error);
 	}
 	if (colors_error(color))
 	{
-		printf("ERROR: color\n");
-		exit ();
+		error_set(error, INVALID_COLOR_FORMAT);
+		error_msg_append(error, "Invalid color format in plane", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(color);
+		error_manage(error);
 	}
-	plane->color->r = ft_atoi(color[0]); 
+	plane->color->r = ft_atoi(color[0]);
 	plane->color->g = ft_atoi(color[1]);
 	plane->color->b = ft_atoi(color[2]);
-
-	free_array(colors);
+	free_array(color);
 }
 
-
-void	parse_orientation_plane(char *token, t_plane *plane)
+void	parse_orientation_plane(t_error *error, char *token, t_plane *plane)
 {
 	char	**coordinates;
 
-	coordinates = ft_split(token,',');
+	coordinates = ft_split(token, ',');
 	if (!coordinates)
 	{
-		printf("ERROR: malloc\n");
-		exit ();
+		error_set(error, ENOMEM);
+		error_msg_append(error, "Failed to allocate memory for plane orientation", 0);
+		error_manage(error);
 	}
 	if (format_error(coordinates))
 	{
-		printf("ERROR: format\n");
-		exit ();
+		error_set(error, INVALID_COORDINATE_FORMAT);
+		error_msg_append(error, "Invalid coordinate format in plane orientation", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(coordinates);
+		error_manage(error);
 	}
 	plane->orientation.x = ft_atof(coordinates[0]);
 	plane->orientation.y = ft_atof(coordinates[1]);
 	plane->orientation.z = ft_atof(coordinates[2]);
 	if (orientation_error(plane->orientation))
 	{
-		printf("ERROR: range\n");
-		exit ();
+		error_set(error, INVALID_ORIENTATION);
+		error_msg_append(error, "Plane orientation vector must be normalized (-1 to 1)", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(coordinates);
+		error_manage(error);
 	}
 	free_array(coordinates);	
 
 }
 
-
-void	parse_position_plane(char *token, t_plane *plane)
+void	parse_position_plane(t_error *error, char *token, t_plane *plane)
 {
 	char	**coordinates;
 	
 	coordinates = ft_split(token, ',');
 	if (!coordinates)
 	{
-		printf("ERROR: malloc\n");
-		exit ();
+		error_set(error, ENOMEM);
+		error_msg_append(error, "Failed to allocate memory for plane position", 0);
+		error_manage(error);
 	}
 	if (format_error(coordinates))
 	{
-		printf("ERROR: format\n");
-		exit ();
+		error_set(error, INVALID_COORDINATE_FORMAT);
+		error_msg_append(error, "Invalid coordinate format in plane position", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(coordinates);
+		error_manage(error);
 	}
 	plane->position.x = ft_atof(coordinates[0]);
 	plane->position.y = ft_atof(coordinates[1]);
@@ -85,25 +101,28 @@ void	parse_position_plane(char *token, t_plane *plane)
 	free_array(coordinates);
 }
 
-
-t_plane	*parse_plane(char **tokens, t_scene *scene)
+t_plane	*parse_plane(t_error *error, char **tokens, t_scene *scene)
 {
 	t_plane	*plane;
 
 	if (ft_arraylen(tokens) != 4)
 	{
-		printf("ERROR: wrong args\n");
-		exit ();
+		error_set(error, WRONG_ARGUMENT_COUNT);
+		error_msg_append(error, "Wrong number of arguments for plane", 0);
+		error_msg_append_line(error, __LINE__);
+		error_manage(error);
 	}
 	plane = malloc(sizeof(t_plane));
 	if (!plane)
 	{
-		printf("ERROR: malloc\n");
-		exit ();
+		error_set(error, ENOMEM);
+		error_msg_append(error, "Failed to allocate memory for plane", 0);
+		error_manage(error);
 	}
-	parse_position_plane(tokens[1], &plane);
-	parse_orientation_plane(tokens[2], &plane);
-	parse_color_plane(tokens[3], &plane);
+	parse_position_plane(error, tokens[1], plane);
+	parse_orientation_plane(error, tokens[2], plane);
+	parse_color_plane(error, tokens[3], plane);
 	
+	(void)scene;
 	return (plane);
 }

@@ -11,77 +11,94 @@
 /* ************************************************************************** */
 #include "../../inc/minirt.h"
 #include "../../inc/parsing.h"
+#include "../../inc/scene.h"
+#include "../../inc/error_managment.h"
+#include "../../inc/custom_errors.h"
 
-void	parse_light_color(char *token, t_light *light)
+void	parse_light_color(t_error *error, char *token, t_light *light)
 {
 	char	**color;
 
-	color = ft_split(token, ',')
+	color = ft_split(token, ',');
 	if (!color)
 	{
-		printf("ERROR: malloc\n");
-		exit ();
+		error_set(error, ENOMEM);
+		error_msg_append(error, "Failed to allocate memory for light color", 0);
+		error_manage(error);
 	}
-	if (colors_error(color))
+	if (color_error(color))
 	{
-		printf("ERROR: color\n");
-		exit ();
+		error_set(error, INVALID_COLOR_FORMAT);
+		error_msg_append(error, "Invalid color format in light", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(color);
+		error_manage(error);
 	}
-	light->light_color.r = ft_atoi(color[0]); 
+	light->light_color.r = ft_atoi(color[0]);
 	light->light_color.g = ft_atoi(color[1]);
 	light->light_color.b = ft_atoi(color[2]);
-
 	free_array(color);
 }
 
-
-void	parse_light_ratio(char *token, t_light *light)
+void	parse_light_ratio(t_error *error, char *token, t_light *light)
 {
 	if (!ft_isfloat(token) || ft_isfloatoverflow(token))
 	{
-		printf("ERROR: format/overflow\n");
-		exit ();
-	}
-	if (ft_atof(token) < 0.0 || ft_atof(token) > 1.0)
-	{
-		printf("ERROR: range\n");
-		exit ();
+		error_set(error, NOT_A_NUMBER);
+		error_msg_append(error, "Invalid light ratio: not a valid number", 0);
+		error_msg_append_line(error, __LINE__);
+		error_manage(error);
 	}
 	light->light_ratio = ft_atof(token);
+	if (light->light_ratio < 0.0 || light->light_ratio > 1.0)
+	{
+		error_set(error, INVALID_RATIO_RANGE);
+		error_msg_append(error, "Light ratio must be between 0.0 and 1.0", 0);
+		error_msg_append_line(error, __LINE__);
+		error_manage(error);
+	}
 }
 
-void	parse_light_position(char *token, t_light *light)
+void	parse_light_position(t_error *error, char *token, t_light *light)
 {
 	char	**coordinates;
-	
+
 	coordinates = ft_split(token, ',');
 	if (!coordinates)
 	{
-		printf("ERROR: malloc\n");
-		exit ();
+		error_set(error, ENOMEM);
+		error_msg_append(error, "Failed to allocate memory for light position", 0);
+		error_manage(error);
 	}
 	if (format_error(coordinates))
 	{
-		printf("ERROR: format\n");
-		exit ();
+		error_set(error, INVALID_COORDINATE_FORMAT);
+		error_msg_append(error, "Invalid coordinate format in light position", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(coordinates);
+		error_manage(error);
 	}
 	light->position.x = ft_atof(coordinates[0]);
 	light->position.y = ft_atof(coordinates[1]);
 	light->position.z = ft_atof(coordinates[2]);
-
 	free_array(coordinates);
-
 }
 
-t_light	parse_light(char **tokens, t_scene *scene)
+t_light	parse_light(t_error *error, char **tokens, t_scene *scene)
 {
 	t_light	light;
 
-	parse_light_position(tokens[1], &light);
-	parse_light_ratio(tokens[2], &light);
-	parse_light_color(tokens[3], &light);
+	if (ft_arraylen(tokens) != 4)
+	{
+		error_set(error, WRONG_ARGUMENT_COUNT);
+		error_msg_append(error, "Wrong number of arguments for light", 0);
+		error_msg_append_line(error, __LINE__);
+		error_manage(error);
+	}
+	parse_light_position(error, tokens[1], &light);
+	parse_light_ratio(error, tokens[2], &light);
+	parse_light_color(error, tokens[3], &light);
 
 	(void)scene;
-
 	return (light);
 }

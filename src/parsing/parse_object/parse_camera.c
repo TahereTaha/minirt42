@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include "parsing.h"
+#include "../../inc/scene.h"
+#include "../../inc/parsing.h"
+#include "../../inc/error_managment.h"
+#include "../../inc/custom_errors.h"
 
 //add this two functions to utils of some kind
 void	free_array(char **array)
@@ -21,7 +23,7 @@ void	free_array(char **array)
 	i = 0;
 	while (array[i])
 	{
-		free(arry[i]);
+		free(array[i]);
 		i++;
 	}
 	free(array);
@@ -37,88 +39,98 @@ int	ft_arraylen(char **array)
 	return (i);
 }
 
-
-//can it also be a float???
-void	parse_fov_rad(char *token, t_camera *cam)
+void	parse_fov_rad(t_error *error, char *token, t_camera *cam)
 {
-	if (!ft_isint(token) || ft_isintoverflow(token))
+	if (!ft_isfloat(token) || ft_isfloatoverflow(token))
 	{
-		printf("ERROR: format/overflow\n");
-		exit ();
+		error_set(error, NOT_A_NUMBER);
+		error_msg_append(error, "Invalid FOV value: not a valid number", 0);
+		error_msg_append_line(error, __LINE__);
+		error_manage(error);
 	}
-	if (ft_atoi(token) < 0 || ft_atoi(token) > 180)
+	cam->fov_rad = ft_atof(token);
+	if (cam->fov_rad < 0 || cam->fov_rad > 180)
 	{
-		printf("ERROR: range\n");
-		exit ();
+		error_set(error, INVALID_FOV_RANGE);
+		error_msg_append(error, "FOV must be between 0 and 180 degrees", 0);
+		error_msg_append_line(error, __LINE__);
+		error_manage(error);
 	}
-	cam->fov_rad = ft_atoi(token);
-
 }
 
-void	parse_orientation(char *token, t_camera *cam)
+void	parse_orientation(t_error *error, char *token, t_camera *cam)
 {
 	char	**coordinates;
 
 	coordinates = ft_split(token, ',');
 	if (!coordinates)
 	{
-		printf("ERROR: malloc\n");
-		exit ();
+		error_set(error, ENOMEM);
+		error_msg_append(error, "Failed to allocate memory for camera orientation", 0);
+		error_manage(error);
 	}
 	if (format_error(coordinates))
 	{
-		printf("ERROR: format\n");
-		exit ();
+		error_set(error, INVALID_COORDINATE_FORMAT);
+		error_msg_append(error, "Invalid coordinate format in camera orientation", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(coordinates);
+		error_manage(error);
 	}
 	cam->orientation.x = ft_atof(coordinates[0]);
 	cam->orientation.y = ft_atof(coordinates[1]);
 	cam->orientation.z = ft_atof(coordinates[2]);
-	if (orientation_error(cam->orientation))
+	if (orientation_error(&cam->orientation))
 	{
-		printf("ERROR: range\n");
-		exit ();
+		error_set(error, INVALID_ORIENTATION);
+		error_msg_append(error, "Camera orientation vector must be normalized (-1 to 1)", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(coordinates);
+		error_manage(error);
 	}
-	free_array(coordinates);	
-
+	free_array(coordinates);
 }
 
-void	parse_view_point(char *token, t_camera *cam)
+void	parse_view_point(t_error *error, char *token, t_camera *cam)
 {
 	char	**coordinates;
-	
+
 	coordinates = ft_split(token, ',');
 	if (!coordinates)
 	{
-		printf("ERROR: malloc\n");
-		exit ();
+		error_set(error, ENOMEM);
+		error_msg_append(error, "Failed to allocate memory for camera position", 0);
+		error_manage(error);
 	}
 	if (format_error(coordinates))
 	{
-		printf("ERROR: format\n");
-		exit ();
+		error_set(error, INVALID_COORDINATE_FORMAT);
+		error_msg_append(error, "Invalid coordinate format in camera position", 0);
+		error_msg_append_line(error, __LINE__);
+		free_array(coordinates);
+		error_manage(error);
 	}
 	cam->view_point.x = ft_atof(coordinates[0]);
 	cam->view_point.y = ft_atof(coordinates[1]);
 	cam->view_point.z = ft_atof(coordinates[2]);
-
 	free_array(coordinates);
-
 }
 
-t_camera	parse_camera(char **tokens, t_scene *scene)
+t_camera	parse_camera(t_error *error, char **tokens, t_scene *scene)
 {
 	t_camera	cam;
 
 	if (ft_arraylen(tokens) != 4)
 	{
-		printf("ERROR: wrong args\n");
-		exit();
+		error_set(error, WRONG_ARGUMENT_COUNT);
+		error_msg_append(error, "Wrong number of arguments for camera", 0);
+		error_msg_append_line(error, __LINE__);
+		error_manage(error);
 	}
-	parse_view_point(tokens[1], &cam);
-	parse_orientation(tokens[2], &cam);
-	parse_fov_rad(tokens[3], &cam);
+	parse_view_point(error, tokens[1], &cam);
+	parse_orientation(error, tokens[2], &cam);
+	parse_fov_rad(error, tokens[3], &cam);
 	
 	(void)scene;
-	
 	return (cam);
 }
