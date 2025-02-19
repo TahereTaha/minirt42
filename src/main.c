@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:37:20 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/17 15:11:40 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:33:02 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int ac, char **av)
 	error = error_create();
 	scene = make_scene(error);
 	parse_file(error, scene, ac, av);
+
 	scene_destroy(scene);
 	error_manage(error);
 	error_destroy(error);

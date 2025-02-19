@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/17 16:29:13 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/19 12:06:14 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIBS		=	$(LIBFT) $(LIBMLX)
 
 #	some flags
 
-CFLAGS			:=	-Wall -Wextra -Werror -MMD
+CFLAGS			:=	-Wall -Wextra -MMD
 
 CINC		:=	-I$(ROOT_DIR)
 CINC		+=	-I$(INC_DIR)
@@ -58,11 +58,21 @@ NAME	=	miniRT
 #	program core.
 
 OBJ		:=	main.o				\
-			scene_create.o		\
-			scene_destroy.o		\
-			get_object_kind.o	\
 
 #	here gose all the files
+
+#==============================================================================
+#								scene
+#==============================================================================
+
+OBJ_SCENE	:=	scene_create.o				\
+				scene_destroy.o				\
+				object_create.o				\
+				get_object_kind.o			\
+				scene_object_add.o			\
+				scene_object_list_add.o		\
+
+OBJ		+=	$(OBJ_SCENE)
 
 #==============================================================================
 #								GNL
@@ -104,7 +114,9 @@ OBJ		+=	$(OBJ_ERROR_MANAGMENT)
 
 OBJ_PARSING			:=	parse_file.o				\
 						check_argument.o			\
-						
+						parse_line.o				\
+						dumy_parsing_functions.o	\
+
 OBJ		+=	$(OBJ_PARSING)
 
 #==============================================================================
@@ -141,6 +153,7 @@ VPATH	+=	$(SRC_DIR):
 VPATH	+=	$(SRC_DIR)custom_errors:
 VPATH	+=	$(SRC_DIR)error_managment:
 VPATH	+=	$(SRC_DIR)parsing:
+VPATH	+=	$(SRC_DIR)scene:
 VPATH	+=	$(SRC_DIR)utils/gnl:
 VPATH	+=	$(SRC_DIR)utils/vector_math:
 

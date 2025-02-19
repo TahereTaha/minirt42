@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:48:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/17 16:41:17 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:19:11 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,6 @@
 #include "scene.h"
 #include "gnl.h"
 
-void	add_object_to_scene(t_error *error, t_scene *scene, char *line)
-{
-	return ;
-}
-
-void	add_line_to_scene(t_error *error, t_scene *scene, char *line)
-{
-	char	*line_num_str;
-
-	add_object_to_scene(error, scene, line);
-	if (!error->errnum)
-		return ;
-	line_num_str = 
-	error_msg_append(error, ft_itoa());
-}
-
 void	read_file(t_error *error, t_scene *scene, int fd)
 {
 	char			*line;
@@ -45,12 +29,14 @@ void	read_file(t_error *error, t_scene *scene, int fd)
 	while (line)
 	{
 		line = get_next_line(fd);
-		if (!line && errno)
+		if (errno)
 		{
 			error_set(error, errno);
 			return ;
 		}
-		add_line_to_scene(error, scene, line);
+		if (!line)
+			return ;
+		parse_line(error, scene, line);
 		free(line);
 		if (error->errnum)
 		{

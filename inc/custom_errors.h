@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:06:05 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/16 16:46:10 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:47:06 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # define FIRST_CUSTOM_ERROR 140
 
 //	some custom error that this project can have.
+
+//	the error can have any order but
+//	it must be the same as the error_msg and
+//	the first sould be allways ecual to the FIRST_CUSTOM_ERROR.
 typedef enum e_error_kind
 {
 	NOT_A_NUMBER = FIRST_CUSTOM_ERROR,
@@ -29,6 +33,7 @@ typedef enum e_error_kind
 	WRONG_FILE_TERMINATION,
 	DUPLICATED_OBJECT,
 	WRONG_OBJECT_IDENTIFIER,
+	WRONG_TOKEND_COUNT,
 }	t_error_kind;
 
 const static char	*error_msg[] = {\
@@ -39,7 +44,8 @@ const static char	*error_msg[] = {\
 	please provide a .rt file.", 					\
 	"you can't declane more than onec this object.",\
 	"the object idenifier dosen't mach any.\
-   	maybe it is mispelled, try to check again."		\
+   	maybe it is mispelled, try to check again.",	\
+	"wrong amount of tokens."						\
 };
 
 char	*ft_strerror(int errnum);
