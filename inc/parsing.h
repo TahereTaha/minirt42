@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/19 12:32:48 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:26:35 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void			parse_line(t_error *error, t_scene *scene, char *line);
 
 void			parse_blank(void);
 t_ambient_light	parse_ambient_light(t_error *error, char *line);
-t_camera		parse_camera(t_error *error, char *line);
-t_light			parse_light(t_error *error, char *line);
+t_object		parse_camera(t_error *error, char *line);
+t_object			parse_light(t_error *error, char *line);
 t_sphere		parse_sphere(t_error *error, char *line);
 t_plane			parse_plane(t_error *error, char *line);
 t_cylinder		parse_cylinder(t_error *error, char *line);

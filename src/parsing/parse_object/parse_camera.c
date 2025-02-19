@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/19 13:07:28 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:25:38 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,20 +116,22 @@ void	parse_view_point(t_error *error, char *token, t_camera *cam)
 	free_array(coordinates);
 }
 
-t_object	parse_camera(t_error *error, char **tokens, t_scene *scene)
+t_object	parse_camera(t_error *error, char *line)
 {
 	t_camera	cam;
+	char		**tokens;
 
+	tokens = ft_split(line, ' ');
+	if (!tokens)
+		/*error*/
 	if (ft_arraylen(tokens) != 4)
 	{
-		error_set(error, WRONG_ARGUMENT_COUNT);
-		error_msg_append(error, "Wrong number of arguments for camera", 0);
+		error_set(error, WRONG_TOKENS_COUNT);
+		error_msg_append(error, "Wrong number of tokens for camera", 0);
 		error_manage(error);
 	}
 	parse_view_point(error, tokens[1], &cam);
 	parse_orientation(error, tokens[2], &cam);
 	parse_fov_rad(error, tokens[3], &cam);
-	
-	(void)scene;
 	return (*((t_object *)&cam));
 }

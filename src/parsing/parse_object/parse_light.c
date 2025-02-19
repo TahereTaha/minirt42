@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:39:00 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 14:16:32 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:23:32 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../../inc/minirt.h"
@@ -84,21 +84,26 @@ void	parse_light_position(t_error *error, char *token, t_light *light)
 	free_array(coordinates);
 }
 
-t_light	parse_light(t_error *error, char **tokens, t_scene *scene)
+t_object	parse_light(t_error *error, char *line)
 {
 	t_light	light;
+	char	**tokens;
 
+	tokens = ft_split(line, ' ');
+	if (!tokens)
+	{
+		error_set(error, );
+		error_msg_append(error, "Wrong number of ar for light", 0);	
+		error_manage(error);
+	}
 	if (ft_arraylen(tokens) != 4)
 	{
-		error_set(error, WRONG_ARGUMENT_COUNT);
-		error_msg_append(error, "Wrong number of arguments for light", 0);
-		error_msg_append_line(error, __LINE__);
+		error_set(error, WRONG_TOKENS_COUNT);
+		error_msg_append(error, "Wrong number of tokens for light", 0);
 		error_manage(error);
 	}
 	parse_light_position(error, tokens[1], &light);
 	parse_light_ratio(error, tokens[2], &light);
 	parse_light_color(error, tokens[3], &light);
-
-	(void)scene;
-	return (light);
+	return (*((t_object *)&light);
 }

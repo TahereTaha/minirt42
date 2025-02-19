@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:06:05 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/19 12:47:06 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:15:07 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum e_error_kind
 	WRONG_FILE_TERMINATION,
 	DUPLICATED_OBJECT,
 	WRONG_OBJECT_IDENTIFIER,
-	WRONG_TOKEND_COUNT,
+	WRONG_TOKENS_COUNT,
 }	t_error_kind;
 
 const static char	*error_msg[] = {\
