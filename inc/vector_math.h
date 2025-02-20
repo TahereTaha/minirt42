@@ -28,6 +28,12 @@ typedef struct s_vec3
 	double	z;
 }	t_vec3;
 
+//	a 3x3 matrix
+typedef struct s_matrix3
+{
+	double	m[3][3];
+}	t_matrix3;
+
 //	debug prints.
 void	vec2_print(t_vec2 vector);
 void	vec2_print_multiline(t_vec2 vector);
@@ -64,6 +70,8 @@ t_vec2	vec2_linear_combination(	t_vec2 vector1, double scalar1, \
 t_vec3	vec3_linear_combination(	t_vec3 vector1, double scalar1, \
 									t_vec3 vector2, double scalar2);
 
+//	matrix multiplication.
+t_matrix3	matrix3_multiply(t_matrix3 a, t_matrix3 b);
 
 //
 //

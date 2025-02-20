@@ -130,7 +130,8 @@ OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 					vec_substraction.o			\
 					vec_scaling.o				\
 					vec_normalization.o			\
-					vec_linear_combination.o	\
+					vec_linear_combination.o		\
+					vec_matrix_multiply.o		\
 
 #					vec2_get_angle.o		\
 					vec3_get_angle.o		\
