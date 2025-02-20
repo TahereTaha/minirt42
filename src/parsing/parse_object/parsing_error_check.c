@@ -10,15 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../inc/scene.h"
+#include "../../inc/parsing.h"
+#include "../../inc/error_managment.h"
+#include "../../inc/custom_errors.h"
+#include "../../inc/utils.h"
 #include "../../inc/minirt.h"
 
 bool	orientation_error(t_vec3 *orientation)
 {
-	if (direction->x > 1 || direction->x < -1)
+	double	length;
+
+	if (orientation->x > 1 || orientation->x < -1)
 		return (true);
-	if (direction->y > 1 || direction->y < -1)
+	if (orientation->y > 1 || orientation->y < -1)
 		return (true);
-	if (direction->z > 1 || direction->z < -1)
+	if (orientation->z > 1 || orientation->z < -1)
+		return (true);
+	
+	length = sqrt(orientation->x * orientation->x + 
+				 orientation->y * orientation->y + 
+				 orientation->z * orientation->z);
+	if (fabs(length - 1.0) > 0.0001)
 		return (true);
 	return (false);
 }
@@ -28,31 +41,24 @@ bool	format_error(char **coordinates)
 	int	i;
 
 	i = 0;
-	if (ft_arraylen(coordinates) != 3)
-		return (1);
+	if (!coordinates || ft_arraylen(coordinates) != 3)
+		return (true);
 	while (coordinates[i])
 	{
-		if (!ft_isfloat(coordinates[i]) || /*float overflow*/)
-			return (1);
+		if (!ft_isfloat(coordinates[i]) || ft_isfloatoverflow(coordinates[i]))
+			return (true);
 		i++;
 	}
-	return (0);
+	return (false);
 }
 
-bool	colors_error(char **color)
+bool	color_error(t_color *color)
 {
-	int	i;
-
-	i = 0;
-	if (ft_arraylen(color) != 3)
-		return (1);
-	while (color[i])
-	{
-		/*check if int ?*/
-		if (ft_atoi(color[i]) < 0 || ft_atoi(color[i]) > 255)
-			return (1);
-		i++;
-	}
-	return (0);
+	if (color->r < 0 || color->r > 255)
+		return (true);
+	if (color->g < 0 || color->g > 255)
+		return (true);
+	if (color->b < 0 || color->b > 255)
+		return (true);
+	return (false);
 }
-

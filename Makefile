@@ -138,9 +138,15 @@ OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 
 OBJ		+=	$(OBJ_VECTOR_MATH)
 
+#==============================================================================
+#								numbers
+#==============================================================================
 
+OBJ_NUMBERS	:=	check_int.o				\
+				float_checks.o			\
+				ft_atof.o				\
 
-
+OBJ		+=	$(OBJ_NUMBERS)
 
 OBJ		:=	$(addprefix $(BIN_DIR), $(OBJ))
 
@@ -156,6 +162,7 @@ VPATH	+=	$(SRC_DIR)parsing:
 VPATH	+=	$(SRC_DIR)scene:
 VPATH	+=	$(SRC_DIR)utils/gnl:
 VPATH	+=	$(SRC_DIR)utils/vector_math:
+VPATH	+=	$(SRC_DIR)utils/numbers:
 
 all	:	libs $(BIN_DIR) $(NAME)
 

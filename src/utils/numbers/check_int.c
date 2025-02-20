@@ -9,7 +9,9 @@
 /*   Updated: 2025/02/13 11:57:50 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../libs/libft.h"
+#include "../../../inc/numbers.h"
+#include <ctype.h>
+#include <limits.h>
 
 int ft_isint(const char *str)
 {

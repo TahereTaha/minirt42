@@ -45,15 +45,13 @@ void	parse_fov_rad(t_error *error, char *token, t_camera *cam)
 	{
 		error_set(error, NOT_A_NUMBER);
 		error_msg_append(error, "Invalid FOV value: not a valid number", 0);
-		error_msg_append_line(error, __LINE__);
 		error_manage(error);
 	}
 	cam->fov_rad = ft_atof(token);
 	if (cam->fov_rad < 0 || cam->fov_rad > 180)
 	{
-		error_set(error, INVALID_FOV_RANGE);
+		error_set(error, INVALID_RANGE);
 		error_msg_append(error, "FOV must be between 0 and 180 degrees", 0);
-		error_msg_append_line(error, __LINE__);
 		error_manage(error);
 	}
 }
@@ -65,15 +63,14 @@ void	parse_orientation(t_error *error, char *token, t_camera *cam)
 	coordinates = ft_split(token, ',');
 	if (!coordinates)
 	{
-		error_set(error, ENOMEM);
+		error_set(error, errno);
 		error_msg_append(error, "Failed to allocate memory for camera orientation", 0);
 		error_manage(error);
 	}
 	if (format_error(coordinates))
 	{
-		error_set(error, INVALID_COORDINATE_FORMAT);
+		error_set(error, INVALID_FORMAT);
 		error_msg_append(error, "Invalid coordinate format in camera orientation", 0);
-		error_msg_append_line(error, __LINE__);
 		free_array(coordinates);
 		error_manage(error);
 	}
@@ -82,9 +79,8 @@ void	parse_orientation(t_error *error, char *token, t_camera *cam)
 	cam->orientation.z = ft_atof(coordinates[2]);
 	if (orientation_error(&cam->orientation))
 	{
-		error_set(error, INVALID_ORIENTATION);
+		error_set(error, INVALID_RANGE);
 		error_msg_append(error, "Camera orientation vector must be normalized (-1 to 1)", 0);
-		error_msg_append_line(error, __LINE__);
 		free_array(coordinates);
 		error_manage(error);
 	}
@@ -98,15 +94,14 @@ void	parse_view_point(t_error *error, char *token, t_camera *cam)
 	coordinates = ft_split(token, ',');
 	if (!coordinates)
 	{
-		error_set(error, ENOMEM);
+		error_set(error, errno);
 		error_msg_append(error, "Failed to allocate memory for camera position", 0);
 		error_manage(error);
 	}
 	if (format_error(coordinates))
 	{
-		error_set(error, INVALID_COORDINATE_FORMAT);
+		error_set(error, INVALID_FORMAT);
 		error_msg_append(error, "Invalid coordinate format in camera position", 0);
-		error_msg_append_line(error, __LINE__);
 		free_array(coordinates);
 		error_manage(error);
 	}
@@ -123,7 +118,11 @@ t_object	parse_camera(t_error *error, char *line)
 
 	tokens = ft_split(line, ' ');
 	if (!tokens)
-		/*error*/
+	{
+		error_set(error, errno);
+		error_msg_append(error, "Failed to allocate memory for camera tokens", 0);
+		error_manage(error);
+	}
 	if (ft_arraylen(tokens) != 4)
 	{
 		error_set(error, WRONG_TOKENS_COUNT);

@@ -34,6 +34,8 @@ typedef enum e_error_kind
 	DUPLICATED_OBJECT,
 	WRONG_OBJECT_IDENTIFIER,
 	WRONG_TOKENS_COUNT,
+	INVALID_FORMAT,
+	INVALID_RANGE,
 }	t_error_kind;
 
 const static char	*error_msg[] = {\
@@ -45,7 +47,9 @@ const static char	*error_msg[] = {\
 	"you can't declane more than onec this object.",\
 	"the object idenifier dosen't mach any.\
    	maybe it is mispelled, try to check again.",	\
-	"wrong amount of tokens."						\
+	"wrong amount of tokens.",						\
+	"invalid format: check input format requirements",	\
+	"invalid range: value is outside allowed range"	\
 };
 
 char	*ft_strerror(int errnum);

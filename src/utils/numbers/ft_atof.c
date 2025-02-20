@@ -1,3 +1,4 @@
+#include "../../../inc/numbers.h"
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,7 +7,7 @@
 
 void	ft_process_int(char *str, int *i, float *result)
 {
-	while (isdigit(str[*i])) /*change to ft_isdigit later*/ 
+	while (ft_isdigit(str[*i])) 
 	{
 		*result = *result * 10.0f + (str[*i] - '0');
 		(*i)++;
@@ -18,7 +19,7 @@ void	ft_process_frac(char *str, int *i, float *result, float *divisor)
 	if (str[*i] == '.')
 	{
 		(*i)++;
-		while (isdigit(str[*i])) /*change to ft_isdigit later*/
+		while (ft_isdigit(str[*i]))
 		{
 			*result = *result * 10.0f + (str[*i] - '0');
 			*divisor *= 10.0f;
@@ -50,12 +51,4 @@ float ft_atof(char *str)
 	ft_process_frac(str, &i, &result, &divisor);
 	result = (result * sign) / divisor;
 	return (result);
-}
-
-int main(void)
-{
-	printf("%f\n", atof("123.456"));
-	printf("%f\n", ft_atof("123.456"));
-
-	return 0;
 }
