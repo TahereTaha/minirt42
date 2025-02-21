@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/12 11:01:49 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:47:54 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ typedef struct s_vec3
 }	t_vec3;
 
 //	a 3x3 matrix
-typedef struct s_matrix3
-{
-	double	m[3][3];
-}	t_matrix3;
+
 
 //	debug prints.
 void	vec2_print(t_vec2 vector);
@@ -64,6 +61,10 @@ t_vec3	vec3_scale(t_vec3 vector, double scalar);
 t_vec2	vec2_normalize(t_vec2 vector);
 t_vec3	vec3_normalize(t_vec3 vector);
 
+// vector cross product
+t_vec3 vec2_cross_product(t_vec3 a, t_vec3 b);
+double vec3_cross_product_2d(t_vec2 a, t_vec2 b);
+
 //	linear combination.
 t_vec2	vec2_linear_combination(	t_vec2 vector1, double scalar1, \
 									t_vec2 vector2, double scalar2);
@@ -72,6 +73,7 @@ t_vec3	vec3_linear_combination(	t_vec3 vector1, double scalar1, \
 
 //	matrix multiplication.
 t_matrix3	matrix3_multiply(t_matrix3 a, t_matrix3 b);
+
 
 //
 //
