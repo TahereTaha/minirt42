@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/21 12:47:54 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/21 13:42:45 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ t_vec3	vec3_normalize(t_vec3 vector);
 // vector cross product
 t_vec3 vec2_cross_product(t_vec3 a, t_vec3 b);
 double vec3_cross_product_2d(t_vec2 a, t_vec2 b);
+
+// vector dot product
+double vec3_dot_product(t_vec3 a, t_vec3 b);
+double  vec2_dot_product(t_vec2 a, t_vec2 b);
 
 //	linear combination.
 t_vec2	vec2_linear_combination(	t_vec2 vector1, double scalar1, \
