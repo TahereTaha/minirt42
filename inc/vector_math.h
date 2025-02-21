@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/12 11:01:49 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:04:58 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,19 @@ typedef struct s_vec3
 	double	z;
 }	t_vec3;
 
+//	a 2x2 matrix
+typedef struct s_mtx2
+{
+	t_vec2	i_hat;
+	t_vec2	j_hat;
+}	t_mtx2;
+
 //	a 3x3 matrix
 typedef struct s_matrix3
 {
-	double	m[3][3];
+	t_vec3	i_hat;
+	t_vec3	j_hat;
+	t_vec3	h_hat;
 }	t_matrix3;
 
 //	debug prints.
@@ -71,7 +80,11 @@ t_vec3	vec3_linear_combination(	t_vec3 vector1, double scalar1, \
 									t_vec3 vector2, double scalar2);
 
 //	matrix multiplication.
-t_matrix3	matrix3_multiply(t_matrix3 a, t_matrix3 b);
+t_vec2	vec2_mtx2_multiplication(t_vec2 vector, t_mtx2 matrix);
+t_vec3	vec3_mtx3_multiplication(t_vec3 vector, t_mtx3 matrix);
+
+t_mtx2	mtx2_mtx2_multiplication(t_mtx2 matrix1, t_mtx2 matrix2);
+t_mtx3	mtx3_mtx3_multiplication(t_mtx3 matrix1, t_mtx3 matrix2);
 
 //
 //

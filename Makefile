@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/20 16:37:54 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/21 14:14:33 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,8 +116,9 @@ OBJ_PARSING			:=	parse_file.o				\
 						check_argument.o			\
 						parse_line.o				\
 						dumy_parsing_functions.o	\
-						parsing_error_check.o	\
-						parse_sphere.o	\
+						parsing_error_check.o		\
+						parse_ambient_light.o		\
+						parse_sphere.o				\
 
 OBJ		+=	$(OBJ_PARSING)
 
@@ -132,8 +133,8 @@ OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 					vec_substraction.o			\
 					vec_scaling.o				\
 					vec_normalization.o			\
-					vec_linear_combination.o		\
-					vec_matrix_multiply.o		\
+					vec_linear_combination.o	\
+					mtx_multiply.o				\
 
 #					vec2_get_angle.o		\
 					vec3_get_angle.o		\
