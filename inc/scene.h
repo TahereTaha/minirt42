@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/18 17:36:33 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:19:09 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,6 @@ typedef enum e_object_kind
 	CYLINDER,
 	UNEXISTENT
 }	t_object_kind;
-
-const static char	*object_str_identifier[] = {\
-	"A",	\
-	"C",	\
-	"L",	\
-	"sp",	\
-	"pl",	\
-	"cy"	\
-};
 
 t_object_kind	get_object_kind(char *str);
 

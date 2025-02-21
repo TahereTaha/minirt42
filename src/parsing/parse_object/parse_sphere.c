@@ -6,14 +6,17 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:12 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 14:06:10 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/21 11:11:24 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../inc/scene.h"
-#include "../../inc/parsing.h"
-#include "../../inc/error_managment.h"
-#include "../../inc/custom_errors.h"
-#include "../../inc/utils.h"
+
+#include <errno.h>
+#include "libft.h"
+#include "numbers.h"
+#include "scene.h"
+#include "parsing.h"
+#include "error_managment.h"
+#include "custom_errors.h"
 
 void	parse_color_sphere(t_error *error, char *token, t_sphere *sphere)
 {
@@ -24,14 +27,14 @@ void	parse_color_sphere(t_error *error, char *token, t_sphere *sphere)
 	{
 		error_set(error, errno);
 		error_msg_append(error, "Failed to allocate memory for sphere color", 0);
-		error_manage(error);
+		return ;
 	}
 	if (format_error(color))
 	{
 		error_set(error, INVALID_FORMAT);
 		error_msg_append(error, "Invalid color format in sphere", 0);
 		free_array(color);
-		error_manage(error);
+		return ;
 	}
 	sphere->color.r = ft_atoi(color[0]);
 	sphere->color.g = ft_atoi(color[1]);
@@ -41,7 +44,7 @@ void	parse_color_sphere(t_error *error, char *token, t_sphere *sphere)
 		error_set(error, INVALID_RANGE);
 		error_msg_append(error, "Color values must be between 0 and 255", 0);
 		free_array(color);
-		error_manage(error);
+		return ;
 	}
 	free_array(color);
 }
@@ -89,24 +92,27 @@ void	parse_position_sphere(t_error *error, char *token, t_sphere *sphere)
 
 t_object	parse_sphere(t_error *error, char *line)
 {
-	t_sphere	sphere;
+	t_object	object;
+	t_sphere	*sphere;
 	char		**tokens;
 
+	sphere = (t_sphere *)&object;
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "Failed to allocate memory for sphere tokens", 0);
-		error_manage(error);
+		return (object);
 	}
 	if (ft_arraylen(tokens) != 4)
 	{
+		free_array(tokens);
 		error_set(error, WRONG_TOKENS_COUNT);
-		error_msg_append(error, "Wrong number of tokens for sphere", 0);
-		error_manage(error);
+		error_msg_append(error, "Wrong number of tokens for sphere: ", 0);
+		return (object);
 	}
-	parse_position_sphere(error, tokens[1], &sphere);
-	parse_diameter_sphere(error, tokens[2], &sphere);
-	parse_color_sphere(error, tokens[3], &sphere);
-	return (*((t_object *)&sphere));
+	parse_position_sphere(error, tokens[1], sphere);
+	parse_diameter_sphere(error, tokens[2], sphere);
+	parse_color_sphere(error, tokens[3], sphere);
+	free_array(tokens);
+	return (object);
 }

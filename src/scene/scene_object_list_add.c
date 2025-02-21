@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:57:17 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/19 11:58:29 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:04:44 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	scene_object_list_add(t_error *error, t_scene *scene, t_object object)
 		error_set(error, errno);
 		return ;
 	}
+	*object_ptr = object;
 	node = ft_lstnew(object_ptr);
 	if (!node)
 	{

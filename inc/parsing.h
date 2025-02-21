@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/19 13:26:35 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:36:11 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_object		parse_unexistent(t_error *error, char *line);
 
 typedef t_object	(*t_parse_object)(t_error *error, char *line);
 
-const static t_parse_object	g_parse_object[] = \
+static const t_parse_object	g_parse_object[] = \
 {\
 	(t_parse_object) parse_blank, \
 	(t_parse_object) parse_ambient_light, \
@@ -44,6 +44,11 @@ const static t_parse_object	g_parse_object[] = \
 	(t_parse_object) parse_unexistent, \
 	(t_parse_object) NULL \
 };
+
+// Parsing error check functions
+int		color_error(t_color *color);
+int		orientation_error(t_vec3 *orientation);
+int		format_error(char **coordinates);
 
 // Camera parsing functions
 void	parse_view_point(t_error *error, char *token, t_camera *cam);
@@ -71,11 +76,6 @@ void	parse_orientation_cylinder(t_error *error, char *token, t_cylinder *cylinde
 void	parse_color_cylinder(t_error *error, char *token, t_cylinder *cylinder);
 void	parse_diameter_cylinder(t_error *error, char *token, t_cylinder *cylinder);
 void	parse_height_cylinder(t_error *error, char *token, t_cylinder *cylinder);
-
-// Parsing error check functions
-bool	color_error(t_color *color);
-bool	orientation_error(t_vec3 *orientation);
-bool	format_error(char **coordinates);
 
 // Utils
 int		ft_arraylen(char **array);

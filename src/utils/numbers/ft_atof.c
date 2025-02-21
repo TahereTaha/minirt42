@@ -1,4 +1,17 @@
-#include "../../../inc/numbers.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/20 12:27:57 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/20 12:27:59 by tatahere         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+#include "numbers.h"
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>

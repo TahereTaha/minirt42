@@ -6,10 +6,11 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:48:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/18 18:19:11 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/21 10:52:50 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -40,7 +41,7 @@ void	read_file(t_error *error, t_scene *scene, int fd)
 		free(line);
 		if (error->errnum)
 		{
-			error_msg_append_line(error, line_num);
+			error_msg_append_line(error, line_num + 1);
 			return ;
 		}
 		line_num++;

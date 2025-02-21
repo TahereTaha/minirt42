@@ -6,14 +6,16 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:57:18 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/13 11:57:50 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:59:18 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../../inc/numbers.h"
+
+#include "numbers.h"
+#include "libft.h"
 #include <ctype.h>
 #include <limits.h>
 
-int ft_isint(const char *str)
+int ft_isint(char *str)
 {
 	int	i;
 
@@ -29,24 +31,16 @@ int ft_isint(const char *str)
 	return (str[i] == '\0');
 }
 
-bool	is_intoverflow(char *str)
+int		is_intoverflow(char *str)
 {
 	int	i;
 	int	result;
-	int	sign;
 	int digit;
 
 	i = 0;
-	sign = 1;
 	result = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
 	while (ft_isdigit(str[i]))
 	{
 		digit = str[i] - '0';

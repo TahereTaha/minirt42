@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:54:47 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/19 11:55:03 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:50:00 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "scene_local.h"
 
 //	sometimes the 80 whide lines is a hasle.
-static void	scene_ambient_light_add(t_error *error, t_scene *scene, t_object object)
+void	scene_ambient_light_add(t_error *error, t_scene *scene, t_object object)
 {
 	t_ambient_light	ambient_light;
 
@@ -30,7 +30,7 @@ static void	scene_ambient_light_add(t_error *error, t_scene *scene, t_object obj
 	scene->ambient_light = ambient_light;
 }
 
-static void	scene_camera_add(t_error *error, t_scene *scene, t_object object)
+void	scene_camera_add(t_error *error, t_scene *scene, t_object object)
 {
 	t_camera	camera;
 
@@ -44,7 +44,7 @@ static void	scene_camera_add(t_error *error, t_scene *scene, t_object object)
 	scene->camera = camera;
 }
 
-static void	scene_light_add(t_error *error, t_scene *scene, t_object object)
+void	scene_light_add(t_error *error, t_scene *scene, t_object object)
 {
 	t_light	light;
 

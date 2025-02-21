@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/19 12:06:14 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/20 16:37:54 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIBS		=	$(LIBFT) $(LIBMLX)
 
 #	some flags
 
-CFLAGS			:=	-Wall -Wextra -MMD
+CFLAGS		:= -std=c99 -Wall -Wextra -Werror -MMD
 
 CINC		:=	-I$(ROOT_DIR)
 CINC		+=	-I$(INC_DIR)
@@ -116,6 +116,8 @@ OBJ_PARSING			:=	parse_file.o				\
 						check_argument.o			\
 						parse_line.o				\
 						dumy_parsing_functions.o	\
+						parsing_error_check.o	\
+						parse_sphere.o	\
 
 OBJ		+=	$(OBJ_PARSING)
 
@@ -160,6 +162,7 @@ VPATH	+=	$(SRC_DIR):
 VPATH	+=	$(SRC_DIR)custom_errors:
 VPATH	+=	$(SRC_DIR)error_managment:
 VPATH	+=	$(SRC_DIR)parsing:
+VPATH	+=	$(SRC_DIR)parsing/parse_object:
 VPATH	+=	$(SRC_DIR)scene:
 VPATH	+=	$(SRC_DIR)utils/gnl:
 VPATH	+=	$(SRC_DIR)utils/vector_math:

@@ -6,14 +6,15 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/19 13:25:38 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:13:01 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/scene.h"
-#include "../../inc/parsing.h"
-#include "../../inc/error_managment.h"
-#include "../../inc/custom_errors.h"
+#include "scene.h"
+#include "numbers.h"
+#include "parsing.h"
+#include "error_managment.h"
+#include "custom_errors.h"
 
 //add this two functions to utils of some kind
 void	free_array(char **array)

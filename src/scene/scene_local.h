@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/19 11:56:54 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:54:01 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 # include <stdlib.h>
 # include "error_managment.h"
-static void	scene_ambient_light_add(t_error *error, t_scene *scene, t_object object);
-static void	scene_camera_add(t_error *error, t_scene *scene, t_object object);
-static void	scene_light_add(t_error *error, t_scene *scene, t_object object);
+void	scene_ambient_light_add(t_error *error, t_scene *scene, t_object object);
+void	scene_camera_add(t_error *error, t_scene *scene, t_object object);
+void	scene_light_add(t_error *error, t_scene *scene, t_object object);
 
 typedef void	(*t_add_object)(t_error *, t_scene *, t_object);
 
-const static t_add_object	g_add_object[] = \
+
+static const t_add_object	g_add_object[] = \
 {\
 	(t_add_object) scene_ambient_light_add, \
 	(t_add_object) scene_camera_add, \

@@ -6,14 +6,16 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 09:57:40 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/20 09:57:40 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:24:33 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../inc/numbers.h"
+#include "libft.h"
+#include "numbers.h"
+#include "libft.h"
 #include <float.h>
 
-static int	check_decimal_part(const char *str)
+static int	check_decimal_part(char *str)
 {
 	int	decimal_count;
 	int	i;
@@ -33,7 +35,7 @@ static int	check_decimal_part(const char *str)
 	return (decimal_count > 6);
 }
 
-bool	ft_isfloatoverflow(const char *str)
+int		ft_isfloatoverflow(char *str)
 {
 	long double	num;
 	char		*dot_pos;
@@ -58,7 +60,7 @@ bool	ft_isfloatoverflow(const char *str)
 	return (false);
 }
 
-bool	ft_isfloat(const char *str)
+int		ft_isfloat(char *str)
 {
 	int	i;
 	int	has_dot;

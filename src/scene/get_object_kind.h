@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strerror.c                                      :+:      :+:    :+:   */
+/*   get_object_kind.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 13:59:59 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/20 16:31:38 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/20 15:53:06 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/20 15:53:59 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include "custom_errors.h"
-#include "ft_strerror.h"
+#ifndef GET_OBJECT_KIND_H
+# define GET_OBJECT_KIND_H
 
-char	*ft_strerror(int errnum)
-{
-	if (errnum < FIRST_CUSTOM_ERROR)
-		return (strerror(errnum));
-	return ((char *)g_error_msg[errnum - FIRST_CUSTOM_ERROR]);
-}
+static const char	*object_str_identifier[] = {\
+	"A",	\
+	"C",	\
+	"L",	\
+	"sp",	\
+	"pl",	\
+	"cy"	\
+};
+
+#endif
