@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/21 14:18:00 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/22 18:18:06 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,7 +118,11 @@ OBJ_PARSING			:=	parse_file.o				\
 						dumy_parsing_functions.o	\
 						parsing_error_check.o		\
 						parse_ambient_light.o		\
+						parse_camera.o		\
+						parse_light.o		\
 						parse_sphere.o				\
+						parse_plane.o				\
+						parse_cylinder.o				\
 
 OBJ		+=	$(OBJ_PARSING)
 

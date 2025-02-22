@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/20 18:19:09 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/22 15:55:08 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ typedef struct s_light
 {
 	t_object_kind	kind;
 	t_vec3			position;
-	t_color			ligth_color;
-	double			ligth_ratio;
+	t_color			light_color;
+	double			light_ratio;
 }	t_light;
 
 typedef struct s_sphere

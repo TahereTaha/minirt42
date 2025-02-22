@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:12 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/21 11:11:24 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/21 12:11:58 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ void	parse_diameter_sphere(t_error *error, char *token, t_sphere *sphere)
 	{
 		error_set(error, NOT_A_NUMBER);
 		error_msg_append(error, "Invalid diameter value: not a valid number", 0);
-		error_manage(error);
+		return ;
 	}
 	sphere->diameter = ft_atof(token);
 	if (sphere->diameter <= 0)
 	{
 		error_set(error, INVALID_RANGE);
 		error_msg_append(error, "Diameter must be positive", 0);
-		error_manage(error);
+		return ;
 	}
 }
 
@@ -75,14 +75,14 @@ void	parse_position_sphere(t_error *error, char *token, t_sphere *sphere)
 	{
 		error_set(error, errno);
 		error_msg_append(error, "Failed to allocate memory for sphere position", 0);
-		error_manage(error);
+		return ;
 	}
 	if (format_error(coordinates))
 	{
 		error_set(error, INVALID_FORMAT);
 		error_msg_append(error, "Invalid coordinate format in sphere position", 0);
 		free_array(coordinates);
-		error_manage(error);
+		return ;
 	}
 	sphere->position.x = ft_atof(coordinates[0]);
 	sphere->position.y = ft_atof(coordinates[1]);

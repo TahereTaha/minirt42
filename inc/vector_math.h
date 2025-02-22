@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/21 14:18:42 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:06:44 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ typedef struct s_mtx2
 }	t_mtx2;
 
 //	a 3x3 matrix
-typedef struct s_matrix3
+typedef struct s_mtx3
 {
 	t_vec3	i_hat;
 	t_vec3	j_hat;
-	t_vec3	h_hat;
-}	t_matrix3;
+	t_vec3	k_hat;
+}	t_mtx3;
 
 //	debug prints.
 void	vec2_print(t_vec2 vector);

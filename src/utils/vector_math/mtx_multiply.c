@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 10:10:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/21 14:13:51 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:07:38 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vec2	vec2_mtx2_multiplication(t_vec2 vector, t_mtx2 matrix)
 
 	scaled_basis.i_hat = vec2_scale(matrix.i_hat, vector.x);
 	scaled_basis.j_hat = vec2_scale(matrix.j_hat, vector.y);
-	result = vec2_addition(scaled_basis.i_hat, scaled_basis.j_hat);
+	result = vec2_add(scaled_basis.i_hat, scaled_basis.j_hat);
 	return (result);
 }
 
@@ -31,8 +31,8 @@ t_vec3	vec3_mtx3_multiplication(t_vec3 vector, t_mtx3 matrix)
 	scaled_basis.i_hat = vec3_scale(matrix.i_hat, vector.x);
 	scaled_basis.j_hat = vec3_scale(matrix.j_hat, vector.y);
 	scaled_basis.k_hat = vec3_scale(matrix.k_hat, vector.z);
-	result = vec3_addition(scaled_basis.i_hat, scaled_basis.j_hat);
-	result = vec3_addition(result, scaled_basis.k_hat);
+	result = vec3_add(scaled_basis.i_hat, scaled_basis.j_hat);
+	result = vec3_add(result, scaled_basis.k_hat);
 	return (result);
 }
 
