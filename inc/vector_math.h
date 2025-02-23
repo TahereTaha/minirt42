@@ -75,7 +75,7 @@ t_vec3	vec3_normalize(t_vec3 vector);
 
 // vector cross product
 t_vec3 vec2_cross_product(t_vec3 a, t_vec3 b);
-double vec3_cross_product_2d(t_vec2 a, t_vec2 b);
+double vec3_cross_product(t_vec2 a, t_vec2 b);
 
 // vector dot product
 double vec3_dot_product(t_vec3 a, t_vec3 b);
