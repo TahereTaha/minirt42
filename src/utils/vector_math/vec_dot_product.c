@@ -14,9 +14,9 @@
 double	vec2_dot_product(t_vec2 a, t_vec2 b)
 {
 	double	result;
-
+	
 	result = a.x * b.x + a.y * b.y;
-    return (result);
+	return (result);
 }
 
 double	vec3_dot_product(t_vec3 a, t_vec3 b)
@@ -24,5 +24,5 @@ double	vec3_dot_product(t_vec3 a, t_vec3 b)
 	double	result;
 
 	result = a.x * b.x + a.y * b.y + a.z * b.z;
-    return (result);
+	return (result);
 }
