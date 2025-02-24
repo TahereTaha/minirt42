@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strerror.c                                      :+:      :+:    :+:   */
+/*   vec_span.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/13 13:59:59 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/24 11:29:54 by tatahere         ###   ########.fr       */
+/*   Created: 2025/02/22 18:29:55 by tatahere          #+#    #+#             */
+/*   Updated: 2025/02/22 18:36:13 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include "custom_errors.h"
-#include "MLX42/MLX42.h"
-#include "ft_strerror.h"
+#include "vector_math.h"
 
-char	*ft_strerror(int errnum)
+int		vec2_span(t_vec2 vector1, t_vec2 vector2)
 {
-	if (errnum < FIRST_MLX_ERROR)
-		return (strerror(errnum));
-	if (errnum < FIRST_CUSTOM_ERROR)
-		return ((char *)mlx_strerror(errnum));
-	return ((char *)g_error_msg[errnum - FIRST_CUSTOM_ERROR]);
+	vector1 = vec2_normalize(vector1);
+	vector2 = vec2_normalize(vector2);
+	if ()
 }
+
+int		vec3_span(t_vec3 vector1, t_vec3 vector2, t_vec3 vector3);

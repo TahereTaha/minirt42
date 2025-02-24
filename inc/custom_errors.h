@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:06:05 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/20 16:28:01 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/24 10:33:42 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 //
 
 # define LAST_SYS_ERROR 132
-# define FIRST_CUSTOM_ERROR 140
+# define FIRST_MLX_ERROR 140
+# define FIRST_CUSTOM_ERROR 160
 
 //	some custom error that this project can have.
 

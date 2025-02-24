@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/22 18:18:06 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/24 22:29:35 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,11 +127,21 @@ OBJ_PARSING			:=	parse_file.o				\
 OBJ		+=	$(OBJ_PARSING)
 
 #==============================================================================
+#								parsing
+#==============================================================================
+
+OBJ_PARSING			:=	render_image_to_window.o				\
+						render_image.o				\
+						ray_cast.o				\
+
+OBJ		+=	$(OBJ_PARSING)
+
+#==============================================================================
 #								vector math
 #==============================================================================
 
 OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
-					vec_is_null.o				\
+					vec_propertis.o				\
 					vec_get_magnitude.o			\
 					vec_addition.o				\
 					vec_substraction.o			\
@@ -155,6 +165,7 @@ OBJ		+=	$(OBJ_VECTOR_MATH)
 OBJ_NUMBERS	:=	check_int.o				\
 				float_checks.o			\
 				ft_atof.o				\
+				deg_to_rad.o				\
 
 OBJ		+=	$(OBJ_NUMBERS)
 
@@ -171,6 +182,7 @@ VPATH	+=	$(SRC_DIR)error_managment:
 VPATH	+=	$(SRC_DIR)parsing:
 VPATH	+=	$(SRC_DIR)parsing/parse_object:
 VPATH	+=	$(SRC_DIR)scene:
+VPATH	+=	$(SRC_DIR)render:
 VPATH	+=	$(SRC_DIR)utils/gnl:
 VPATH	+=	$(SRC_DIR)utils/vector_math:
 VPATH	+=	$(SRC_DIR)utils/numbers:

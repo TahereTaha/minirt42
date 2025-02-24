@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:48:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/21 10:52:50 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/24 11:27:20 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	parse_file(t_error *error, t_scene *scene, int ac, char **av)
 {
 	int	fd;
 
+	if (error->errnum)
+		return ;
 	check_argument(error, ac, av);
 	if (error->errnum)
 		return ;

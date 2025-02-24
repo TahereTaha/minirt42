@@ -6,11 +6,12 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:37:20 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/18 14:33:02 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/24 11:29:05 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <errno.h>
+#include "renderer.h"
 #include "scene.h"
 #include "parsing.h"
 #include "error_managment.h"
@@ -19,6 +20,8 @@ t_scene	*make_scene(t_error *error)
 {
 	t_scene	*scene;
 
+	if (error->errnum)
+		return (NULL);
 	scene = scene_create();
 	if (!scene)
 	{
@@ -37,7 +40,7 @@ int	main(int ac, char **av)
 	error = error_create();
 	scene = make_scene(error);
 	parse_file(error, scene, ac, av);
-
+	render_image_to_window(error, scene);
 	scene_destroy(scene);
 	error_manage(error);
 	error_destroy(error);

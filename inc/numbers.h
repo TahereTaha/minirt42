@@ -12,4 +12,8 @@ float	ft_atof(char *str);
 int		ft_isint(char *str);
 int		is_intoverflow(char *str);
 
+# define PI 3.14159265359
+
+double	deg_to_rad(double deg);
+
 #endif

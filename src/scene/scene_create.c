@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:10:47 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/16 16:17:18 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/24 11:25:52 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 t_scene	*scene_create(void)
 {
 	t_scene	*scene;
-
+	
 	scene = ft_calloc(sizeof(t_scene), 1);
 	return (scene);
 }
