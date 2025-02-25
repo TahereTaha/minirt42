@@ -141,7 +141,7 @@ OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 					mtx_multiply.o				\
 					vec_cross_product.o       \
 					vec_dot_product.o       \
-
+					vec_rotation.o       \
 #					vec2_get_angle.o		\
 					vec3_get_angle.o		\
 					vec2_create.o			\
