@@ -76,12 +76,18 @@ t_vec2	vec2_normalize(t_vec2 vector);
 t_vec3	vec3_normalize(t_vec3 vector);
 
 // vector cross product
-t_vec3 vec2_cross_product(t_vec3 a, t_vec3 b);
-double vec3_cross_product_2d(t_vec2 a, t_vec2 b);
+double vec2_cross_product(t_vec2 a, t_vec2 b);
+t_vec3 vec3_cross_product(t_vec3 a, t_vec3 b);
 
 // vector dot product
 double	vec2_dot_product(t_vec2 a, t_vec2 b);
 double	vec3_dot_product(t_vec3 a, t_vec3 b);
+
+// vector rotation
+t_vec2	vec2_rotate(t_vec2 vector, double angle);
+t_vec3	vec3_rotate_z(t_vec3 vector, double angle);
+t_vec3	vec3_rotate_y(t_vec3 vector, double angle);
+t_vec3	vec3_rotate_x(t_vec3 vector, double angle);
 
 //	linear combination.
 t_vec2	vec2_linear_combination(	t_vec2 vector1, double scalar1, \
@@ -105,6 +111,7 @@ t_mtx3	mtx3_mtx3_multiplication(t_mtx3 matrix1, t_mtx3 matrix2);
 //	dot product
 
 double	ft_abs(double numb);
+
 
 //
 //
