@@ -6,10 +6,11 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:13:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/24 22:24:41 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/25 19:18:43 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "numbers.h"
 #include "math.h"
 #include "minirt.h"
@@ -34,6 +35,7 @@ void		render_image(mlx_image_t *img, t_scene *scene)
 	int			i;
 	int			j;
 	uint32_t	color;
+	t_color		our_color;
 	t_vec3		ray;
 
 	i = 0;
@@ -42,11 +44,12 @@ void		render_image(mlx_image_t *img, t_scene *scene)
 	{
 		while (i < WIN_WIDTH)
 		{
-			ray.z = j * 100 / WIN_HEIGHT - 50;
-			ray.y = i * 100 / WIN_WIDTH - 50;
-			ray.x = tan(deg_to_rad(90 - (scene->camera.fov_rad / 2))) * 100;
+			ray.z = (double)((double)(j * 100) / (double)WIN_HEIGHT - (double)50) * (double) -1;
+			ray.y = (double)(i * 100) / (double)WIN_WIDTH - (double)50;
+			ray.x = tan(deg_to_rad(90 - (scene->camera.fov_rad / 2))) * 50;
 			ray = vec3_normalize(ray);
-			color = get_color(ray_cast(ray, scene->objects));
+			our_color = ray_cast(ray, scene->objects);
+			color = get_color(our_color);
 			mlx_put_pixel(img, i, j, color);
 			i++;
 		}
