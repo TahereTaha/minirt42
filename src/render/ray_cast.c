@@ -55,12 +55,23 @@ t_ray	ray_cast_plane(t_vec3 ray, t_plane *plane)
 	return (ray_cast);
 }
 
+
+
 t_ray	ray_cast_object(t_vec3 ray, t_object *object)
 {
 	t_ray	ray_cast;
 
-	//	there will be some code to chose witch figure to use.
-	ray_cast = ray_cast_plane(ray, (t_plane *)object);
+	
+	if (object->kind == PLANE)
+		ray_cast = ray_cast_plane(ray, (t_plane *)object);
+	else if (object->kind == SPHERE)
+		ray_cast = ray_cast_sphere(ray, (t_sphere *)object);
+	/*
+	else return no intersection 
+	{
+		ray_cast.magnitude = 1000000000;
+		ray_cast.color = (t_color){0, 0, 0};
+	}*/
 	return (ray_cast);
 }
 
