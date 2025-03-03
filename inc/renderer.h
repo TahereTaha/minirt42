@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:09:56 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/24 22:23:15 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:12:54 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ typedef struct s_ray
 	t_color	color;
 	double	magnitude;
 }	t_ray;
+
+t_ray	ray_cast_sphere(t_vec3 ray, t_sphere *sphere);
 
 #endif

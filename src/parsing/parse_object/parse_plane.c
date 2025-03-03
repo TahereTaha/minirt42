@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:44:53 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/22 18:11:49 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/03 12:11:30 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,6 @@ void	parse_position_plane(t_error *error, char *token, t_plane *plane)
 	plane->position.y = ft_atof(coordinates[1]);
 	plane->position.z = ft_atof(coordinates[2]);
 	free_array(coordinates);
-}
-
-static void	validate_plane_normal(t_plane *plane)
-{
-	double	num;
-
-	// Check if normal needs to be flipped based on dot product
-	num = vec3_dot_product(plane->orientation, plane->position) /
-		vec3_get_magnitude(plane->orientation);
-	if (num < 0)
-		plane->orientation = vec3_scale(plane->orientation, -1);
 }
 
 t_object	parse_plane(t_error *error, char *line)

@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/28 18:16:30 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/03 12:14:10 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,12 +130,13 @@ OBJ_PARSING			:=	parse_file.o				\
 OBJ		+=	$(OBJ_PARSING)
 
 #==============================================================================
-#								parsing
+#								rendering
 #==============================================================================
 
 OBJ_PARSING			:=	render_image_to_window.o				\
 						render_image.o				\
 						ray_cast.o				\
+						render_sphere.o				\
 
 OBJ		+=	$(OBJ_PARSING)
 
