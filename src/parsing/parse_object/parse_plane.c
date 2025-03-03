@@ -104,6 +104,17 @@ void	parse_position_plane(t_error *error, char *token, t_plane *plane)
 	free_array(coordinates);
 }
 
+static void	validate_plane_normal(t_plane *plane)
+{
+	double	num;
+
+	// Check if normal needs to be flipped based on dot product
+	num = vec3_dot_product(plane->orientation, plane->position) /
+		vec3_get_magnitude(plane->orientation);
+	if (num < 0)
+		plane->orientation = vec3_scale(plane->orientation, -1);
+}
+
 t_object	parse_plane(t_error *error, char *line)
 {
 	t_object	object;
