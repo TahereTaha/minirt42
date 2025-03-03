@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:20:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/25 19:02:56 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/28 12:50:31 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,6 @@ t_ray	ray_cast_plane(t_vec3 ray, t_plane *plane)
 
 	//	fix the normals of the planes. this shoud be in the parsing side of thing.
 	
-	double	num;
-	num = vec3_dot_product(plane->orientation, plane->position) / \
-		  vec3_get_magnitude(plane->orientation);
-	if (num < 0)
-	{
-		printf("aaaaaaaaaaa\n");
-		plane->orientation = vec3_scale(plane->orientation, -1);
-	}
-	
 	//	normal function code.
 	delta_ray = vec3_dot_product(plane->orientation, ray) / 
 		vec3_get_magnitude(plane->orientation);
@@ -50,8 +41,8 @@ t_ray	ray_cast_plane(t_vec3 ray, t_plane *plane)
 
 	ray_cast.color = plane->color;
 	ray_cast.magnitude = plane_distance / delta_ray;
-	if (ray_cast.magnitude < 0 || delta_ray < 0 || isnan(ray_cast.magnitude) )
-		ray_cast.magnitude = 1000000000;
+	if (ray_cast.magnitude < 0 || delta_ray < 0)
+		ray_cast.magnitude = nan("");
 	return (ray_cast);
 }
 
@@ -69,11 +60,11 @@ t_color	ray_cast(t_vec3 ray, t_list *objects)
 	t_ray	ray_cast;
 	t_ray	new_ray_cast;
 
-	ray_cast.magnitude = 1000000000;
+	ray_cast.magnitude = nan("");
 	while (objects)
 	{
 		new_ray_cast = ray_cast_object(ray, (t_object *)objects->content);
-		if (new_ray_cast.magnitude < ray_cast.magnitude)
+		if (isnan(ray_cast.magnitude) || (!isnan(new_ray_cast.magnitude) && new_ray_cast.magnitude < ray_cast.magnitude))
 			ray_cast = new_ray_cast;
 		objects = objects->next;
 	}

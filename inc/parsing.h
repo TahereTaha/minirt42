@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/20 15:36:11 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:24:18 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,10 @@ void	parse_height_cylinder(t_error *error, char *token, t_cylinder *cylinder);
 // Utils
 int		ft_arraylen(char **array);
 void	free_array(char **array);
+
+//	preprocecing
+void	preproces(t_scene *scene);
+void	move_camera_to_center(t_scene *scene);
+void	normalize_scene(t_scene *scene);
 
 #endif

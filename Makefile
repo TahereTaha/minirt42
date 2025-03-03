@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/02/24 22:29:35 by tatahere         ###   ########.fr        #
+#    Updated: 2025/02/28 18:16:30 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,11 +118,14 @@ OBJ_PARSING			:=	parse_file.o				\
 						dumy_parsing_functions.o	\
 						parsing_error_check.o		\
 						parse_ambient_light.o		\
-						parse_camera.o		\
-						parse_light.o		\
+						parse_camera.o				\
+						parse_light.o				\
 						parse_sphere.o				\
 						parse_plane.o				\
-						parse_cylinder.o				\
+						parse_cylinder.o			\
+						move_camera_to_center.o		\
+						preproces.o					\
+						normalize_scene.o					\
 
 OBJ		+=	$(OBJ_PARSING)
 
@@ -181,6 +184,7 @@ VPATH	+=	$(SRC_DIR)custom_errors:
 VPATH	+=	$(SRC_DIR)error_managment:
 VPATH	+=	$(SRC_DIR)parsing:
 VPATH	+=	$(SRC_DIR)parsing/parse_object:
+VPATH	+=	$(SRC_DIR)parsing/preprocecing:
 VPATH	+=	$(SRC_DIR)scene:
 VPATH	+=	$(SRC_DIR)render:
 VPATH	+=	$(SRC_DIR)utils/gnl:

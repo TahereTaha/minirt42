@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:13:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/25 19:18:43 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:01:57 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,30 @@ uint32_t	get_color(t_color color)
 
 void		render_image(mlx_image_t *img, t_scene *scene)
 {
-	int			i;
-	int			j;
+	double		i;
+	double		j;
 	uint32_t	color;
 	t_color		our_color;
 	t_vec3		ray;
 
-	i = 0;
-	j = 0;
+	i = 0.0;
+	j = 0.0;
 	while (j < WIN_HEIGHT)
 	{
 		while (i < WIN_WIDTH)
 		{
-			ray.z = (double)((double)(j * 100) / (double)WIN_HEIGHT - (double)50) * (double) -1;
-			ray.y = (double)(i * 100) / (double)WIN_WIDTH - (double)50;
-			ray.x = tan(deg_to_rad(90 - (scene->camera.fov_rad / 2))) * 50;
+			ray.z = (j * 100.0 / (double) WIN_HEIGHT - 50.0) *  -1.0;
+			//ray.z = (double)((double)(j * 100) / (double)WIN_HEIGHT - (double)50) * (double) -1;
+			ray.y = i * 100.0 / (double) WIN_WIDTH - 50.0;
+			//ray.y = (double)(i * 100) / (double)WIN_WIDTH - (double)50;
+			ray.x = tan(deg_to_rad(90.0 - (scene->camera.fov_rad / 2.0))) * 50.0;
 			ray = vec3_normalize(ray);
 			our_color = ray_cast(ray, scene->objects);
 			color = get_color(our_color);
 			mlx_put_pixel(img, i, j, color);
 			i++;
 		}
-		i = 0;
+		i = 0.0;
 		j++;
 	}
 }
