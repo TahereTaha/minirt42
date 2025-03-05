@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:20:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/28 12:50:31 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:20:42 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,9 @@ t_ray	ray_cast_plane(t_vec3 ray, t_plane *plane)
 	//	fix the normals of the planes. this shoud be in the parsing side of thing.
 	
 	//	normal function code.
-	delta_ray = vec3_dot_product(plane->orientation, ray) / 
-		vec3_get_magnitude(plane->orientation);
+	delta_ray = vec3_project(plane->orientation, ray); 
 
-	plane_distance = vec3_dot_product(plane->orientation, plane->position) / 
-		vec3_get_magnitude(plane->orientation);
+	plane_distance = vec3_project(plane->orientation, plane->position); 
 
 	ray_cast.color = plane->color;
 	ray_cast.magnitude = plane_distance / delta_ray;

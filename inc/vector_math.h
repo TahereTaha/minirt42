@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/24 22:17:10 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:20:15 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ t_vec3 vec3_cross_product(t_vec3 a, t_vec3 b);
 // vector dot product
 double	vec2_dot_product(t_vec2 a, t_vec2 b);
 double	vec3_dot_product(t_vec3 a, t_vec3 b);
+
+double	vec2_project(t_vec2 projector, t_vec2 projected);
+double	vec3_project(t_vec3 projector, t_vec3 projected);
 
 // vector rotation
 t_vec2	vec2_rotate(t_vec2 vector, double angle);

@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/03 12:14:10 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/05 18:13:43 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -155,7 +155,9 @@ OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 					mtx_multiply.o				\
 					vec_cross_product.o       \
 					vec_dot_product.o       \
+					vec_project.o       \
 					vec_rotation.o       \
+
 #					vec2_get_angle.o		\
 					vec3_get_angle.o		\
 					vec2_create.o			\
