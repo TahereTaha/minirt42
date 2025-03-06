@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 15:21:51 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/28 18:19:26 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/06 12:16:44 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ static void	normalize_plane(t_plane *plane)
 	double	num;
 
 	plane->orientation = vec3_normalize(plane->orientation);
-	num = vec3_dot_product(plane->orientation, plane->position) / \
-		  vec3_get_magnitude(plane->orientation);
+	num = vec3_project(plane->orientation, plane->position);
 	if (num < 0)
-	{
 		plane->orientation = vec3_scale(plane->orientation, -1);
-	}
+}
+
+static void	normalize_cylinder(t_cylinder *cylinder)
+{
+	cylinder->orientation = vec3_normalize(cylinder->orientation);
 }
 
 static void	normalize_objects(t_list *objects)
@@ -40,6 +42,8 @@ static void	normalize_objects(t_list *objects)
 		object = (t_object *)node->content;
 		if (object->kind == PLANE)
 			normalize_plane((t_plane *)object);
+		if (object->kind == CYLINDER)
+			normalize_cylinder((t_cylinder *)object);
 		node = node->next;
 	}
 }
