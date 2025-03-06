@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/05 18:13:43 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/06 11:51:31 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -222,6 +222,9 @@ fclean : clean
 
 re : fclean all
 
+helper:
+	$(CC) $(CFLAGS) ./src/helper.c -o helper
+
 -include $(DEP)
 
-.PHONY:	all clean fclean re libs
+.PHONY:	all clean fclean re libs helper

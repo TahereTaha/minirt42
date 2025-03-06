@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_object_kind.h                                  :+:      :+:    :+:   */
+/*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 15:53:06 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/05 18:33:29 by tatahere         ###   ########.fr       */
+/*   Created: 2025/03/06 11:37:47 by tatahere          #+#    #+#             */
+/*   Updated: 2025/03/06 11:58:18 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_OBJECT_KIND_H
-# define GET_OBJECT_KIND_H
+#include "math.h"
+#include "stdlib.h"
+#include "unistd.h"
+#include "stdio.h"
 
-static const char	*object_str_identifier[] = {\
-	"A",	\
-	"C",	\
-	"L",	\
-	"sp",	\
-	"pl",	\
-	"cy"	\
-};
+int	main(int ac, char **av)
+{
+	int		number;
 
-#endif
+	(void)ac;
+	number = strtol(av[1], NULL, 16);
+	printf("%i,%i,%i\n",	number / (int)pow(16, 4), \
+							(number >> 8) % (int)pow(16, 2), \
+							number % (int)pow(16, 2) );
+	return (0);
+}

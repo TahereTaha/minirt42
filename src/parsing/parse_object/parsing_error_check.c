@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:04:45 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/20 16:54:54 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/06 11:24:16 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,11 @@
 
 int		orientation_error(t_vec3 *orientation)
 {
-	double	length;
-
 	if (orientation->x > 1 || orientation->x < -1)
 		return (1);
 	if (orientation->y > 1 || orientation->y < -1)
 		return (1);
 	if (orientation->z > 1 || orientation->z < -1)
-		return (1);
-	
-	length = sqrt(orientation->x * orientation->x + 
-				 orientation->y * orientation->y + 
-				 orientation->z * orientation->z);
-	if (fabs(length - 1.0) > 0.0001)
 		return (1);
 	return (0);
 }

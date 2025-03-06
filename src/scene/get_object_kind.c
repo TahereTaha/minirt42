@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:18:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/20 15:54:18 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:36:17 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ t_object_kind	get_object_kind(char *str)
 	char	*id_str;
 
 	i = 0;
-	if (str[0] == ' ' || str[0] == '\n')
+	if (str[0] == ' ' || str[0] == '\0')
 		return (BLANK);
-	while (i < 6)
+	while (i < OBJECT_AMOUNT)
 	{
 		id_str = (char *)object_str_identifier[i];
 		if (!ft_strncmp(id_str, str, ft_strlen(id_str)))
