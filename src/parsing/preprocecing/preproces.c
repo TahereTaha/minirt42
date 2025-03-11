@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 11:11:23 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/28 12:44:14 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/11 12:01:10 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 void	preproces(t_scene *scene)
 {
 	move_camera_to_center(scene);
+	normalize_scene(scene);
+	rotate_word(scene);
 	normalize_scene(scene);
 }

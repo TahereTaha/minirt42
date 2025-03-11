@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/06 11:51:31 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/11 12:49:15 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,10 +43,12 @@ CINC		+=	-I$(LIBMLX_HDR_DIR)
 CINC		+=	-I$(LIBFT_HDR_DIR)
 CFLAGS		+=	$(CINC)
 
-CDEBUG		:=	-g -fsanitize=address
+#CDEBUG		:=	-g -fsanitize=address
+CDEBUG		:=	-g
 CFLAGS		+=	$(CDEBUG)
 
 CFLAGSMLX	=	-ldl -lglfw -pthread -lm
+
 
 #	some usfull variables
 
@@ -126,6 +128,7 @@ OBJ_PARSING			:=	parse_file.o				\
 						move_camera_to_center.o		\
 						preproces.o					\
 						normalize_scene.o					\
+						rotate_word.o					\
 
 OBJ		+=	$(OBJ_PARSING)
 
@@ -206,7 +209,7 @@ $(BIN_DIR)		:
 	mkdir $(BIN_DIR)
 
 $(NAME) : $(OBJ) Makefile
-	$(CC) $(CFLAGS) $(CFLAGSMLX) $(OBJ) $(LIBS) -o $(NAME)
+	$(CC) $(CFLAGS)  $(OBJ) $(LIBS) $(CFLAGSMLX) -o $(NAME)
 
 $(BIN_DIR)%.o : %.c	Makefile 
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -225,6 +228,9 @@ re : fclean all
 helper:
 	$(CC) $(CFLAGS) ./src/helper.c -o helper
 
+test:
+	$(CC) $(CFLAGS) $(CFLAGSMLX) ./src/test.c ./bin/vec_*.o ./bin/mtx_*.o -o test
+
 -include $(DEP)
 
-.PHONY:	all clean fclean re libs helper
+.PHONY:	all clean fclean re libs
