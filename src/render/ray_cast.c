@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:20:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/05 18:20:42 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:33:23 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ t_ray	ray_cast_plane(t_vec3 ray, t_plane *plane)
 	delta_ray = vec3_project(plane->orientation, ray); 
 
 	plane_distance = vec3_project(plane->orientation, plane->position); 
+	ray_cast.magnitude = nan("");
+	if (plane_distance == 0.0)
+		return (ray_cast);
 
 	ray_cast.color = plane->color;
 	ray_cast.magnitude = plane_distance / delta_ray;

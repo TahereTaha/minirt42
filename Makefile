@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/11 12:49:15 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/13 20:55:46 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ OBJ_SCENE	:=	scene_create.o				\
 				get_object_kind.o			\
 				scene_object_add.o			\
 				scene_object_list_add.o		\
+				scene_copy.o				\
 
 OBJ		+=	$(OBJ_SCENE)
 

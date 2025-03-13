@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/22 15:55:08 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/13 20:31:40 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,17 @@ typedef	struct s_scene
 	t_camera		camera;
 	t_light			light;
 	t_list			*objects;
+	struct s_scene	*tmp_scene;
 }	t_scene;
 
+typedef void *(*t_map)(void *);
+
 t_scene	*scene_create(void);
+t_scene	*scene_copy_constructor(t_scene *scene);
+//	this asumes that the two scenes have the same objects.
+//	and it dose it in a "deep" way. dosn't just copy any pointers
+//	it navigates them and changes their data.
+void	scene_copy_assigment(t_scene *dest, t_scene *src);
 void	scene_destroy(t_scene *cene);
 
 void	scene_object_add(t_error *error, t_scene *scene, t_object object);
