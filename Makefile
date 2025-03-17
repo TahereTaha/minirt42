@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/13 20:55:46 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/17 14:13:39 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -141,6 +141,7 @@ OBJ_PARSING			:=	render_image_to_window.o				\
 						render_image.o				\
 						ray_cast.o				\
 						render_sphere.o				\
+#						render_cylinder.o				\
 
 OBJ		+=	$(OBJ_PARSING)
 
@@ -161,6 +162,8 @@ OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 					vec_dot_product.o       \
 					vec_project.o       \
 					vec_rotation.o       \
+					vec_paralel_comp.o       \
+					vec_perpendicular_comp.o       \
 
 #					vec2_get_angle.o		\
 					vec3_get_angle.o		\
