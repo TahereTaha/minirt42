@@ -22,7 +22,7 @@ static double	get_closest_positive_t(double t1, double t2)
 		return (t1);
 	else if (t2 > 0)
 		return (t2);
-	return (1000000000);
+	return (nan(""));
 }
 
 //put this in another file and library because I also use it in sphere
@@ -39,50 +39,70 @@ static int	solve_quadratic(double *coefficients, double *roots)
 	return (1);
 }
 
-static double	intersect_cylinder_caps(t_vec3 ray, t_vec3 ray_origin,
-		t_cylinder *cylinder)
+static double	intersect_bottom_cap(t_vec3 ray, t_cylinder *cylinder, double radius)
 {
 	double	t;
-	double	t_min;
+	t_vec3	p;
+	t_vec3	hit_relative;
+
+	t = vec3_dot_product(cylinder->position,
+			cylinder->orientation) / vec3_dot_product(ray, cylinder->orientation);
+	if (t <= 0)
+		return (nan(""));
+
+	p = vec3_scale(ray, t);
+	hit_relative = vec3_sub(p, cylinder->position);
+	// Get perpendicular component to check if hit is within cap radius
+	hit_relative = vec3_sub(hit_relative,
+		vec3_scale(cylinder->orientation,
+		vec3_dot_product(hit_relative, cylinder->orientation)));
+
+	if (vec3_length(hit_relative) <= radius)
+		return (t);
+	return (nan(""));
+}
+
+static double	intersect_top_cap(t_vec3 ray, t_cylinder *cylinder, double radius)
+{
+	double	t;
 	t_vec3	p;
 	t_vec3	top_center;
-	double	radius;
+	t_vec3	hit_relative;
 
-	//	its a bit strange.	try to use nan instead of a big number to represent unreachable or
-	//	too far away.
-	t_min = 1000000000;
-	radius = cylinder->diameter / 2.0;
 	top_center = vec3_add(cylinder->position,
 			vec3_scale(cylinder->orientation, cylinder->height));
 
-	//considerate separating top and bottom caps to respect norm
-	//	you sould add half of the lenght of the cylinder to its center to get one of the caps. 
-	t = vec3_dot_product(vec3_sub(cylinder->position, ray_origin),
+	t = vec3_dot_product(top_center,
 			cylinder->orientation) / vec3_dot_product(ray, cylinder->orientation);
-	if (t > 0)
-	{
-		p = vec3_add(ray_origin, vec3_scale(ray, t));
-		//	I think that you sould do something on the lines of
-		//	geting the position of the ray hit relative to the
-		//	cylinder center and then get only the perpendicular component
-		//	of that vector to know if the ray is hiting the cap or not.
-		if (vec3_distance(p, cylinder->position) <= radius)
-			t_min = t;
-	}
+	if (t <= 0)
+		return (nan(""));
 
-	t = vec3_dot_product(vec3_sub(top_center, ray_origin),
-			cylinder->orientation) / vec3_dot_product(ray, cylinder->orientation);
-	if (t > 0 && t < t_min)
-	{
-		p = vec3_add(ray_origin, vec3_scale(ray, t));
-		if (vec3_distance(p, top_center) <= radius)
-			t_min = t;
-	}
-	return (t_min);
+	p = vec3_scale(ray, t);
+	hit_relative = vec3_sub(p, top_center);
+	// Get perpendicular component to check if hit is within cap radius
+	hit_relative = vec3_sub(hit_relative,
+		vec3_scale(cylinder->orientation,
+		vec3_dot_product(hit_relative, cylinder->orientation)));
+
+	if (vec3_length(hit_relative) <= radius)
+		return (t);
+	return (nan(""));
 }
 
-static double	intersect_cylinder_body(t_vec3 ray, t_vec3 ray_origin,
-		t_cylinder *cylinder)
+static double	intersect_cylinder_caps(t_vec3 ray, t_cylinder *cylinder)
+{
+	double	t_bottom;
+	double	t_top;
+	double	radius;
+
+	radius = cylinder->diameter / 2.0;
+	t_bottom = intersect_bottom_cap(ray, cylinder, radius);
+	t_top = intersect_top_cap(ray, cylinder, radius);
+
+	return (get_closest_positive_t(t_bottom, t_top));
+}
+
+static double	intersect_cylinder_body(t_vec3 ray, t_cylinder *cylinder)
 {
 	double	coefficients[3];
 	double	roots[2];
@@ -94,7 +114,7 @@ static double	intersect_cylinder_body(t_vec3 ray, t_vec3 ray_origin,
 	double	h;
 
 	radius = cylinder->diameter / 2.0;
-	oc = vec3_sub(ray_origin, cylinder->position);
+	oc = vec3_scale(cylinder->position, -1);
 	v = cylinder->orientation;
 
 	//maybe put in a function
@@ -106,32 +126,31 @@ static double	intersect_cylinder_body(t_vec3 ray, t_vec3 ray_origin,
 		- pow(vec3_dot_product(oc, v), 2) - radius * radius;
 
 	if (!solve_quadratic(coefficients, roots))
-		//	try to use nan
-		return (1000000000);
+		return (nan(""));
 
 	t = get_closest_positive_t(roots[0], roots[1]);
-	if (t >= 1000000000)
+	if (isnan(t))
 		return (t);
 
-	p = vec3_add(ray_origin, vec3_scale(ray, t));
+	p = vec3_scale(ray, t);
 	h = vec3_dot_product(vec3_sub(p, cylinder->position), v);
 	if (h < 0 || h > cylinder->height)
-		return (1000000000);
+		return (nan(""));
 
 	return (t);
 }
 
 //	why do you have a ray_origin. the origin of the ray is always on the center or 0, 0, 0.
 //	I belive that w
-t_ray	ray_cast_cylinder(t_vec3 ray, t_vec3 ray_origin, t_cylinder *cylinder)
+t_ray	ray_cast_cylinder(t_vec3 ray, t_cylinder *cylinder)
 {
 	t_ray	ray_cast;
 	double	t_body;
 	double	t_caps;
 	double	t;
 
-	t_body = intersect_cylinder_body(ray, ray_origin, cylinder);
-	t_caps = intersect_cylinder_caps(ray, ray_origin, cylinder);
+	t_body = intersect_cylinder_body(ray, cylinder);
+	t_caps = intersect_cylinder_caps(ray, cylinder);
 
 	t = get_closest_positive_t(t_body, t_caps);
 	ray_cast.magnitude = t;
