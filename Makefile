@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/17 14:13:39 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/18 06:36:38 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,7 +140,9 @@ OBJ		+=	$(OBJ_PARSING)
 OBJ_PARSING			:=	render_image_to_window.o				\
 						render_image.o				\
 						ray_cast.o				\
+						render_plane.o				\
 						render_sphere.o				\
+						lighting.o				\
 #						render_cylinder.o				\
 
 OBJ		+=	$(OBJ_PARSING)

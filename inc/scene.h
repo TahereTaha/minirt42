@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/13 20:31:40 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/18 06:02:54 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ typedef	struct s_scene
 	t_camera		camera;
 	t_light			light;
 	t_list			*objects;
-	struct s_scene	*tmp_scene;
 }	t_scene;
 
 typedef void *(*t_map)(void *);
