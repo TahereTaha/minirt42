@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:13:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/18 06:39:25 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/19 07:55:07 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void		render_image(mlx_image_t *img, t_scene *scene)
 			//ray.y = (double)(i * 100) / (double)WIN_WIDTH - (double)50;
 			ray.x = tan(deg_to_rad(90.0 - (scene->camera.fov_rad / 2.0))) * 50.0;
 			ray = vec3_normalize(ray);
+			if (i == WIN_WIDTH / 2)
+				printf("aaaa\n");
 			our_color = ray_cast(ray, scene);
 			color = get_color(our_color);
 			mlx_put_pixel(img, i, j, color);

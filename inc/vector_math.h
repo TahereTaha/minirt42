@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/16 18:01:54 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/18 08:12:31 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ t_vec3	vec3_paral_comp(t_vec3 reference, t_vec3 vector);
 
 t_vec2	vec2_perp_comp(t_vec2 reference, t_vec2 vector);
 t_vec3	vec3_perp_comp(t_vec3 reference, t_vec3 vector);
+
+double	vec2_angle(t_vec2 vector1, t_vec2 vector2);
+double	vec3_angle(t_vec3 vector1, t_vec3 vector2);
 
 // vector rotation
 t_vec2	vec2_rotate(t_vec2 vector, double angle);

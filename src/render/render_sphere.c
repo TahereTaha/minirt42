@@ -51,15 +51,17 @@ int	solve_quadratic(double *coefficients, double *roots)
 t_ray	ray_cast_sphere(t_vec3 ray, t_vec3 origin, t_sphere sphere)
 {
 	t_ray	ray_cast;
-	// oc (Origin to Center): Vector from camera to sphere center
+	//	what is oc?
 	t_vec3	oc;
 	double	coefficients[3];
 	double	roots[2];
 	t_vec3	hit_point;
+//	double	radius;	// needed to remove one variable.
 
 	sphere.position = vec3_sub(sphere.position, origin);
-	oc = sphere.position;  // Vector FROM camera TO sphere
-	get_sphere_coefficients(ray, oc, sphere.diameter / 2.0, coefficients);
+	oc = vec3_scale(sphere.position, -1);
+//	radius = sphere.diameter / 2.0;
+	get_sphere_coefficients(ray, oc, sphere.diameter / 2.0 , coefficients);
 	ray_cast.color = sphere.color;
 	if (!solve_quadratic(coefficients, roots))
 	{

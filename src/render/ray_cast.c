@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:20:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/18 06:48:43 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/18 15:43:08 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ t_color	ray_cast(t_vec3 ray, t_scene *scene)
 			ray_cast = new_ray_cast;
 		node = node->next;
 	}
-	ray_cast.color = light_point(ray_cast, scene->light, scene->objects);
+	ray_cast.color = light_point(ray_cast, scene);
 	return (ray_cast.color);
 }
