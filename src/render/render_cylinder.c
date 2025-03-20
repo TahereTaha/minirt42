@@ -142,6 +142,29 @@ static double	intersect_cylinder_body(t_vec3 ray, t_vec3 origin, t_cylinder *cyl
 	return (t);
 }
 
+static t_vec3	get_cylinder_normal(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder, double t)
+{
+	t_vec3	hit_point;
+	t_vec3	hit_relative;
+	t_vec3	normal;
+	double	proj;
+
+	hit_point = vec3_scale(ray, t);
+	hit_relative = vec3_sub(hit_point, vec3_sub(cylinder->position, origin));
+	proj = vec3_dot_product(hit_relative, cylinder->orientation);
+	if (proj <= 0)
+		normal = vec3_scale(cylinder->orientation, -1);
+	else if (proj >= cylinder->height)
+		normal = cylinder->orientation;
+	else
+	{
+		t_vec3 proj_point;
+		proj_point = vec3_scale(cylinder->orientation, proj);
+		normal = vec3_normalize(vec3_sub(hit_relative, proj_point));
+	}
+	return (normal);
+}
+
 t_ray	ray_cast_cylinder(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder)
 {
 	t_ray	ray_cast;
@@ -155,6 +178,9 @@ t_ray	ray_cast_cylinder(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder)
 	t = get_closest_positive_t(t_body, t_caps);
 	ray_cast.magnitude = t;
 	ray_cast.color = cylinder->color;
+
+	if (!isnan(t)) //if it hits 
+		ray_cast.normal = get_cylinder_normal(ray, origin, cylinder, t);
 
 	return (ray_cast);
 }
