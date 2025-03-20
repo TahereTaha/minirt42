@@ -6,21 +6,21 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:27:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/20 12:27:59 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:16:46 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <float.h>
 #include "numbers.h"
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <float.h>
 
 void	ft_process_int(char *str, int *i, float *result)
 {
-	while (ft_isdigit(str[*i])) 
+	while (ft_isdigit(str[*i]))
 	{
 		*result = *result * 10.0f + (str[*i] - '0');
 		(*i)++;
@@ -41,12 +41,12 @@ void	ft_process_frac(char *str, int *i, float *result, float *divisor)
 	}
 }
 
-float ft_atof(char *str)
+float	ft_atof(char *str)
 {
-	int i;
-	float result;
-	int sign;
-	float divisor;
+	int		i;
+	float	result;
+	int		sign;
+	float	divisor;
 
 	i = 0;
 	sign = 1;
@@ -57,7 +57,7 @@ float ft_atof(char *str)
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-		sign = -1;
+			sign = -1;
 		i++;
 	}
 	ft_process_int(str, &i, &result);

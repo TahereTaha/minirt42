@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:57:18 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/20 15:59:18 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:18:04 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <ctype.h>
 #include <limits.h>
 
-int ft_isint(char *str)
+int	ft_isint(char *str)
 {
 	int	i;
 
@@ -25,17 +25,17 @@ int ft_isint(char *str)
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (!isdigit(str[i]))
-		return 0;
+		return (0);
 	while (isdigit(str[i]))
 		i++;
 	return (str[i] == '\0');
 }
 
-int		is_intoverflow(char *str)
+int	is_intoverflow(char *str)
 {
 	int	i;
 	int	result;
-	int digit;
+	int	digit;
 
 	i = 0;
 	result = 0;

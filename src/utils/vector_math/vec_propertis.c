@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 10:16:42 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/22 18:41:27 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:13:35 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	vec3_is_null(t_vec3 vector)
 	return (0);
 }
 
-int		vec2_is_equal(t_vec2 vector1, t_vec2 vector2)
+int	vec2_is_equal(t_vec2 vector1, t_vec2 vector2)
 {
 	int	x_equal;
 	int	y_equal;
@@ -42,7 +42,7 @@ int		vec2_is_equal(t_vec2 vector1, t_vec2 vector2)
 	return (0);
 }
 
-int		vec3_is_equal(t_vec3 vector1, t_vec3 vector2)
+int	vec3_is_equal(t_vec3 vector1, t_vec3 vector2)
 {
 	int	x_equal;
 	int	y_equal;
