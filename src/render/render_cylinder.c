@@ -39,19 +39,21 @@ static int	solve_quadratic(double *coefficients, double *roots)
 	return (1);
 }
 
-static double	intersect_bottom_cap(t_vec3 ray, t_cylinder *cylinder, double radius)
+static double	intersect_bottom_cap(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder, double radius)
 {
 	double	t;
 	t_vec3	p;
 	t_vec3	hit_relative;
+	t_vec3	pos;
 
-	t = vec3_dot_product(cylinder->position,
+	pos = vec3_sub(cylinder->position, origin);
+	t = vec3_dot_product(pos,
 			cylinder->orientation) / vec3_dot_product(ray, cylinder->orientation);
 	if (t <= 0)
 		return (nan(""));
 
 	p = vec3_scale(ray, t);
-	hit_relative = vec3_sub(p, cylinder->position);
+	hit_relative = vec3_sub(p, pos);
 	// Get perpendicular component to check if hit is within cap radius
 	hit_relative = vec3_sub(hit_relative,
 		vec3_scale(cylinder->orientation,
@@ -62,14 +64,14 @@ static double	intersect_bottom_cap(t_vec3 ray, t_cylinder *cylinder, double radi
 	return (nan(""));
 }
 
-static double	intersect_top_cap(t_vec3 ray, t_cylinder *cylinder, double radius)
+static double	intersect_top_cap(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder, double radius)
 {
 	double	t;
 	t_vec3	p;
 	t_vec3	top_center;
 	t_vec3	hit_relative;
 
-	top_center = vec3_add(cylinder->position,
+	top_center = vec3_add(vec3_sub(cylinder->position, origin),
 			vec3_scale(cylinder->orientation, cylinder->height));
 
 	t = vec3_dot_product(top_center,
@@ -89,20 +91,20 @@ static double	intersect_top_cap(t_vec3 ray, t_cylinder *cylinder, double radius)
 	return (nan(""));
 }
 
-static double	intersect_cylinder_caps(t_vec3 ray, t_cylinder *cylinder)
+static double	intersect_cylinder_caps(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder)
 {
 	double	t_bottom;
 	double	t_top;
 	double	radius;
 
 	radius = cylinder->diameter / 2.0;
-	t_bottom = intersect_bottom_cap(ray, cylinder, radius);
-	t_top = intersect_top_cap(ray, cylinder, radius);
+	t_bottom = intersect_bottom_cap(ray, origin, cylinder, radius);
+	t_top = intersect_top_cap(ray, origin, cylinder, radius);
 
 	return (get_closest_positive_t(t_bottom, t_top));
 }
 
-static double	intersect_cylinder_body(t_vec3 ray, t_cylinder *cylinder)
+static double	intersect_cylinder_body(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder)
 {
 	double	coefficients[3];
 	double	roots[2];
@@ -114,7 +116,7 @@ static double	intersect_cylinder_body(t_vec3 ray, t_cylinder *cylinder)
 	double	h;
 
 	radius = cylinder->diameter / 2.0;
-	oc = vec3_scale(cylinder->position, -1);
+	oc = vec3_sub(origin, cylinder->position);
 	v = cylinder->orientation;
 
 	//maybe put in a function
@@ -133,24 +135,22 @@ static double	intersect_cylinder_body(t_vec3 ray, t_cylinder *cylinder)
 		return (t);
 
 	p = vec3_scale(ray, t);
-	h = vec3_dot_product(vec3_sub(p, cylinder->position), v);
+	h = vec3_dot_product(vec3_sub(p, vec3_sub(cylinder->position, origin)), v);
 	if (h < 0 || h > cylinder->height)
 		return (nan(""));
 
 	return (t);
 }
 
-//	why do you have a ray_origin. the origin of the ray is always on the center or 0, 0, 0.
-//	I belive that w
-t_ray	ray_cast_cylinder(t_vec3 ray, t_cylinder *cylinder)
+t_ray	ray_cast_cylinder(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder)
 {
 	t_ray	ray_cast;
 	double	t_body;
 	double	t_caps;
 	double	t;
 
-	t_body = intersect_cylinder_body(ray, cylinder);
-	t_caps = intersect_cylinder_caps(ray, cylinder);
+	t_body = intersect_cylinder_body(ray, origin, cylinder);
+	t_caps = intersect_cylinder_caps(ray, origin, cylinder);
 
 	t = get_closest_positive_t(t_body, t_caps);
 	ray_cast.magnitude = t;
