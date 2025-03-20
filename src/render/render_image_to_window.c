@@ -16,6 +16,15 @@
 #include "renderer.h"
 #include "MLX42/MLX42.h"
 
+static void	key_handler(mlx_key_data_t keydata, void *param)
+{
+	mlx_t	*mlx;
+
+	mlx = (mlx_t *)param;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(mlx);
+}
+
 mlx_t	*make_window_and_img(t_error *error, t_scene *scene)
 {
 	mlx_t		*mlx;
@@ -42,6 +51,7 @@ mlx_t	*make_window_and_img(t_error *error, t_scene *scene)
 		error_set(error, mlx_errno);
 		return (NULL);
 	}
+	mlx_key_hook(mlx, key_handler, mlx);
 	return (mlx);
 }
 
