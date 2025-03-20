@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/19 06:35:39 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/20 11:37:36 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,7 +146,7 @@ OBJ_PARSING			:=	render_image_to_window.o				\
 						get_ambient_light.o				\
 						get_difuse_light.o				\
 						color_utils.o				\
-#						render_cylinder.o				\
+					render_cylinder.o				\
 
 OBJ		+=	$(OBJ_PARSING)
 
@@ -238,8 +238,8 @@ re : fclean all
 helper:
 	$(CC) $(CFLAGS) ./src/helper.c -o helper
 
-test:
-	$(CC) $(CFLAGS) $(CFLAGSMLX) ./src/test.c ./bin/vec_*.o ./bin/mtx_*.o -o test
+test: ./bin/vec_*.o 
+	$(CC) $(CFLAGS) ./src/test.c ./bin/vec_*.o -lm -o test
 
 -include $(DEP)
 

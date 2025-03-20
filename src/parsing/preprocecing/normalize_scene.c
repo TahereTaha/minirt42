@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 15:21:51 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/11 14:02:52 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 11:55:51 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	normalize_plane(t_plane *plane)
 
 	plane->orientation = vec3_normalize(plane->orientation);
 	num = vec3_project(plane->orientation, plane->position);
-	if (num < 0)
+	if (num > 0)
 		plane->orientation = vec3_scale(plane->orientation, -1);
 }
 

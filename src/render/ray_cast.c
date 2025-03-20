@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:20:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/18 15:43:08 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 11:50:01 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_ray	ray_cast_object(t_vec3 ray, t_vec3 origin, t_object *object)
 		ray_cast = ray_cast_plane(ray, origin, *(t_plane *)object);
 	else if (object->kind == SPHERE)
 		ray_cast = ray_cast_sphere(ray, origin, *(t_sphere *)object);
-//	else if (object->kind == CYLINDER)
-//		ray_cast = ray_cast_cylinder(ray, get_null_vector(), (t_cylinder *)object);
+	else if (object->kind == CYLINDER)
+		ray_cast = ray_cast_cylinder(ray, origin, (t_cylinder *)object);
 	ray_cast.magnitude -= ALPHA;
 	if (!isnan(ray_cast.magnitude))
 		ray_cast.hit = vec3_scale(ray, ray_cast.magnitude);

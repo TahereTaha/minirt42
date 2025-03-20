@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 09:01:14 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/17 13:53:05 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 11:25:25 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static double	intersect_bottom_cap(t_vec3 ray, t_vec3 origin, t_cylinder *cylind
 		vec3_scale(cylinder->orientation,
 		vec3_dot_product(hit_relative, cylinder->orientation)));
 
-	if (vec3_length(hit_relative) <= radius)
+	if (vec3_get_magnitude(hit_relative) <= radius)
 		return (t);
 	return (nan(""));
 }
@@ -86,7 +86,7 @@ static double	intersect_top_cap(t_vec3 ray, t_vec3 origin, t_cylinder *cylinder,
 		vec3_scale(cylinder->orientation,
 		vec3_dot_product(hit_relative, cylinder->orientation)));
 
-	if (vec3_length(hit_relative) <= radius)
+	if (vec3_get_magnitude(hit_relative) <= radius)
 		return (t);
 	return (nan(""));
 }

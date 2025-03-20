@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:24:24 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/19 08:07:05 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 10:57:23 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ double	vec3_angle(t_vec3 vector1, t_vec3 vector2)
 	vector2 = vec3_normalize(vector2);
 	hypotenus = vec3_get_magnitude(vector1);
 	adjacent_side = vec3_project(vector1, vector2);
-	angle = cos(hypotenus / adjacent_side);
+	angle = acos(adjacent_side / hypotenus);
 	return (angle);
 }
