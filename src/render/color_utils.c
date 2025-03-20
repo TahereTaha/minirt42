@@ -6,17 +6,16 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:00:52 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 12:45:15 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:40:59 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "renderer.h"
 
-//	this will combine two colors.
 t_color	add_color(t_color color1, t_color color2)
 {
-	t_color new_color;
+	t_color	new_color;
 
 	new_color.r = color1.r + color2.r;
 	if (new_color.r > 255 && new_color.r < 0)
@@ -30,8 +29,7 @@ t_color	add_color(t_color color1, t_color color2)
 	return (new_color);
 }
 
-//	this will return the color seen by iluminating it with a light.
-t_color light_color(t_color color, t_color light)
+t_color	light_color(t_color color, t_color light)
 {
 	t_color	new_color;
 	double	scalar;
@@ -47,7 +45,7 @@ t_color light_color(t_color color, t_color light)
 
 t_color	scale_color(t_color color, double scalar)
 {
-	t_color new_color;
+	t_color	new_color;
 
 	new_color.r = color.r * scalar;
 	if (new_color.r > 255)

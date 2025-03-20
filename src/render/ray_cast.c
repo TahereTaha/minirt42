@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:20:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 11:50:01 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:47:34 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_ray	ray_cast_object(t_vec3 ray, t_vec3 origin, t_object *object)
 	return (ray_cast);
 }
 
-int		ray_is_closer(t_ray ray_cast, t_ray new_ray_cast)
+int	ray_is_closer(t_ray ray_cast, t_ray new_ray_cast)
 {
 	if (isnan(new_ray_cast.magnitude))
 		return (0);
