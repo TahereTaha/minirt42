@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:13:27 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/26 10:34:45 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:01:57 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ mlx_t	*make_window_and_img(t_error *error, t_scene *scene)
 		error_set(error, mlx_errno);
 		return (NULL);
 	}
-	(void)scene;
 	render_image(img, scene);
 	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
 	{
