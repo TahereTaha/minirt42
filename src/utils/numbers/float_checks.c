@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 09:57:40 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 11:19:57 by rgiambon         ###   ########.fr       */
+/*   Created: 2025/03/21 11:32:19 by rgiambon          #+#    #+#             */
+/*   Updated: 2025/03/21 11:32:22 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,15 @@ int	ft_isfloatoverflow(char *str)
 	return (false);
 }
 
+static int	skip_characters(char *str, int i)
+{
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	return (i);
+}
+
 int	ft_isfloat(char *str)
 {
 	int	i;
@@ -66,13 +75,9 @@ int	ft_isfloat(char *str)
 
 	if (!str || !*str)
 		return (false);
-	i = 0;
 	has_dot = 0;
 	has_digit = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
+	i = skip_characters(str, 0);
 	while (str[i])
 	{
 		if (ft_isdigit(str[i]))
