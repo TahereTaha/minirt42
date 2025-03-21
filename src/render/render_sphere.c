@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 10:23:11 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 14:42:51 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:59:12 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,6 @@ double	get_closest_intersection(double t1, double t2)
 	else if (t2 > 0)
 		return (t2);
 	return (nan(""));
-}
-
-int	solve_quadratic(double *coefficients, double *roots)
-{
-	double	discriminant;
-
-	discriminant = coefficients[1] * coefficients[1]
-		- 4.0 * coefficients[0] * coefficients[2];
-	if (discriminant < 0)
-		return (0);
-	roots[0] = (-coefficients[1] - sqrt(discriminant)) \
-	/ (2.0 * coefficients[0]);
-	roots[1] = (-coefficients[1] + sqrt(discriminant)) \
-	/ (2.0 * coefficients[0]);
-	return (1);
 }
 
 t_ray	ray_cast_sphere(t_vec3 ray, t_vec3 origin, t_sphere sphere)

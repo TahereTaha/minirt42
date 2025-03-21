@@ -6,12 +6,13 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 10:33:27 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/21 10:48:06 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:59:54 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <math.h>
 #include "scene.h"
 #include "renderer.h"
+#include "vector_math.h"
 
 double	get_closest_positive_t(double t1, double t2)
 {
@@ -22,21 +23,6 @@ double	get_closest_positive_t(double t1, double t2)
 	else if (t2 > 0)
 		return (t2);
 	return (nan(""));
-}
-
-int	solve_quadratic(double *coefficients, double *roots)
-{
-	double	discriminant;
-
-	discriminant = coefficients[1] * coefficients[1]
-		- 4.0 * coefficients[0] * coefficients[2];
-	if (discriminant < 0)
-		return (0);
-	roots[0] = (-coefficients[1] - sqrt(discriminant)) \
-	/ (2.0 * coefficients[0]);
-	roots[1] = (-coefficients[1] + sqrt(discriminant)) \
-	/ (2.0 * coefficients[0]);
-	return (1);
 }
 
 double	intersect_bottom_cap(t_vec3 ray, t_vec3 origin, \
