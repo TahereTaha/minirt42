@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   numbers.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/21 11:18:57 by rgiambon          #+#    #+#             */
+/*   Updated: 2025/03/21 11:19:42 by rgiambon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef NUMBERS_H
 # define NUMBERS_H
 
@@ -13,6 +25,8 @@ int		ft_isint(char *str);
 int		is_intoverflow(char *str);
 
 # define PI 3.14159265359
+# define FLTMAX 3.402823466e+38  
+# define MFLTMAX -3.402823466e+38
 
 double	deg_to_rad(double deg);
 

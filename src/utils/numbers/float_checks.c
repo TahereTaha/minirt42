@@ -6,11 +6,10 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 09:57:40 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 14:18:20 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:19:57 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <float.h>
 #include "libft.h"
 #include "numbers.h"
 
@@ -54,7 +53,7 @@ int	ft_isfloatoverflow(char *str)
 	if (check_decimal_part(str))
 		return (true);
 	num = ft_atof(str);
-	if (num > FLT_MAX || num < -FLT_MAX)
+	if (num > FLTMAX || num < MFLTMAX)
 		return (true);
 	return (false);
 }

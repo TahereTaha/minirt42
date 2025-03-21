@@ -6,12 +6,11 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:27:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 14:16:46 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:16:33 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <float.h>
 #include "numbers.h"
 #include <limits.h>
 #include <stdio.h>
