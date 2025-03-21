@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/20 13:27:02 by rgiambon         ###   ########.fr        #
+#    Updated: 2025/03/21 09:10:34 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,6 +126,7 @@ OBJ_PARSING			:=	parse_file.o				\
 						parse_sphere.o				\
 						parse_plane.o				\
 						parse_cylinder.o			\
+						parse_cylinder_aux.o		\
 						move_camera_to_center.o		\
 						preproces.o					\
 						normalize_scene.o					\

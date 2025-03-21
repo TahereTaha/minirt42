@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:39:00 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/22 16:53:24 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 09:25:19 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <errno.h>
@@ -25,13 +25,11 @@ void	parse_alight_color(t_error *error, char *token, t_ambient_light *light)
 	if (!color)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "Failed to allocate memory for light color", 0);
 		return ;
 	}
 	if (format_error(color))
 	{
 		error_set(error, INVALID_FORMAT);
-		error_msg_append(error, "Invalid color format in light", 0);
 		free_array(color);
 		return ;
 	}
@@ -41,7 +39,6 @@ void	parse_alight_color(t_error *error, char *token, t_ambient_light *light)
 	if (color_error(&light->light_color))
 	{
 		error_set(error, INVALID_RANGE);
-		error_msg_append(error, "Color values must be between 0 and 255", 0);
 		free_array(color);
 		return ;
 	}
@@ -76,17 +73,17 @@ t_object	parse_ambient_light(t_error *error, char *line)
 	if (!tokens)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "Failed to allocate memory for light tokens", 0);
 		return (object);
 	}
 	if (ft_arraylen(tokens) != 3)
 	{
 		error_set(error, WRONG_TOKENS_COUNT);
-		error_msg_append(error, "Wrong number of tokens for light", 0);
 		return (object);
 	}
 	parse_alight_ratio(error, tokens[1], light);
 	parse_alight_color(error, tokens[2], light);
 	free_array(tokens);
+	if (error->errnum)
+		error_msg_append(error, "ambient light: ", 0);
 	return (object);
 }

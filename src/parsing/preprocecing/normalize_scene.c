@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 15:21:51 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 11:55:51 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 07:39:57 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static void	normalize_objects(t_list *objects)
 
 void	normalize_scene(t_scene *scene)
 {
-	scene->camera.view_point = vec3_normalize(scene->camera.view_point);
+	if (vec3_is_null(scene->camera.orientation))
+		scene->camera.orientation = (t_vec3){1, 0, 0};
 	scene->camera.orientation = vec3_normalize(scene->camera.orientation);
 	normalize_objects(scene->objects);
 }

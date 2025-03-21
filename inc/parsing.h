@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 13:28:24 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/21 08:34:17 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <stdlib.h>
 # include "scene.h"
 # include "error_managment.h"
+# include "vector_math.h"
+
+t_vec3	parse_vector(char **vec_str);
 
 void			check_argument(t_error *error, int ac, char **av);
 void			parse_file(t_error *error, t_scene *scene, int ac, char **av);

@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:12 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/21 12:11:58 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 09:09:18 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@
 #include "error_managment.h"
 #include "custom_errors.h"
 
+static t_color	parse_color(char **color)
+{
+	t_color	new_color;
+
+	new_color.r = ft_atoi(color[0]);
+	new_color.g = ft_atoi(color[1]);
+	new_color.b = ft_atoi(color[2]);
+	return (new_color);
+}
+
 void	parse_color_sphere(t_error *error, char *token, t_sphere *sphere)
 {
 	char	**color;
@@ -26,7 +36,6 @@ void	parse_color_sphere(t_error *error, char *token, t_sphere *sphere)
 	if (!color)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "Failed to allocate memory for sphere color", 0);
 		return ;
 	}
 	if (format_error(color))
@@ -36,9 +45,7 @@ void	parse_color_sphere(t_error *error, char *token, t_sphere *sphere)
 		free_array(color);
 		return ;
 	}
-	sphere->color.r = ft_atoi(color[0]);
-	sphere->color.g = ft_atoi(color[1]);
-	sphere->color.b = ft_atoi(color[2]);
+	sphere->color = parse_color(color);
 	if (color_error(&sphere->color))
 	{
 		error_set(error, INVALID_RANGE);
@@ -54,14 +61,12 @@ void	parse_diameter_sphere(t_error *error, char *token, t_sphere *sphere)
 	if (!ft_isfloat(token) || ft_isfloatoverflow(token))
 	{
 		error_set(error, NOT_A_NUMBER);
-		error_msg_append(error, "Invalid diameter value: not a valid number", 0);
 		return ;
 	}
 	sphere->diameter = ft_atof(token);
 	if (sphere->diameter <= 0)
 	{
 		error_set(error, INVALID_RANGE);
-		error_msg_append(error, "Diameter must be positive", 0);
 		return ;
 	}
 }
@@ -74,13 +79,11 @@ void	parse_position_sphere(t_error *error, char *token, t_sphere *sphere)
 	if (!coordinates)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "Failed to allocate memory for sphere position", 0);
 		return ;
 	}
 	if (format_error(coordinates))
 	{
 		error_set(error, INVALID_FORMAT);
-		error_msg_append(error, "Invalid coordinate format in sphere position", 0);
 		free_array(coordinates);
 		return ;
 	}
@@ -107,12 +110,13 @@ t_object	parse_sphere(t_error *error, char *line)
 	{
 		free_array(tokens);
 		error_set(error, WRONG_TOKENS_COUNT);
-		error_msg_append(error, "Wrong number of tokens for sphere: ", 0);
 		return (object);
 	}
 	parse_position_sphere(error, tokens[1], sphere);
 	parse_diameter_sphere(error, tokens[2], sphere);
 	parse_color_sphere(error, tokens[3], sphere);
+	if (error->errnum)
+		error_msg_append(error, "sphere: ", 0);
 	free_array(tokens);
 	return (object);
 }

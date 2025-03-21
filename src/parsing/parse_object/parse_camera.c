@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/02/22 17:52:18 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 08:31:07 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ void	parse_fov_rad(t_error *error, char *token, t_camera *cam)
 	}
 }
 
+t_vec3	parse_vector(char **coordinates)
+{
+	t_vec3	vec;
+
+	vec.x = ft_atof(coordinates[0]);
+	vec.y = ft_atof(coordinates[1]);
+	vec.z = ft_atof(coordinates[2]);
+	return (vec);
+}
+
 void	parse_orientation(t_error *error, char *token, t_camera *cam)
 {
 	char	**coordinates;
@@ -43,23 +53,20 @@ void	parse_orientation(t_error *error, char *token, t_camera *cam)
 	if (!coordinates)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "Failed to allocate memory for camera orientation", 0);
 		return ;
 	}
 	if (format_error(coordinates))
 	{
 		error_set(error, INVALID_FORMAT);
-		error_msg_append(error, "Invalid coordinate format in camera orientation", 0);
+		error_msg_append(error, "Invalid orientation", 0);
 		free_array(coordinates);
 		return ;
 	}
-	cam->orientation.x = ft_atof(coordinates[0]);
-	cam->orientation.y = ft_atof(coordinates[1]);
-	cam->orientation.z = ft_atof(coordinates[2]);
+	cam->orientation = parse_vector(coordinates);
 	if (orientation_error(&cam->orientation))
 	{
 		error_set(error, INVALID_RANGE);
-		error_msg_append(error, "Camera orientation vector must be normalized (-1 to 1)", 0);
+		error_msg_append(error, "orientation not normalized", 0);
 		free_array(coordinates);
 		return ;
 	}
@@ -74,19 +81,16 @@ void	parse_view_point(t_error *error, char *token, t_camera *cam)
 	if (!coordinates)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "Failed to allocate memory for camera position", 0);
 		return ;
 	}
 	if (format_error(coordinates))
 	{
 		error_set(error, INVALID_FORMAT);
-		error_msg_append(error, "Invalid coordinate format in camera position", 0);
+		error_msg_append(error, "Invalid coordinate format", 0);
 		free_array(coordinates);
 		return ;
 	}
-	cam->view_point.x = ft_atof(coordinates[0]);
-	cam->view_point.y = ft_atof(coordinates[1]);
-	cam->view_point.z = ft_atof(coordinates[2]);
+	cam->view_point = parse_vector(coordinates);
 	free_array(coordinates);
 }
 
@@ -101,18 +105,20 @@ t_object	parse_camera(t_error *error, char *line)
 	if (!tokens)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "Failed to allocate memory for camera tokens", 0);
+		error_msg_append(error, "camera: ", 0);
 		return (object);
 	}
 	if (ft_arraylen(tokens) != 4)
 	{
 		error_set(error, WRONG_TOKENS_COUNT);
-		error_msg_append(error, "Wrong number of tokens for camera", 0);
+		error_msg_append(error, "camera: wrong numbre of tokens", 0);
 		return (object);
 	}
 	parse_view_point(error, tokens[1], cam);
 	parse_orientation(error, tokens[2], cam);
 	parse_fov_rad(error, tokens[3], cam);
 	free_array(tokens);
+	if (error->errnum)
+		error_msg_append(error, "cammera: ", 0);
 	return (object);
 }

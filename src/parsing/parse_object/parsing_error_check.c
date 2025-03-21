@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:04:45 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/06 11:24:16 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 08:26:34 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "custom_errors.h"
 #include "minirt.h"
 
-int		orientation_error(t_vec3 *orientation)
+int	orientation_error(t_vec3 *orientation)
 {
 	if (orientation->x > 1 || orientation->x < -1)
 		return (1);
@@ -30,7 +30,7 @@ int		orientation_error(t_vec3 *orientation)
 	return (0);
 }
 
-int		format_error(char **coordinates)
+int	format_error(char **coordinates)
 {
 	int	i;
 
@@ -46,7 +46,7 @@ int		format_error(char **coordinates)
 	return (0);
 }
 
-int		color_error(t_color *color)
+int	color_error(t_color *color)
 {
 	if (color->r < 0 || color->r > 255)
 		return (1);
@@ -59,7 +59,7 @@ int		color_error(t_color *color)
 
 void	free_array(char **strs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (strs[i])
@@ -70,7 +70,7 @@ void	free_array(char **strs)
 	free(strs);
 }
 
-int		ft_arraylen(char **strs)
+int	ft_arraylen(char **strs)
 {
 	int	i;
 
