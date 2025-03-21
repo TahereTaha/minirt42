@@ -6,14 +6,13 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:03:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/11 14:57:40 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:14:19 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GNL_H
 # define GNL_H
 # include <aio.h>
-
 
 char	*get_next_line(int fd);
 

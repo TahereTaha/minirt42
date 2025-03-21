@@ -6,18 +6,18 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:09:56 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/19 06:02:08 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:17:45 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERER_H
 # define RENDERER_H
 
-#include "error_managment.h"
-#include "ft_list.h"
-#include "scene.h"
-#include "vector_math.h"
-#include "MLX42/MLX42.h"
+# include "error_managment.h"
+# include "ft_list.h"
+# include "scene.h"
+# include "vector_math.h"
+# include "MLX42/MLX42.h"
 
 # define ALPHA	0.00000001
 
@@ -49,6 +49,6 @@ t_color	get_phong_shine(t_scene, t_ray hit_point);
 
 t_color	scale_color(t_color color, double scalar);
 t_color	add_color(t_color color1, t_color color2);
-t_color light_color(t_color color, t_color light);
+t_color	light_color(t_color color, t_color light);
 
 #endif

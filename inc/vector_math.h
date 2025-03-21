@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/18 08:12:31 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:16:16 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ t_vec2	vec2_normalize(t_vec2 vector);
 t_vec3	vec3_normalize(t_vec3 vector);
 
 // vector cross product
-double vec2_cross_product(t_vec2 a, t_vec2 b);
-t_vec3 vec3_cross_product(t_vec3 a, t_vec3 b);
+double	vec2_cross_product(t_vec2 a, t_vec2 b);
+t_vec3	vec3_cross_product(t_vec3 a, t_vec3 b);
 
 // vector dot product
 double	vec2_dot_product(t_vec2 a, t_vec2 b);
@@ -106,7 +106,6 @@ t_vec2	vec2_linear_combination(	t_vec2 vector1, double scalar1, \
 									t_vec2 vector2, double scalar2);
 t_vec3	vec3_linear_combination(	t_vec3 vector1, double scalar1, \
 									t_vec3 vector2, double scalar2);
-
 /*
 //	span
 int		vec2_span(t_vec2 vector1, t_vec2 vector2);
@@ -123,21 +122,5 @@ t_mtx3	mtx3_mtx3_multiplication(t_mtx3 matrix1, t_mtx3 matrix2);
 //	dot product
 
 double	ft_abs(double numb);
-
-
-//
-//
-//
-/*
-//	angles.
-double	vec2_get_angle(t_vec2 vector);			//	the only usfull one.
-double	vec3_get_angle_x_axis(t_vec3 vector);	//	redo
-double	vec3_get_angle_y_axis(t_vec3 vector);	//	redo
-double	vec3_get_angle_z_axis(t_vec3 vector);	//	redo
-
-//	vector creator.
-t_vec2	vec2_create(double magnitude, double angle_rad);	
-t_vec3	vec3_create(double magnitude, double angle_z_rad, double angle_y_rad);	//	redo
-*/
 
 #endif

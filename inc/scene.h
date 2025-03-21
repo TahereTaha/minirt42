@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/18 06:02:54 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:12:34 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_color
 	int	r;
 	int	g;
 	int	b;
-}	t_color;
+}		t_color;
 
 //	objects.
 
@@ -41,8 +41,6 @@ typedef enum e_object_kind
 	UNEXISTENT
 }	t_object_kind;
 
-t_object_kind	get_object_kind(char *str);
-
 //	All objects that means:
 //		the camera, ambient lighting, sphere, cilinder and all the other.
 //	Will have at the start the t_object_kind.
@@ -59,7 +57,7 @@ typedef struct s_ambient_light
 }	t_ambient_light;
 
 //	please use thin in the most dier of circustances only.
-typedef t_ambient_light t_al;
+typedef t_ambient_light	t_al;
 
 typedef struct s_camera
 {
@@ -113,35 +111,31 @@ typedef union u_bigest_object
 	t_cylinder		object6;
 }	t_bigest_object;
 
-//	this is the father.
-//	or general object that can store any informatio that the other child objects need.
 typedef struct s_object
 {
 	t_object_kind	kind;
-	char			pading[sizeof (t_bigest_object) - sizeof (t_object_kind)];
-}	t_object;
+	char			pading[88];
+}		t_object;
 
-t_object	object_create(t_error *error, char *line);
+t_object_kind	get_object_kind(char *str);
+t_object		object_create(t_error *error, char *line);
 
-typedef	struct s_scene
+typedef struct s_scene
 {
 	t_ambient_light	ambient_light;
 	t_camera		camera;
 	t_light			light;
 	t_list			*objects;
-}	t_scene;
+}					t_scene;
 
-typedef void *(*t_map)(void *);
+typedef void*	(*t_map)(void *);
 
-t_scene	*scene_create(void);
-t_scene	*scene_copy_constructor(t_scene *scene);
-//	this asumes that the two scenes have the same objects.
-//	and it dose it in a "deep" way. dosn't just copy any pointers
-//	it navigates them and changes their data.
-void	scene_copy_assigment(t_scene *dest, t_scene *src);
-void	scene_destroy(t_scene *cene);
+t_scene			*scene_create(void);
+t_scene			*scene_copy_constructor(t_scene *scene);
+void			scene_copy_assigment(t_scene *dest, t_scene *src);
+void			scene_destroy(t_scene *cene);
 
-void	scene_object_add(t_error *error, t_scene *scene, t_object object);
-void	scene_object_list_add(t_error *error, t_scene *scene, t_object object);
+void			scene_object_add(t_error *error, t_scene *scene, t_object obj);
+void			scene_object_list_add(t_error *err, t_scene *s, t_object obj);
 
 #endif

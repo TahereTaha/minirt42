@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 16:37:20 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 07:36:42 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:55:39 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	main(int ac, char **av)
 	t_error	*error;
 	t_scene	*scene;
 
-	printf("printf %i\n", isnan(1.0 / 0.0));
 	error = error_create();
 	scene = make_scene(error);
 	parse_file(error, scene, ac, av);
