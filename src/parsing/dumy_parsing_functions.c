@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:22:07 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/22 18:12:10 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 10:41:40 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "error_managment.h"
 #include "parsing.h"
 
-void			parse_blank(void)
+void	parse_blank(void)
 {
 	return ;
 }
@@ -82,13 +82,13 @@ t_object	parse_cylinder(t_error *error, char *line)
 }
 
 */
-//	this suodent need the char *line but the calling convention needed to be right to left.
+
 t_object	parse_unexistent(t_error *error, char *line)
 {
+	t_cylinder	thing;
+
 	(void)line;
 	error_set(error, WRONG_OBJECT_IDENTIFIER);
-	t_cylinder	thing;
 	thing.kind = 0;
 	return (*((t_object *)&thing));
 }
-
