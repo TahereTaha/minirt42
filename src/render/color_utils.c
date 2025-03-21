@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:00:52 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 14:40:59 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:49:04 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ t_color	add_color(t_color color1, t_color color2)
 	t_color	new_color;
 
 	new_color.r = color1.r + color2.r;
-	if (new_color.r > 255 && new_color.r < 0)
+	if (new_color.r > 255 || new_color.r < 0)
 		new_color.r = 255;
 	new_color.g = color1.g + color2.g;
-	if (new_color.g > 255 && new_color.g < 0)
+	if (new_color.g > 255 || new_color.g < 0)
 		new_color.g = 255;
 	new_color.b = color1.b + color2.b;
-	if (new_color.b > 255 && new_color.b < 0)
+	if (new_color.b > 255 || new_color.b < 0)
 		new_color.b = 255;
 	return (new_color);
 }

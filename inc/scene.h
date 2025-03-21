@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 11:12:34 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:52:19 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,7 @@ typedef struct s_scene
 	t_list			*objects;
 }					t_scene;
 
-typedef void*	(*t_map)(void *);
-
 t_scene			*scene_create(void);
-t_scene			*scene_copy_constructor(t_scene *scene);
-void			scene_copy_assigment(t_scene *dest, t_scene *src);
 void			scene_destroy(t_scene *cene);
 
 void			scene_object_add(t_error *error, t_scene *scene, t_object obj);
