@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/21 09:10:34 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/21 10:45:56 by rgiambon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,7 +149,7 @@ OBJ_PARSING			:=	render_image_to_window.o				\
 						get_difuse_light.o				\
 						color_utils.o				\
 					render_cylinder.o				\
-
+					cylinder_utils.o			\
 OBJ		+=	$(OBJ_PARSING)
 
 #==============================================================================
