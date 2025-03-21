@@ -3,87 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render_cylinder.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
+/*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/12 09:01:14 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 14:55:55 by rgiambon         ###   ########.fr       */
+/*   Created: 2025/03/21 10:47:36 by rgiambon          #+#    #+#             */
+/*   Updated: 2025/03/21 10:47:41 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "scene.h"
 #include "renderer.h"
-
-static double	get_closest_positive_t(double t1, double t2)
-{
-	if (t1 > 0 && t2 > 0)
-		return (fmin(t1, t2));
-	else if (t1 > 0)
-		return (t1);
-	else if (t2 > 0)
-		return (t2);
-	return (nan(""));
-}
-
-static int	solve_quadratic(double *coefficients, double *roots)
-{
-	double	discriminant;
-
-	discriminant = coefficients[1] * coefficients[1]
-		- 4.0 * coefficients[0] * coefficients[2];
-	if (discriminant < 0)
-		return (0);
-	roots[0] = (-coefficients[1] - sqrt(discriminant)) \
-	/ (2.0 * coefficients[0]);
-	roots[1] = (-coefficients[1] + sqrt(discriminant)) \
-	/ (2.0 * coefficients[0]);
-	return (1);
-}
-
-static double	intersect_bottom_cap(t_vec3 ray, t_vec3 origin, \
-t_cylinder *cylinder, double radius)
-{
-	double	t;
-	t_vec3	p;
-	t_vec3	hit_relative;
-	t_vec3	pos;
-
-	pos = vec3_sub(cylinder->position, origin);
-	t = vec3_dot_product(pos, cylinder->orientation) \
-	/ vec3_dot_product(ray, cylinder->orientation);
-	if (t <= 0)
-		return (nan(""));
-	p = vec3_scale(ray, t);
-	hit_relative = vec3_sub(p, pos);
-	hit_relative = vec3_sub(hit_relative, vec3_scale(cylinder->orientation, \
-	vec3_dot_product(hit_relative, cylinder->orientation)));
-	if (vec3_get_magnitude(hit_relative) <= radius)
-		return (t);
-	return (nan(""));
-}
-
-static double	intersect_top_cap(t_vec3 ray, t_vec3 origin, \
-t_cylinder *cylinder, double radius)
-{
-	double	t;
-	t_vec3	p;
-	t_vec3	top_center;
-	t_vec3	hit_relative;
-
-	top_center = vec3_add(vec3_sub(cylinder->position, origin),
-			vec3_scale(cylinder->orientation, cylinder->height));
-	t = vec3_dot_product(top_center, cylinder->orientation) \
-	/ vec3_dot_product(ray, cylinder->orientation);
-	if (t <= 0)
-		return (nan(""));
-	p = vec3_scale(ray, t);
-	hit_relative = vec3_sub(p, top_center);
-	hit_relative = vec3_sub(hit_relative, vec3_scale(cylinder->orientation, \
-	vec3_dot_product(hit_relative, cylinder->orientation)));
-	if (vec3_get_magnitude(hit_relative) <= radius)
-		return (t);
-	return (nan(""));
-}
 
 static double	intersect_cylinder_caps(t_vec3 ray, t_vec3 origin, \
 t_cylinder *cylinder)
@@ -98,17 +27,12 @@ t_cylinder *cylinder)
 	return (get_closest_positive_t(t_bottom, t_top));
 }
 
-static double	intersect_cylinder_body(t_vec3 ray, \
+static void	get_cylinder_coefficients(double coefficients[3], t_vec3 ray, \
 t_vec3 origin, t_cylinder *cylinder)
 {
-	double	coefficients[3];
-	double	roots[2];
 	t_vec3	oc;
 	t_vec3	v;
 	double	radius;
-	double	t;
-	t_vec3	p;
-	double	h;
 
 	radius = cylinder->diameter / 2.0;
 	oc = vec3_sub(origin, cylinder->position);
@@ -119,13 +43,26 @@ t_vec3 origin, t_cylinder *cylinder)
 			- vec3_dot_product(ray, v) * vec3_dot_product(oc, v));
 	coefficients[2] = vec3_dot_product(oc, oc) \
 	- pow(vec3_dot_product(oc, v), 2) - radius * radius;
+}
+
+static double	intersect_cylinder_body(t_vec3 ray, \
+t_vec3 origin, t_cylinder *cylinder)
+{
+	double	coefficients[3];
+	double	roots[2];
+	double	t;
+	t_vec3	p;
+	double	h;
+
+	get_cylinder_coefficients(coefficients, ray, origin, cylinder);
 	if (!solve_quadratic(coefficients, roots))
 		return (nan(""));
 	t = get_closest_positive_t(roots[0], roots[1]);
 	if (isnan(t))
 		return (t);
 	p = vec3_scale(ray, t);
-	h = vec3_dot_product(vec3_sub(p, vec3_sub(cylinder->position, origin)), v);
+	h = vec3_dot_product(vec3_sub(p, vec3_sub(cylinder->position, origin)), \
+		cylinder->orientation);
 	if (h < 0 || h > cylinder->height)
 		return (nan(""));
 	return (t);

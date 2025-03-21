@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:09:56 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 11:17:45 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:20:23 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,12 @@ t_color	get_phong_shine(t_scene, t_ray hit_point);
 t_color	scale_color(t_color color, double scalar);
 t_color	add_color(t_color color1, t_color color2);
 t_color	light_color(t_color color, t_color light);
+
+double	intersect_top_cap(t_vec3 ray, t_vec3 origin, \
+t_cylinder *cylinder, double radius);
+double	intersect_bottom_cap(t_vec3 ray, t_vec3 origin, \
+t_cylinder *cylinder, double radius);
+int	solve_quadratic(double *coefficients, double *roots);
+double	get_closest_positive_t(double t1, double t2);
 
 #endif

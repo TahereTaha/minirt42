@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 11:16:16 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/21 11:21:23 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,6 @@ t_mtx3	mtx3_mtx3_multiplication(t_mtx3 matrix1, t_mtx3 matrix2);
 //	dot product
 
 double	ft_abs(double numb);
+int		solve_quadratic(double *coefficients, double *roots);
 
 #endif

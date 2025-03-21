@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/21 09:10:34 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/21 10:58:32 by rgiambon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,7 +148,8 @@ OBJ_PARSING			:=	render_image_to_window.o				\
 						get_ambient_light.o				\
 						get_difuse_light.o				\
 						color_utils.o				\
-					render_cylinder.o				\
+						render_cylinder.o				\
+						cylinder_utils.o			\
 
 OBJ		+=	$(OBJ_PARSING)
 
@@ -172,6 +173,7 @@ OBJ_VECTOR_MATH	:=	vec_debug_print.o			\
 					vec_paralel_comp.o       \
 					vec_perpendicular_comp.o       \
 					vec_angle.o       \
+					quadratic.o			\
 
 #					vec2_get_angle.o		\
 					vec3_get_angle.o		\
