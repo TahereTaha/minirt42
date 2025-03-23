@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:09:56 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 12:05:10 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:14:49 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			is_light_visible(t_light light, t_ray hit_point, t_list *objects);
 
 t_color		get_ambient_light(t_ambient_light ambient_light);
 t_color		get_difuse_light(t_scene *scene, t_ray hit_point);
-t_color		get_phong_shine(t_scene, t_ray hit_point);
+t_color		get_phong_shine(t_scene *scene, t_ray hit_point);
 
 t_color		scale_color(t_color color, double scalar);
 t_color		add_color(t_color color1, t_color color2);

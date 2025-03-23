@@ -6,10 +6,11 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 05:59:21 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 14:44:07 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:42:03 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
 #include <stdio.h>
 #include <math.h>
 #include "scene.h"
@@ -46,5 +47,7 @@ t_color	light_point(t_ray hit_point, t_scene *scene)
 	tmp = get_difuse_light(scene, hit_point);
 	light = add_color(light, tmp);
 	color = light_color(hit_point.color, light);
+	tmp = get_phong_shine(scene, hit_point);
+	color = add_color(color, tmp);
 	return (color);
 }

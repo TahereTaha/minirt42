@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/21 11:53:02 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/23 16:24:34 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,6 +146,7 @@ OBJ_PARSING			:=	render_image_to_window.o				\
 						lighting.o				\
 						get_ambient_light.o				\
 						get_difuse_light.o				\
+						get_phong_shine.o				\
 						color_utils.o				\
 						render_cylinder.o				\
 						cylinder_utils.o			\
