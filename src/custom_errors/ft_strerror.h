@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:56:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 07:34:26 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/23 15:30:46 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static const char	*g_error_msg[] = {\
    	maybe it is mispelled, try to check again.",		\
 	"wrong amount of tokens.",							\
 	"invalid format: check input format requirements",	\
-	"invalid range: value is outside allowed range"		\
+	"invalid range: value is outside allowed range",	\
+	"there are important object that are laking."		\
 };
 
 #endif

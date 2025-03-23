@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:06:05 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 11:13:12 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/23 15:29:49 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef enum e_error_kind
 	WRONG_TOKENS_COUNT,
 	INVALID_FORMAT,
 	INVALID_RANGE,
+	OBJECT_LAKING,
 }	t_error_kind;
 
 char	*ft_strerror(int errnum);
