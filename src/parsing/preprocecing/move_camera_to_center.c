@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:31:50 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/26 14:20:54 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/23 17:11:41 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,26 @@ static void	move_objects(t_list *objects, t_vec3 camera_pos)
 	}
 }
 
+static void	move_lights(t_list *lights, t_vec3 camera_pos)
+{
+	t_list	*node;
+	t_light	*light;
+
+	node = lights;
+	while (node)
+	{
+		light = node->content;
+		light->position = vec3_sub(light->position, camera_pos);
+		node = node->next;
+	}
+}
+
 void	move_camera_to_center(t_scene *scene)
 {
 	t_vec3	camera_pos;
 
 	camera_pos = scene->camera.view_point;
-	scene->light.position = vec3_sub(scene->light.position, camera_pos);
+	move_lights(scene->lights, camera_pos);
 	move_objects(scene->objects, camera_pos);
 	scene->camera.view_point = vec3_scale(camera_pos, 0);
 }

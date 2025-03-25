@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:45:27 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/21 10:59:22 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:36:16 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 
 void	add_object_to_scene(t_error *error, t_scene *scene, t_object object)
 {
-	if (object.kind == BLANK)
+	if (object.kind == BLANK || object.kind == COMMENT)
 		return ;
 	if (object.kind >= SPHERE && object.kind <= CYLINDER)
 		scene_object_list_add(error, scene, object);
+	else if (object.kind == LIGHT)
+		scene_light_list_add(error, scene, object);
 	else
 		scene_object_add(error, scene, object);
 }

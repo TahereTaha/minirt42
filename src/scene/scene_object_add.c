@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:54:47 by tatahere          #+#    #+#             */
-/*   Updated: 2025/02/20 15:50:00 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:57:18 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,6 @@ void	scene_camera_add(t_error *error, t_scene *scene, t_object object)
 		return ;
 	}
 	scene->camera = camera;
-}
-
-void	scene_light_add(t_error *error, t_scene *scene, t_object object)
-{
-	t_light	light;
-
-	light = *((t_light *)&object);
-	if (scene->light.kind != BLANK)
-	{
-		error_set(error, DUPLICATED_OBJECT);
-		error_msg_append(error, "ligth: ", 0);
-		return ;
-	}
-	scene->light = light;
 }
 
 void	scene_object_add(t_error *error, t_scene *scene, t_object object)

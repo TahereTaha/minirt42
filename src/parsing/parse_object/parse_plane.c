@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:44:53 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/21 08:50:40 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:28:19 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,12 @@ void	parse_position_plane(t_error *error, char *token, t_plane *plane)
 	plane->position.z = ft_atof(coordinates[2]);
 	free_array(coordinates);
 }
-
+/*
+void	plane_parse_bump_map(t_error *error, t_plane *plane, char **tokens)
+{
+	
+}
+*/
 t_object	parse_plane(t_error *error, char *line)
 {
 	t_object	object;
@@ -115,6 +120,8 @@ t_object	parse_plane(t_error *error, char *line)
 	parse_position_plane(error, tokens[1], plane);
 	parse_orientation_plane(error, tokens[2], plane);
 	parse_color_plane(error, tokens[3], plane);
+//	if (tokens[4])
+//		plane_parse_bump_map(error, plane, tokens);
 	free_array(tokens);
 	if (error->errnum)
 		error_msg_append(error, "plane: ", 0);

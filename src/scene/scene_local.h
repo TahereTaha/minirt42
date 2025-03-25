@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 10:40:04 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:57:38 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static const t_add_object	g_add_object[] = \
 	{\
 	(t_add_object) scene_ambient_light_add, \
 	(t_add_object) scene_camera_add, \
-	(t_add_object) scene_light_add, \
 	(t_add_object) NULL \
 };
 

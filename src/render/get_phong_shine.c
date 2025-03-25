@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:17:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/23 16:33:04 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:12:47 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static	double	get_angle(t_light light, t_ray hit_point)
 	light.position = vec3_normalize(light.position);
 	reflected_ray = get_reflected_ray(hit_point);
 	angle = fabs(vec3_project(light.position, reflected_ray));
-	angle = pow(angle, 30);
+	angle = pow(angle, 25);
 	return (angle);
 }
 
@@ -60,8 +60,19 @@ static t_color	get_light_value(t_light light, t_ray hit_point, t_list *objects)
 
 t_color	get_phong_shine(t_scene *scene, t_ray hit_point)
 {
-	t_color	light;
+	t_list	*node;
+	t_light	*light;
+	t_color	light_color;
+	t_color	tmp_light;
 
-	light = get_light_value(scene->light, hit_point, scene->objects);
-	return (light);
+	light_color = (t_color){0, 0, 0};
+	node = scene->lights;
+	while (node)
+	{
+		light = node->content;
+		tmp_light = get_light_value(*light, hit_point, scene->objects);
+		light_color = add_color(light_color, tmp_light);
+		node = node->next;
+	}
+	return (light_color);
 }

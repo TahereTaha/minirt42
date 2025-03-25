@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 10:48:56 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:30:47 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_object	parse_light(t_error *error, char *line);
 t_object	parse_sphere(t_error *error, char *line);
 t_object	parse_plane(t_error *error, char *line);
 t_object	parse_cylinder(t_error *error, char *line);
+t_object	parse_comment(t_error *error, char *line);
 t_object	parse_unexistent(t_error *error, char *line);
 
 typedef t_object			(*t_parse_object)(t_error *error, char *line);
@@ -44,6 +45,7 @@ static const t_parse_object	g_parse_object[] = \
 	(t_parse_object) parse_sphere, \
 	(t_parse_object) parse_plane, \
 	(t_parse_object) parse_cylinder, \
+	(t_parse_object) parse_comment, \
 	(t_parse_object) parse_unexistent, \
 	(t_parse_object) NULL \
 };

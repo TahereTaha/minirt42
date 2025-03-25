@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 11:52:19 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:45:14 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_color
 
 //	objects.
 
-# define OBJECT_AMOUNT 6
+# define OBJECT_AMOUNT 7
 
 typedef enum e_object_kind
 {
@@ -38,6 +38,7 @@ typedef enum e_object_kind
 	SPHERE,
 	PLANE,
 	CYLINDER,
+	COMMENT,
 	UNEXISTENT
 }	t_object_kind;
 
@@ -124,7 +125,7 @@ typedef struct s_scene
 {
 	t_ambient_light	ambient_light;
 	t_camera		camera;
-	t_light			light;
+	t_list			*lights;
 	t_list			*objects;
 }					t_scene;
 
@@ -132,6 +133,7 @@ t_scene			*scene_create(void);
 void			scene_destroy(t_scene *cene);
 
 void			scene_object_add(t_error *error, t_scene *scene, t_object obj);
+void			scene_light_list_add(t_error *err, t_scene *scn, t_object obj);
 void			scene_object_list_add(t_error *err, t_scene *s, t_object obj);
 
 #endif

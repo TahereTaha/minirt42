@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:20:48 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/20 13:25:26 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/23 18:55:07 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,28 @@ void	transform_all_objects_vectors(t_list *objects, t_mtx3 mtx)
 	}
 }
 
+static void	transform_all_lights(t_list *lights, t_mtx3 mtx)
+{
+	t_list	*node;
+	t_light	*light;
+
+	node = lights;
+	while (node)
+	{
+		light = node->content;
+		light->position = vec3_mtx3_multiplication(light->position, mtx);
+		node = node->next;
+	}
+
+}
+
 void	transform_all_vectors(t_scene *scene, t_mtx3 mtx)
 {
 	t_vec3	vec;
 
 	vec = scene->camera.orientation;
 	scene->camera.orientation = vec3_mtx3_multiplication(vec, mtx);
-	vec = scene->light.position;
-	scene->light.position = vec3_mtx3_multiplication(vec, mtx);
+	transform_all_lights(scene->lights, mtx);
 	transform_all_objects_vectors(scene->objects, mtx);
 }
 

@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/23 16:24:34 by tatahere         ###   ########.fr        #
+#    Updated: 2025/03/25 17:36:44 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ LIBS		=	$(LIBFT) $(LIBMLX)
 
 #	some flags
 
-CFLAGS		:= -std=c99 -Wall -Wextra -Werror -MMD
+CFLAGS		:= -std=c99 -Wall -Wextra -Werror -MMD #-O3 -march=native
 
 CINC		:=	-I$(ROOT_DIR)
 CINC		+=	-I$(INC_DIR)
@@ -73,6 +73,7 @@ OBJ_SCENE	:=	scene_create.o				\
 				get_object_kind.o			\
 				scene_object_add.o			\
 				scene_object_list_add.o		\
+				scene_light_list_add.o		\
 
 OBJ		+=	$(OBJ_SCENE)
 
@@ -126,6 +127,7 @@ OBJ_PARSING			:=	parse_file.o				\
 						parse_plane.o				\
 						parse_cylinder.o			\
 						parse_cylinder_aux.o		\
+						parse_comment.o		\
 						move_camera_to_center.o		\
 						preproces.o					\
 						normalize_scene.o					\

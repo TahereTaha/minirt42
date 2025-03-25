@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 05:42:37 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 14:46:47 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/03/23 19:00:03 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,19 @@ static t_color	get_light_value(t_light light, t_ray hit_point, t_list *objects)
 
 t_color	get_difuse_light(t_scene *scene, t_ray hit_point)
 {
-	t_color	light;
+	t_list	*node;
+	t_light	*light;
+	t_color	light_color;
+	t_color	tmp_light;
 
-	light = get_light_value(scene->light, hit_point, scene->objects);
-	return (light);
+	light_color = (t_color){0, 0, 0};
+	node = scene->lights;
+	while (node)
+	{
+		light = node->content;
+		tmp_light = get_light_value(*light, hit_point, scene->objects);
+		light_color = add_color(light_color, tmp_light);
+		node = node->next;
+	}
+	return (light_color);
 }
