@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/25 17:45:14 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:30:52 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_list.h"
 # include "vector_math.h"
 # include "error_managment.h"
+# include "MLX42/MLX42.h"
 
 //	some usefull structs.
 typedef struct s_color
@@ -84,12 +85,29 @@ typedef struct s_sphere
 	double			diameter;
 }	t_sphere;
 
+typedef	struct s_color_disrpt
+{
+	int		on;
+	float	with;
+	float	height;
+}	t_disrupt;
+
+typedef	struct s_bump_map
+{
+	int				on;
+	float			with;
+	float			height;
+	mlx_texture_t	*texture;
+}	t_bump_map;
+
 typedef struct s_plane
 {
 	t_object_kind	kind;
 	t_vec3			position;
 	t_color			color;
 	t_vec3			orientation;
+	t_disrupt		color_disruption;
+	t_bump_map		bump_map;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -115,7 +133,7 @@ typedef union u_bigest_object
 typedef struct s_object
 {
 	t_object_kind	kind;
-	char			pading[88];
+	char			pading[sizeof (t_bigest_object) - sizeof (t_object_kind)];
 }		t_object;
 
 t_object_kind	get_object_kind(char *str);

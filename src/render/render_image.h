@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   render_image.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 11:28:41 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/26 14:59:25 by tatahere         ###   ########.fr       */
+/*   Created: 2025/03/26 14:28:58 by tatahere          #+#    #+#             */
+/*   Updated: 2025/03/26 15:18:28 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef RENDER_IMAGE_H
+# define RENDER_IMAGE_H
 
-# define WIN_WIDTH 1024.0
-# define WIN_HEIGHT 1024.0
+# include "minirt.h"
+# include "scene.h"
+# include "MLX42/MLX42.h"
+
+# define TREAD_COUNT 16.0
+
+# define LINE_HEIGHT WIN_HEIGHT / TREAD_COUNT
+
+typedef struct s_render_child
+{
+	mlx_image_t	*img;
+	t_scene		*sc;
+	int			index;
+}	t_render_child;
+
+typedef void *(*t_void_ptr_fn)(void *);
 
 #endif

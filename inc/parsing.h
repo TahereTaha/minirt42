@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/25 17:30:47 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:43:03 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,8 @@ void		rotate_sphere(t_sphere *object, t_mtx3 mtx);
 void		rotate_plane(t_plane *object, t_mtx3 mtx);
 t_mtx3		make_rotation_mtx_z(t_vec3 direction);
 t_mtx3		make_rotation_mtx_y(t_vec3 direction);
+
+t_disrupt	get_disruption(t_error, char *token);
+t_bump_map	get_bump_map(t_error, char *token);
+
 #endif
