@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 18:22:07 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 10:41:40 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:13:01 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ t_object	parse_cylinder(t_error *error, char *line)
 
 t_object	parse_unexistent(t_error *error, char *line)
 {
-	t_cylinder	thing;
+	t_object	thing;
 
 	(void)line;
 	error_set(error, WRONG_OBJECT_IDENTIFIER);
 	thing.kind = 0;
-	return (*((t_object *)&thing));
+	return (thing);
 }

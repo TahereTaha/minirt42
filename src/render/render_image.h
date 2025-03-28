@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:28:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/26 15:18:28 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:09:33 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "scene.h"
 # include "MLX42/MLX42.h"
 
-# define TREAD_COUNT 16.0
+# define THREAD_COUNT 16.0
 
-# define LINE_HEIGHT WIN_HEIGHT / TREAD_COUNT
+# define LINE_HEIGHT WIN_HEIGHT / THREAD_COUNT
 
 typedef struct s_render_child
 {

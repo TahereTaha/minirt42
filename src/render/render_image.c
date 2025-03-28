@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:13:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/26 15:13:57 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:28:41 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include "error_managment.h"
 #include "MLX42/MLX42.h"
 
-#include <time.h>
+#include <sys/time.h>
 
 uint32_t	get_color(t_color color)
 {
@@ -34,7 +34,7 @@ uint32_t	get_color(t_color color)
 	return (new_color);
 }
 
-void	*child_tread(t_render_child *ptr)
+void	*child_thread(t_render_child *ptr)
 {
 	double		i;
 	double		j;
@@ -42,8 +42,8 @@ void	*child_tread(t_render_child *ptr)
 	t_vec3		ray;
 
 	i = 0.0;
-	j = LINE_HEIGHT * ptr->index;
-	while (j < LINE_HEIGHT * (ptr->index + 1))
+	j = ptr->index * LINE_HEIGHT;
+	while (j < (ptr->index + 1) * LINE_HEIGHT)
 	{
 		while (i < WIN_WIDTH)
 		{
@@ -57,34 +57,50 @@ void	*child_tread(t_render_child *ptr)
 			i++;
 		}
 		i = 0.0;
-		j++;
+		j += 1;
 	}
 	return (NULL);
 }
 
+size_t	get_time_ms(struct timeval time)
+{
+	size_t	time_ms;
+
+	time_ms = 0;
+	time_ms += time.tv_usec / 1000;
+	time_ms += (time.tv_sec % 100000) * 1000;
+	return (time_ms);
+}
+
+void	print_time_ms(struct timeval start, struct timeval end)
+{
+	printf("this took %zums to render.\n", get_time_ms(end) - get_time_ms(start));
+}
+
 void	render_image(mlx_image_t *img, t_scene *scene)
 {
-	t_render_child	render_childs[(int)TREAD_COUNT];
-	pthread_t		treads[(int)TREAD_COUNT];
+	t_render_child	render_childs[(int)THREAD_COUNT];
+	pthread_t		treads[(int)THREAD_COUNT];
 	int				i;
-	clock_t begin = clock();
+	struct timeval	start;
+	struct timeval	end;
 
+	gettimeofday(&start, NULL);
 	i = 0;
-	while (i < TREAD_COUNT)
+	while (i < THREAD_COUNT)
 	{
 		render_childs[i].img = img;
 		render_childs[i].sc = scene;
 		render_childs[i].index = i;
-		pthread_create(&(treads[i]), NULL, (t_void_ptr_fn)child_tread, &(render_childs[i]));
+		pthread_create(&(treads[i]), NULL, (t_void_ptr_fn)child_thread, &(render_childs[i]));
 		i++;
 	}
 	i = 0;
-	while (i < TREAD_COUNT)
+	while (i < THREAD_COUNT)
 	{
 		pthread_join(treads[i], NULL);
 		i++;
 	}
-	clock_t end = clock();
-	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;	
-	printf("%f\n", time_spent);
+	gettimeofday(&end, NULL);
+	print_time_ms(start, end);
 }
