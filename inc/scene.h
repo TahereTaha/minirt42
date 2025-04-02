@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/25 19:30:52 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/02 11:41:09 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_color
 
 //	objects.
 
-# define OBJECT_AMOUNT 7
+# define OBJECT_AMOUNT 8
 
 typedef enum e_object_kind
 {
@@ -39,6 +39,7 @@ typedef enum e_object_kind
 	SPHERE,
 	PLANE,
 	CYLINDER,
+	CONE,
 	COMMENT,
 	UNEXISTENT
 }	t_object_kind;
@@ -120,6 +121,16 @@ typedef struct s_cylinder
 	double			height;
 }	t_cylinder;
 
+typedef struct s_cone
+{
+	t_object_kind	kind;
+	t_vec3			position;
+	t_vec3			orientation;
+	t_color			color;
+	double			diameter;
+	double			height;
+}	t_cone;
+
 typedef union u_bigest_object
 {
 	t_ambient_light	object1;
@@ -128,6 +139,7 @@ typedef union u_bigest_object
 	t_sphere		object4;
 	t_plane			object5;
 	t_cylinder		object6;
+	t_cone			object7;
 }	t_bigest_object;
 
 typedef struct s_object

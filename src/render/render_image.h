@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:28:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/28 15:09:33 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/02 13:42:22 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "scene.h"
 # include "MLX42/MLX42.h"
 
-# define THREAD_COUNT 16.0
+# define THREAD_COUNT 1.0
 
 # define LINE_HEIGHT WIN_HEIGHT / THREAD_COUNT
 

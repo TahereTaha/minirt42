@@ -19,7 +19,7 @@ void	add_object_to_scene(t_error *error, t_scene *scene, t_object object)
 {
 	if (object.kind == BLANK || object.kind == COMMENT)
 		return ;
-	if (object.kind >= SPHERE && object.kind <= CYLINDER)
+	if (object.kind >= SPHERE && object.kind <= CONE)
 		scene_object_list_add(error, scene, object);
 	else if (object.kind == LIGHT)
 		scene_light_list_add(error, scene, object);

@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:53:06 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/28 15:08:46 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/02 11:33:19 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static const char	*g_object_str_identifier[] = {\
 	"sp ",	\
 	"pl ",	\
 	"cy ",	\
+	"co",	\
 	"//"	\
 };
 

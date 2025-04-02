@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:09:56 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/23 16:14:49 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:00:36 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ double		intersect_bottom_cap(t_vec3 ray, t_vec3 origin, \
 t_cylinder *cylinder, double radius);
 int			solve_quadratic(double *coefficients, double *roots);
 double		get_closest_positive_t(double t1, double t2);
+t_ray   ray_cast_cone(t_vec3 ray, t_vec3 origin, t_cone *cone);
 
 #endif

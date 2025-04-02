@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/03/26 15:13:14 by tatahere         ###   ########.fr        #
+#    Updated: 2025/04/02 11:34:47 by rgiambon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ CINC		+=	-I$(LIBMLX_HDR_DIR)
 CINC		+=	-I$(LIBFT_HDR_DIR)
 CFLAGS		+=	$(CINC)
 
-CDEBUG		:=	-g -fsanitize=address
+CDEBUG		:=	-g 
 #CDEBUG		:=	-g
 CFLAGS		+=	$(CDEBUG)
 
@@ -126,6 +126,8 @@ OBJ_PARSING			:=	parse_file.o				\
 						parse_sphere.o				\
 						parse_plane.o				\
 						parse_cylinder.o			\
+						parse_cone.o				\
+						parse_cone_aux.o			\
 						parse_cylinder_aux.o		\
 						parse_comment.o		\
 						move_camera_to_center.o		\
@@ -152,6 +154,7 @@ OBJ_PARSING			:=	render_image_to_window.o				\
 						color_utils.o				\
 						render_cylinder.o				\
 						cylinder_utils.o			\
+						render_cone.o				\
 
 OBJ		+=	$(OBJ_PARSING)
 
