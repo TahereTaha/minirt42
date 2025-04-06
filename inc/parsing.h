@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/25 19:43:03 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/01 19:22:14 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static const t_parse_object	g_parse_object[] = \
 int			color_error(t_color *color);
 int			orientation_error(t_vec3 *orientation);
 int			format_error(char **coordinates);
+int			format_error_aux(char **coordinates);
 
 // Camera parsing functions
 void		parse_view_point(t_error *error, char *token, t_camera *cam);
@@ -97,7 +98,7 @@ void		rotate_plane(t_plane *object, t_mtx3 mtx);
 t_mtx3		make_rotation_mtx_z(t_vec3 direction);
 t_mtx3		make_rotation_mtx_y(t_vec3 direction);
 
-t_disrupt	get_disruption(t_error, char *token);
-t_bump_map	get_bump_map(t_error, char *token);
+t_disrupt	get_disruption(t_error *error, char *token);
+t_bump_map	get_bump_map(t_error *error, char *token);
 
 #endif

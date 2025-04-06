@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/25 19:30:52 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/05 21:04:16 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,14 @@ typedef struct s_sphere
 typedef	struct s_color_disrpt
 {
 	int		on;
-	float	with;
+	float	width;
 	float	height;
 }	t_disrupt;
 
 typedef	struct s_bump_map
 {
 	int				on;
-	float			with;
+	float			width;
 	float			height;
 	mlx_texture_t	*texture;
 }	t_bump_map;
@@ -106,7 +106,7 @@ typedef struct s_plane
 	t_vec3			position;
 	t_color			color;
 	t_vec3			orientation;
-	t_disrupt		color_disruption;
+	t_disrupt		disrupt;
 	t_bump_map		bump_map;
 }	t_plane;
 

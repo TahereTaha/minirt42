@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:17:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/25 17:12:47 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/05 17:56:25 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static	double	get_angle(t_light light, t_ray hit_point)
 	light.position = vec3_normalize(light.position);
 	reflected_ray = get_reflected_ray(hit_point);
 	angle = fabs(vec3_project(light.position, reflected_ray));
-	angle = pow(angle, 25);
+	angle = pow(pow(angle, 10), 10);
 	return (angle);
 }
 

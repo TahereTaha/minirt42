@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:04:45 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/21 08:26:34 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/01 19:20:53 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ int	orientation_error(t_vec3 *orientation)
 		return (1);
 	if (orientation->z > 1 || orientation->z < -1)
 		return (1);
+	return (0);
+}
+
+int	format_error_aux(char **coordinates)
+{
+	int	i;
+
+	i = 0;
+	if (!coordinates || ft_arraylen(coordinates) != 2)
+		return (1);
+	while (coordinates[i])
+	{
+		if (!ft_isfloat(coordinates[i]) || ft_isfloatoverflow(coordinates[i]))
+			return (1);
+		i++;
+	}
 	return (0);
 }
 

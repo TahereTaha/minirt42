@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:44:53 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/26 13:55:31 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:44:37 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,41 +93,13 @@ void	parse_position_plane(t_error *error, char *token, t_plane *plane)
 	plane->position.z = ft_atof(coordinates[2]);
 	free_array(coordinates);
 }
-/*
-t_disrupt	get_disruption(t_error, char *token)
-{
-	char		**tokens;
-	t_disrupt	disrupt;
-
-	tokens = ft_split(token, ':');
-	if (!tokens)
-	{
-		error_set(error, errno);
-		return (disrupt);
-	}
-	if (ft_arraylen(tokens) != 3)
-	{
-		error_set(error, WRONG_TOKENS_COUNT);
-		return (object);
-	}
-	if (ft_strcmp(tokens[0], "color_disruption", -1))
-	{
-		error_set(error, INVALID_FORMAT);
-		return (object);
-	}
-}
-
-t_bump_map	get_bump_map(t_error, char *token)
-{
-	
-}
 
 void	plane_parse_bonus(t_error *error, t_plane *plane, char **tokens)
 {
 	plane->disrupt = get_disruption(error, tokens[4]);
 	plane->bump_map = get_bump_map(error, tokens[5]);
 }
-*/
+
 t_object	parse_plane(t_error *error, char *line)
 {
 	t_object	object;
@@ -141,7 +113,7 @@ t_object	parse_plane(t_error *error, char *line)
 		error_set(error, errno);
 		return (object);
 	}
-	if (ft_arraylen(tokens) != 4)
+	if (ft_arraylen(tokens) != 6)
 	{
 		error_set(error, WRONG_TOKENS_COUNT);
 		return (object);
@@ -149,7 +121,7 @@ t_object	parse_plane(t_error *error, char *line)
 	parse_position_plane(error, tokens[1], plane);
 	parse_orientation_plane(error, tokens[2], plane);
 	parse_color_plane(error, tokens[3], plane);
-//	plane_parse_bonus(error, plane, tokens);
+	plane_parse_bonus(error, plane, tokens);
 	free_array(tokens);
 	if (error->errnum)
 		error_msg_append(error, "plane: ", 0);
