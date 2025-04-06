@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:20:57 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/20 14:47:34 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/04/02 13:59:26 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ t_ray	ray_cast_object(t_vec3 ray, t_vec3 origin, t_object *object)
 		ray_cast = ray_cast_sphere(ray, origin, *(t_sphere *)object);
 	else if (object->kind == CYLINDER)
 		ray_cast = ray_cast_cylinder(ray, origin, (t_cylinder *)object);
+	else if (object->kind == CONE)
+		ray_cast = ray_cast_cone(ray, origin, (t_cone *)object);
 	ray_cast.magnitude -= ALPHA;
 	if (!isnan(ray_cast.magnitude))
 		ray_cast.hit = vec3_scale(ray, ray_cast.magnitude);
@@ -66,8 +68,7 @@ t_color	ray_cast(t_vec3 ray, t_scene *scene)
 	ray_cast.color = (t_color){0, 0, 0};
 	while (node)
 	{
-		new_ray_cast = ray_cast_object(ray, null_vec(), \
-				(t_object *)node->content);
+		new_ray_cast = ray_cast_object(ray, null_vec(), (t_object *)node->content);
 		if (ray_is_closer(ray_cast, new_ray_cast))
 			ray_cast = new_ray_cast;
 		node = node->next;

@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/01 19:22:14 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/06 20:41:07 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_object	parse_light(t_error *error, char *line);
 t_object	parse_sphere(t_error *error, char *line);
 t_object	parse_plane(t_error *error, char *line);
 t_object	parse_cylinder(t_error *error, char *line);
+t_object	parse_cone(t_error *error, char *line);
 t_object	parse_comment(t_error *error, char *line);
 t_object	parse_unexistent(t_error *error, char *line);
 
@@ -45,6 +46,7 @@ static const t_parse_object	g_parse_object[] = \
 	(t_parse_object) parse_sphere, \
 	(t_parse_object) parse_plane, \
 	(t_parse_object) parse_cylinder, \
+	(t_parse_object) parse_cone, \
 	(t_parse_object) parse_comment, \
 	(t_parse_object) parse_unexistent, \
 	(t_parse_object) NULL \
@@ -101,4 +103,7 @@ t_mtx3		make_rotation_mtx_y(t_vec3 direction);
 t_disrupt	get_disruption(t_error *error, char *token);
 t_bump_map	get_bump_map(t_error *error, char *token);
 
+// parse cone
+void    parse_color_cone(t_error *error, char *token, t_cone *co);
+t_object    parse_cone(t_error *error, char *line);
 #endif

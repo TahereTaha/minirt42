@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:09:56 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/05 20:11:32 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/06 20:41:22 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ double		intersect_bottom_cap(t_vec3 ray, t_vec3 origin, \
 t_cylinder *cylinder, double radius);
 int			solve_quadratic(double *coefficients, double *roots);
 double		get_closest_positive_t(double t1, double t2);
+t_ray   ray_cast_cone(t_vec3 ray, t_vec3 origin, t_cone *cone);
 
 int			is_plane_disrupted(t_vec3 ray_hit, t_plane plane);
 #endif

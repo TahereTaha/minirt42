@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 15:21:51 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 07:39:57 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/02 14:04:21 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ static void	normalize_plane(t_plane *plane)
 	num = vec3_project(plane->orientation, plane->position);
 	if (num > 0)
 		plane->orientation = vec3_scale(plane->orientation, -1);
+}
+
+static void	normalize_cone(t_cone *cone)
+{
+	cone->orientation = vec3_normalize(cone->orientation);
 }
 
 static void	normalize_cylinder(t_cylinder *cylinder)
@@ -44,6 +49,8 @@ static void	normalize_objects(t_list *objects)
 			normalize_plane((t_plane *)object);
 		if (object->kind == CYLINDER)
 			normalize_cylinder((t_cylinder *)object);
+		if (object->kind == CONE)
+			normalize_cone((t_cone *)object);
 		node = node->next;
 	}
 }
