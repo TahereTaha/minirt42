@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/04/06 20:40:35 by tatahere         ###   ########.fr        #
+#    Updated: 2025/04/07 21:27:59 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,6 +149,7 @@ OBJ_PARSING			:=	render_image_to_window.o				\
 						ray_cast.o				\
 						render_plane.o				\
 						render_plane_disrupt.o				\
+						render_plane_bump_map.o				\
 						render_sphere.o				\
 						lighting.o				\
 						get_ambient_light.o				\

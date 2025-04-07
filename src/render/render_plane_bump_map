@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:58:36 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/07 21:28:25 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/06 20:22:25 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "vector_math.h"
 #include "parsing.h"
 
-static float	ftfabs(float num, float scale)
+float	ftfabs(float num, float scale)
 {
 	float	num2;
 
