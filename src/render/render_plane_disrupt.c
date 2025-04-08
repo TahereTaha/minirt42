@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:58:36 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/07 21:28:25 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:28:29 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,3 @@ int	is_plane_disrupted(t_vec3 ray_hit, t_plane plane)
 	ray_hit.z -= plane.disrupt.width / 2;
 	return (is_disrupted(ray_hit, plane.disrupt.width, plane.disrupt.height));
 }
-

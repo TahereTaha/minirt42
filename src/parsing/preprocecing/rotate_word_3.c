@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 08:26:47 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 08:56:04 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:16:53 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,3 @@ t_mtx3	make_a_rotation_mtx_y(t_vec3 direction)
 	mtx.k_hat.z = direction.x;
 	return (mtx);
 }
-

@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:20:48 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/23 18:55:07 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:15:51 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	transform_all_lights(t_list *lights, t_mtx3 mtx)
 		light->position = vec3_mtx3_multiplication(light->position, mtx);
 		node = node->next;
 	}
-
 }
 
 void	transform_all_vectors(t_scene *scene, t_mtx3 mtx)
