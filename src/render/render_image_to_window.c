@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:13:27 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/23 16:35:06 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:06:37 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ mlx_t	*make_window_and_img(t_error *error, t_scene *scene)
 		error_set(error, mlx_errno);
 		return (NULL);
 	}
-	printf("the rendering is done\n");
 	mlx_key_hook(mlx, key_handler, mlx);
 	return (mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:04:45 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/08 10:15:09 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:02:53 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,58 +27,6 @@ int	orientation_error(t_vec3 *orientation)
 		return (1);
 	if (orientation->z > 1 || orientation->z < -1)
 		return (1);
-	return (0);
-}
-
-int	count_chars(char *str, char c)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			count++;
-		i++;
-	}
-	return (count);
-}
-
-int	format_error_aux(char **coordinates, char *token)
-{
-	int	i;
-
-	i = 0;
-	if (!coordinates || ft_arraylen(coordinates) != 2)
-		return (1);
-	if (count_chars(token, ',') != 1)
-		return (1);
-	while (coordinates[i])
-	{
-		if (!ft_isfloat(coordinates[i]) || ft_isfloatoverflow(coordinates[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	format_error(char **coordinates, char *token)
-{
-	int	i;
-
-	i = 0;
-	if (!coordinates || ft_arraylen(coordinates) != 3)
-		return (1);
-	if (count_chars(token, ',') != 2)
-		return (1);
-	while (coordinates[i])
-	{
-		if (!ft_isfloat(coordinates[i]) || ft_isfloatoverflow(coordinates[i]))
-			return (1);
-		i++;
-	}
 	return (0);
 }
 

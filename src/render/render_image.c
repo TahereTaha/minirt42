@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:13:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 10:29:28 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:07:22 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	print_time_ms(struct timeval start, struct timeval end)
 {
 	printf("this took %zums to render.\n", \
 	get_time_ms(end) - get_time_ms(start));
+	printf("the rendering is done\n");
 }
 
 void	render_image(mlx_image_t *img, t_scene *scene)

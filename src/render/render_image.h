@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:28:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 10:04:26 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:14:40 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 # define THREAD_COUNT 16.0
 
-# define LINE_HEIGHT WIN_HEIGHT / THREAD_COUNT
+//# define LINE_HEIGHT WIN_HEIGHT / THREAD_COUNT
+# define LINE_HEIGHT 60
 
 typedef struct s_render_child
 {
@@ -28,6 +29,6 @@ typedef struct s_render_child
 	int			index;
 }	t_render_child;
 
-typedef void *(*t_void_ptr_fn)(void *);
+typedef void	*(*t_void_ptr_fn)(void *);
 
 #endif

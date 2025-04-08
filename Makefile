@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/04/08 08:59:10 by tatahere         ###   ########.fr        #
+#    Updated: 2025/04/08 11:01:36 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,7 @@ OBJ_PARSING			:=	parse_file.o				\
 						check_argument.o			\
 						parse_line.o				\
 						dumy_parsing_functions.o	\
+						parsing_error_check_aux.o		\
 						parsing_error_check.o		\
 						parse_ambient_light.o		\
 						parse_camera.o				\
