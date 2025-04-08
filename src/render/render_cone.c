@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 09:13:08 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/08 10:37:32 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:42:30 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ static t_vec3	get_cone_normal(t_vec3 ray, t_vec3 origin,
 		return (vec3_scale(cone->orientation, -1));
 	axis_point = vec3_add(cone->position,
 			vec3_scale(cone->orientation, h));
-
 	normal = vec3_normalize(vec3_sub(hit_point, axis_point));
 	return (normal);
 }
