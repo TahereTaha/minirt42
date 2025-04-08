@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/06 20:41:36 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:54:29 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ typedef struct s_sphere
 	double			diameter;
 }	t_sphere;
 
-typedef	struct s_color_disrpt
+typedef struct s_color_disrpt
 {
 	int		on;
 	float	width;
 	float	height;
 }	t_disrupt;
 
-typedef	struct s_bump_map
+typedef struct s_bump_map
 {
 	int				on;
 	float			width;

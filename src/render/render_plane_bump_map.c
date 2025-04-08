@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 19:58:36 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 09:31:51 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:43:39 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ t_vec3	get_normal(t_bump_map bump_map, t_vec3 ray_hit)
 	width = bump_map.width;
 	y = fmod(fabs(ray_hit.y), height) / height * texture.height;
 	x = fmod(fabs(ray_hit.z), width) / width * texture.width;
-	ray_hit.x = -((float) texture.pixels[4 * (x + y * texture.width) + 2]) / 256.0;
-	ray_hit.y = ((float) texture.pixels[4 * (x + y * texture.width) + 0]) / 256.0;
-	ray_hit.z = ((float) texture.pixels[4 * (x + y * texture.width) + 1]) / 256.0;
+	ray_hit.x = -((float) texture.pixels[4 * \
+	(x + y * texture.width) + 2]) / 256.0;
+	ray_hit.y = ((float) texture.pixels[4 * \
+	(x + y * texture.width) + 0]) / 256.0;
+	ray_hit.z = ((float) texture.pixels[4 * \
+	(x + y * texture.width) + 1]) / 256.0;
 	ray_hit = vec3_normalize(ray_hit);
-//	vec3_print(ray_hit);
 	return (ray_hit);
 }
-
 
 t_vec3	rotate_ray_hit(t_vec3 direction, t_bump_map bump_map, t_vec3 ray)
 {
@@ -69,4 +70,3 @@ t_vec3	is_plane_bump_map(t_vec3 ray_hit, t_plane plane)
 		return (vec3_scale(plane.orientation, -1));
 	return (rotate_ray_hit(plane.orientation, plane.bump_map, ray_hit));
 }
-
