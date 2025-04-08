@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 09:24:59 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/02 09:24:59 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:20:38 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parse_color_cone(t_error *error, char *token, t_cone *co)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(colors))
+	if (format_error(colors, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(colors);

@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 14:04:45 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/01 19:20:53 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:15:09 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,30 @@ int	orientation_error(t_vec3 *orientation)
 	return (0);
 }
 
-int	format_error_aux(char **coordinates)
+int	count_chars(char *str, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+int	format_error_aux(char **coordinates, char *token)
 {
 	int	i;
 
 	i = 0;
 	if (!coordinates || ft_arraylen(coordinates) != 2)
+		return (1);
+	if (count_chars(token, ',') != 1)
 		return (1);
 	while (coordinates[i])
 	{
@@ -46,12 +64,14 @@ int	format_error_aux(char **coordinates)
 	return (0);
 }
 
-int	format_error(char **coordinates)
+int	format_error(char **coordinates, char *token)
 {
 	int	i;
 
 	i = 0;
 	if (!coordinates || ft_arraylen(coordinates) != 3)
+		return (1);
+	if (count_chars(token, ',') != 2)
 		return (1);
 	while (coordinates[i])
 	{

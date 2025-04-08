@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/21 08:31:07 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:16:37 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	parse_orientation(t_error *error, char *token, t_camera *cam)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		error_msg_append(error, "Invalid orientation", 0);
@@ -83,7 +83,7 @@ void	parse_view_point(t_error *error, char *token, t_camera *cam)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		error_msg_append(error, "Invalid coordinate format", 0);

@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:46:50 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/21 09:08:29 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:19:47 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	parse_orientation_cylinder(t_error *error, char *token, t_cylinder *cy)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(coordinates);
@@ -87,7 +87,7 @@ void	parse_position_cylinder(t_error *error, char *token, t_cylinder *cy)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(coordinates);

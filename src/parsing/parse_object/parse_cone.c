@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 09:13:08 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/02 09:13:08 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:20:23 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	parse_orientation_cone(t_error *error, char *token, t_cone *co)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(coordinates);
@@ -87,7 +87,7 @@ void	parse_position_cone(t_error *error, char *token, t_cone *co)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(coordinates);

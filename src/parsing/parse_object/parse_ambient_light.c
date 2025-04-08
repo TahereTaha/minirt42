@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:39:00 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/21 09:25:19 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:15:56 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <errno.h>
@@ -27,7 +27,7 @@ void	parse_alight_color(t_error *error, char *token, t_ambient_light *light)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(color))
+	if (format_error(color, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(color);

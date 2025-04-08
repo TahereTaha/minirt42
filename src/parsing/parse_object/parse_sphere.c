@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:12 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/21 09:09:18 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:18:05 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	parse_color_sphere(t_error *error, char *token, t_sphere *sphere)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(color))
+	if (format_error(color, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		error_msg_append(error, "Invalid color format in sphere", 0);
@@ -81,7 +81,7 @@ void	parse_position_sphere(t_error *error, char *token, t_sphere *sphere)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(coordinates);

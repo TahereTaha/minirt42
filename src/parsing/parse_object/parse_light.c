@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:39:00 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/21 08:56:26 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:17:26 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	parse_light_light_color(t_error *error, char *token, t_light *light)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(light_color))
+	if (format_error(light_color, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(light_color);
@@ -72,7 +72,7 @@ void	parse_light_position(t_error *error, char *token, t_light *light)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(coordinates);

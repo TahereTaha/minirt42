@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 09:00:04 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:11:40 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static const t_parse_object	g_parse_object[] = \
 // Parsing error check functions
 int			color_error(t_color *color);
 int			orientation_error(t_vec3 *orientation);
-int			format_error(char **coordinates);
-int			format_error_aux(char **coordinates);
+int			format_error(char **coordinates, char *token);
+int			format_error_aux(char **coordinates, char *token);
 
 // Camera parsing functions
 void		parse_view_point(t_error *error, char *token, t_camera *cam);

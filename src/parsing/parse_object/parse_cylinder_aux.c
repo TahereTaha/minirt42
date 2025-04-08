@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 09:00:14 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 09:00:51 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:20:54 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	parse_color_cylinder(t_error *error, char *token, t_cylinder *cylinder)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(color))
+	if (format_error(color, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(color);

@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:43:59 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 09:59:31 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:22:03 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	set_bump_map_w_h(t_error *error, t_bump_map *bump_map, char *str)
 		error_set(error, WRONG_TOKENS_COUNT);
 		return ;
 	}
-	if (format_error_aux(tokens))
+	if (format_error_aux(tokens, str))
 	{
 		error_set(error, WRONG_TOKENS_COUNT);
 		return ;

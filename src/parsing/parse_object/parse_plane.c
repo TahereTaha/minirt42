@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 13:44:53 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/03/28 15:44:37 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:19:10 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	parse_color_plane(t_error *error, char *token, t_plane *plane)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(color))
+	if (format_error(color, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(color);
@@ -56,7 +56,7 @@ void	parse_orientation_plane(t_error *error, char *token, t_plane *plane)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(coordinates);
@@ -82,7 +82,7 @@ void	parse_position_plane(t_error *error, char *token, t_plane *plane)
 		error_set(error, errno);
 		return ;
 	}
-	if (format_error(coordinates))
+	if (format_error(coordinates, token))
 	{
 		error_set(error, INVALID_FORMAT);
 		free_array(coordinates);
