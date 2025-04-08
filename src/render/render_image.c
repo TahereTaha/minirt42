@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 12:13:34 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/28 15:28:41 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:29:28 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ size_t	get_time_ms(struct timeval time)
 
 void	print_time_ms(struct timeval start, struct timeval end)
 {
-	printf("this took %zums to render.\n", get_time_ms(end) - get_time_ms(start));
+	printf("this took %zums to render.\n", \
+	get_time_ms(end) - get_time_ms(start));
 }
 
 void	render_image(mlx_image_t *img, t_scene *scene)
@@ -92,7 +93,8 @@ void	render_image(mlx_image_t *img, t_scene *scene)
 		render_childs[i].img = img;
 		render_childs[i].sc = scene;
 		render_childs[i].index = i;
-		pthread_create(&(treads[i]), NULL, (t_void_ptr_fn)child_thread, &(render_childs[i]));
+		pthread_create(&(treads[i]), NULL, \
+		(t_void_ptr_fn)child_thread, &(render_childs[i]));
 		i++;
 	}
 	i = 0;
