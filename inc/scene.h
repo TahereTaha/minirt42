@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 16:08:54 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 10:54:29 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/04/08 12:45:28 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,10 +142,11 @@ typedef union u_bigest_object
 	t_cone			object7;
 }	t_bigest_object;
 
+//	char			pading[sizeof (t_bigest_object) - sizeof (t_object_kind)];
 typedef struct s_object
 {
 	t_object_kind	kind;
-	char			pading[sizeof (t_bigest_object) - sizeof (t_object_kind)];
+	char			pading[108];
 }		t_object;
 
 t_object_kind	get_object_kind(char *str);

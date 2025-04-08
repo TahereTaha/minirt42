@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:43:59 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 10:21:47 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:23:21 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,19 @@ void	set_disrupt_w_h(t_error *error, t_disrupt *disrupt, char *str)
 	}
 	if (ft_arraylen(tokens) != 2)
 	{
+		free_array(tokens);
 		error_set(error, WRONG_TOKENS_COUNT);
 		return ;
 	}
 	if (format_error_aux(tokens, str))
 	{
+		free_array(tokens);
 		error_set(error, WRONG_TOKENS_COUNT);
 		return ;
 	}
 	disrupt->height = ft_atof(tokens[0]);
 	disrupt->width = ft_atof(tokens[1]);
+	free_array(tokens);
 }
 
 t_disrupt	get_disruption(t_error *error, char *token)
@@ -87,7 +90,11 @@ t_disrupt	get_disruption(t_error *error, char *token)
 	}
 	disrupt.on = is_on_off(error, tokens[1]);
 	if (error->errnum)
+	{
+		free_array(tokens);
 		return (disrupt);
+	}
 	set_disrupt_w_h(error, &disrupt, tokens[2]);
+	free_array(tokens);
 	return (disrupt);
 }

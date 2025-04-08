@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/04/08 11:01:36 by tatahere         ###   ########.fr        #
+#    Updated: 2025/04/08 11:19:59 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ CINC		+=	-I$(LIBMLX_HDR_DIR)
 CINC		+=	-I$(LIBFT_HDR_DIR)
 CFLAGS		+=	$(CINC)
 
-CDEBUG		:=	-g 
+CDEBUG		:=	-g -fsanitize=address
 #CDEBUG		:=	-g
 CFLAGS		+=	$(CDEBUG)
 
