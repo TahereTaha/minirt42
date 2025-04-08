@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 07:08:15 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/21 11:21:23 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:50:10 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,8 @@ t_mtx3	mtx3_mtx3_multiplication(t_mtx3 matrix1, t_mtx3 matrix2);
 
 double	ft_abs(double numb);
 int		solve_quadratic(double *coefficients, double *roots);
+
+//	matrix negation;
+t_mtx3	negate_matrix(t_mtx3 mtx);
 
 #endif

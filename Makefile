@@ -6,7 +6,7 @@
 #    By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 09:52:48 by tatahere          #+#    #+#              #
-#    Updated: 2025/04/07 21:27:59 by tatahere         ###   ########.fr        #
+#    Updated: 2025/04/08 08:59:10 by tatahere         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,6 +137,7 @@ OBJ_PARSING			:=	parse_file.o				\
 						normalize_scene.o					\
 						rotate_word.o					\
 						rotate_word_2.o				\
+						rotate_word_3.o				\
 
 OBJ		+=	$(OBJ_PARSING)
 

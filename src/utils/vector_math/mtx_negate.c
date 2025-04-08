@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_image.h                                     :+:      :+:    :+:   */
+/*   mtx_negate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 14:28:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 10:04:26 by tatahere         ###   ########.fr       */
+/*   Created: 2025/04/08 06:50:55 by tatahere          #+#    #+#             */
+/*   Updated: 2025/04/08 08:26:02 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_IMAGE_H
-# define RENDER_IMAGE_H
+#include "vector_math.h"
 
-# include "minirt.h"
-# include "scene.h"
-# include "MLX42/MLX42.h"
-
-# define THREAD_COUNT 16.0
-
-# define LINE_HEIGHT WIN_HEIGHT / THREAD_COUNT
-
-typedef struct s_render_child
+t_mtx3	negate_matrix(t_mtx3 mtx)
 {
-	mlx_image_t	*img;
-	t_scene		*sc;
-	int			index;
-}	t_render_child;
-
-typedef void *(*t_void_ptr_fn)(void *);
-
-#endif
+	t_mtx3	
+	mtx.i_hat = vec3_scale(mtx.i_hat, -1);
+	mtx.j_hat = vec3_scale(mtx.i_hat, -1);
+	mtx.k_hat = vec3_scale(mtx.i_hat, -1);
+	return (mtx);
+}

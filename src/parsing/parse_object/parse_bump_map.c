@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:43:59 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/01 19:46:03 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 09:59:31 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	set_bump_map_w_h(t_error *error, t_bump_map *bump_map, char *str)
 		return ;
 	}
 	bump_map->width = ft_atof(tokens[0]);
-	bump_map->width = ft_atof(tokens[1]);
+	bump_map->height = ft_atof(tokens[1]);
 }
 
 void	parse_bump_map_file(t_error *error, t_bump_map *bump_map, char *file)
