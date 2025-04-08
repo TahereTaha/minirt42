@@ -89,12 +89,9 @@ static t_vec3	get_cone_normal(t_vec3 ray, t_vec3 origin,
 	h = vec3_dot_product(hit_relative, cone->orientation);
 	if (h <= 0)
 		return (vec3_scale(cone->orientation, -1));
-
-	/* Calculate point on central axis at same height */
 	axis_point = vec3_add(cone->position,
 			vec3_scale(cone->orientation, h));
 
-	/* Normal is from axis point to hit point */
 	normal = vec3_normalize(vec3_sub(hit_point, axis_point));
 	return (normal);
 }
