@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 10:11:40 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:55:07 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,6 @@ t_disrupt	get_disruption(t_error *error, char *token);
 t_bump_map	get_bump_map(t_error *error, char *token);
 
 // parse cone
-void    parse_color_cone(t_error *error, char *token, t_cone *co);
-t_object    parse_cone(t_error *error, char *line);
+void		parse_color_cone(t_error *error, char *token, t_cone *co);
+t_object	parse_cone(t_error *error, char *line);
 #endif
