@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:31:50 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 10:50:37 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:15:22 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 #include "vector_math.h"
 #include "scene.h"
 #include "parsing.h"
-
-static void	move_sphere(t_sphere *sphere, t_vec3 camera_pos)
-{
-	sphere->position = vec3_sub(sphere->position, camera_pos);
-}
 
 static void	move_plane(t_plane *plane, t_vec3 camera_pos)
 {
@@ -29,10 +24,12 @@ static void	move_cylinder(t_cylinder *cylinder, t_vec3 camera_pos)
 {
 	cylinder->position = vec3_sub(cylinder->position, camera_pos);
 }
+
 static void	move_cone(t_cone *cone, t_vec3 camera_pos)
 {
 	cone->position = vec3_sub(cone->position, camera_pos);
 }
+
 static void	move_objects(t_list *objects, t_vec3 camera_pos)
 {
 	t_list		*node;
@@ -50,20 +47,6 @@ static void	move_objects(t_list *objects, t_vec3 camera_pos)
 			move_cylinder((t_cylinder *)object, camera_pos);
 		if (object->kind == CONE)
 			move_cone((t_cone *)object, camera_pos);
-		node = node->next;
-	}
-}
-
-static void	move_lights(t_list *lights, t_vec3 camera_pos)
-{
-	t_list	*node;
-	t_light	*light;
-
-	node = lights;
-	while (node)
-	{
-		light = node->content;
-		light->position = vec3_sub(light->position, camera_pos);
 		node = node->next;
 	}
 }
