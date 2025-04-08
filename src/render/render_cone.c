@@ -80,23 +80,22 @@ static t_vec3	get_cone_normal(t_vec3 ray, t_vec3 origin,
 {
 	t_vec3	hit_point;
 	t_vec3	hit_relative;
+	t_vec3	axis_point;
 	t_vec3	normal;
 	double	h;
-	double	radius;
-	double	k;
 
 	hit_point = vec3_add(origin, vec3_scale(ray, t));
 	hit_relative = vec3_sub(hit_point, cone->position);
 	h = vec3_dot_product(hit_relative, cone->orientation);
 	if (h <= 0)
-		normal = vec3_scale(cone->orientation, -1);
-	else
-	{
-		radius = (cone->diameter / 2.0) * (1 - h / cone->height);
-		k = radius / h;
-		normal = vec3_normalize(vec3_sub(hit_relative,
-					vec3_scale(cone->orientation, h * (1 + k * k))));
-	}
+		return (vec3_scale(cone->orientation, -1));
+
+	/* Calculate point on central axis at same height */
+	axis_point = vec3_add(cone->position,
+			vec3_scale(cone->orientation, h));
+
+	/* Normal is from axis point to hit point */
+	normal = vec3_normalize(vec3_sub(hit_point, axis_point));
 	return (normal);
 }
 
