@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:20:48 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/08 10:52:04 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:14:52 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,6 @@
 #include "vector_math.h"
 #include "parsing.h"
 #include "scene.h"
-
-void	rotate_cylinder(t_cylinder *object, t_mtx3 mtx)
-{
-	t_vec3	vec;
-
-	vec = object->position;
-	object->position = vec3_mtx3_multiplication(vec, mtx);
-	vec = object->orientation;
-	object->orientation = vec3_mtx3_multiplication(vec, mtx);
-}
 
 void	rotate_cone(t_cone *object, t_mtx3 mtx)
 {
