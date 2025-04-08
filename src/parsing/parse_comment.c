@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 17:31:18 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/25 17:35:02 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:19:56 by rgiambon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ t_object	parse_comment(t_error *error, char *line)
 	object.kind = COMMENT;
 	return (object);
 }
-
