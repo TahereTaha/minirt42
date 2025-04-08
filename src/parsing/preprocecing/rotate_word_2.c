@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 13:20:48 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/08 10:15:51 by rgiambon         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:52:04 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 #include "scene.h"
 
 void	rotate_cylinder(t_cylinder *object, t_mtx3 mtx)
+{
+	t_vec3	vec;
+
+	vec = object->position;
+	object->position = vec3_mtx3_multiplication(vec, mtx);
+	vec = object->orientation;
+	object->orientation = vec3_mtx3_multiplication(vec, mtx);
+}
+
+void	rotate_cone(t_cone *object, t_mtx3 mtx)
 {
 	t_vec3	vec;
 
@@ -40,6 +50,8 @@ void	transform_all_objects_vectors(t_list *objects, t_mtx3 mtx)
 			rotate_sphere((t_sphere *)object, mtx);
 		if (object->kind == CYLINDER)
 			rotate_cylinder((t_cylinder *)object, mtx);
+		if (object->kind == CONE)
+			rotate_cone((t_cone *)object, mtx);
 		node = node->next;
 	}
 }
