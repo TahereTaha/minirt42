@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:43:59 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 12:37:49 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:35:03 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	parse_bump_map_file(t_error *error, t_bump_map *bump_map, char *file)
 	if (error->errnum)
 		return ;
 	bump_map->texture = mlx_load_png(file);
-	if (!bump_map)
+	if (!bump_map->texture)
 		error_set(error, mlx_errno);
 }
 

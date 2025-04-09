@@ -7,7 +7,7 @@ co 0,9,0 -1,1,1 10 10 8,232,85
 
 sp 0,0,0 5 230,0,20
 
-sp 10,10,0 5 31,125,83
+sp 10,10,0 5 31,125,83,,,,
 sp 10,10,0 5 31,125,83
 sp 0,10,0 5 31,100,83
 sp -10,10,0 5 31,125,83
@@ -20,17 +20,17 @@ sp -60,10,0 5 31,100,83
 sp 10,-3,2 5 31,125,83
 
 
-pl 0,0,-10 0,0,1 190,30,70 color_disruption:on:20,20 bump_map:on:20,20:NormalMap.png
+pl 0,0,-10 0,0,1 190,30,70 color_disruption:on:20,20 bump_map:on:20,20:textures/NormalMap.png
 
-pl 10,0,0 -1,0,0 37,95,56 color_disruption:on:10,5 bump_map:off:2,2:NormalMap.png
+pl 10,0,0 -1,0,0 37,95,56 color_disruption:on:10,5 bump_map:off:2,2:textures/NormalMap.png
 
-pl 0,10,0 0,1,0 39,57,28 color_disruption:off:1,5 bump_map:off:5,5:NormalMap.png
+pl 0,10,0 0,1,0 39,57,28 color_disruption:off:1,5 bump_map:off:5,5:textures/NormalMap.png
 
-pl 0,-20,0 -1,1,0 39,57,28 color_disruption:off:1,5 bump_map:off:5,2:map.png
-
-
-pl 0,0,10 0,0,1 50,160,250 color_disruption:on:10,10 bump_map:off:20,20:NormalMap.png
+pl 0,-20,0 -1,1,0 39,57,28 color_disruption:off:1,5 bump_map:off:5,2:textures/map.png
 
 
-// pl 0,0,-10 0,0,1 40,150,240 color_disruption:on:10,5 bump_map:off:5,2:file.png
+pl 0,0,10 0,0,1 50,160,250 color_disruption:on:10,10 bump_map:off:20,20:textures/NormalMap.png
+
+
+// pl 0,0,-10 0,0,1 40,150,240 color_disruption:on:10,5 bump_map:off:5,2:textures/file.png
 

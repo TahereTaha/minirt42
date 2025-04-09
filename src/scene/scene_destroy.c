@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 17:28:33 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 12:40:17 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/09 09:34:48 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	free_map(t_object *object)
 	if (object->kind != PLANE)
 		return ;
 	plane = (t_plane *)object;
-	mlx_delete_texture(plane->bump_map.texture);
+	if (plane->bump_map.texture)
+		mlx_delete_texture(plane->bump_map.texture);
 }
 
 void	free_all_maps(t_list *objects)
