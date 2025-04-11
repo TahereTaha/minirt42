@@ -30,7 +30,7 @@ static int	check_decimal_part(char *str)
 		decimal_count++;
 		i++;
 	}
-	return (decimal_count > 6);
+	return (0);
 }
 
 int	ft_isfloatoverflow(char *str)
