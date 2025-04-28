@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:39:00 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/08 10:17:26 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:24:34 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ t_object	parse_light(t_error *error, char *line)
 	}
 	if (ft_arraylen(tokens) != 4)
 	{
+		free_array(tokens);
 		error_set(error, WRONG_TOKENS_COUNT);
 		return (object);
 	}

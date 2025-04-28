@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:43:59 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/09 09:35:03 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:38:16 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	**local_split(t_error *error, char *str)
 		error_set(error, errno);
 		return (NULL);
 	}
-	if (ft_arraylen(tokens) != 4)
+	if (ft_arraylen(tokens) != 4 || count_chars(str, ':') != 3)
 	{
 		free_array(tokens);
 		error_set(error, WRONG_TOKENS_COUNT);

@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:39:00 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/08 10:15:56 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/10 21:23:56 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <errno.h>
@@ -77,6 +77,7 @@ t_object	parse_ambient_light(t_error *error, char *line)
 	}
 	if (ft_arraylen(tokens) != 3)
 	{
+		free_array(tokens);
 		error_set(error, WRONG_TOKENS_COUNT);
 		return (object);
 	}

@@ -6,7 +6,7 @@
 /*   By: rgiambon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 12:12:23 by rgiambon          #+#    #+#             */
-/*   Updated: 2025/04/08 10:16:37 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:41:06 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,11 @@ t_object	parse_camera(t_error *error, char *line)
 	if (!tokens)
 	{
 		error_set(error, errno);
-		error_msg_append(error, "camera: ", 0);
 		return (object);
 	}
 	if (ft_arraylen(tokens) != 4)
 	{
+		free_array(tokens);
 		error_set(error, WRONG_TOKENS_COUNT);
 		error_msg_append(error, "camera: wrong numbre of tokens", 0);
 		return (object);

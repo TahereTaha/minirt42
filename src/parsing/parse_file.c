@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 18:48:58 by tatahere          #+#    #+#             */
-/*   Updated: 2025/03/23 16:56:02 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/10 19:13:05 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	read_file(t_error *error, t_scene *scene, int fd)
 
 void	check_scene_is_complete(t_error *error, t_scene *scene)
 {
+	if (error->errnum)
+		return ;
 	if (scene->ambient_light.kind != AMBIENT_LIGHT)
 	{
 		error_set(error, OBJECT_LAKING);
@@ -84,10 +86,11 @@ void	parse_file(t_error *error, t_scene *scene, int ac, char **av)
 		error_set(error, errno);
 	if (!error->errnum)
 		read_file(error, scene, fd);
-	if (error->errnum)
-		error_msg_append(error, "parsin: ", 0);
 	check_scene_is_complete(error, scene);
 	if (error->errnum)
+	{
 		error_msg_append(error, "parsin: ", 0);
+		return ;
+	}
 	preproces(scene);
 }

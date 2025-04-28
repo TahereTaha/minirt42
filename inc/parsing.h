@@ -6,7 +6,7 @@
 /*   By: tatahere <tatahere@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:36:35 by tatahere          #+#    #+#             */
-/*   Updated: 2025/04/08 12:46:52 by tatahere         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:37:26 by tatahere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,5 @@ void		parse_color_cone(t_error *error, char *token, t_cone *co);
 t_object	parse_cone(t_error *error, char *line);
 void		move_lights(t_list *lights, t_vec3 camera_pos);
 void		move_sphere(t_sphere *sphere, t_vec3 camera_pos);
-
+int			count_chars(char *str, char c);
 #endif
